@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | TeamAlpha</title>
+    <!-- ...existing code for favicons, fonts, and CSS links from addproduct.html... -->
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+    <style>
+      /* Header/navbar styles copied from addproduct.html */
+      .main-menu__logo img {
+        max-height: 48px;
+        width: auto;
+        display: block;
+      }
+      .main-menu__list > li > a,
+      .main-menu__list > li > a:visited,
+      .main-menu__list > li > a:active,
+      .main-menu__list > li > a:focus {
+        color: #fff !important;
+      }
+      .main-menu__list > li > a:hover {
+        color: #ffb347 !important;
+      }
+      .main-menu__list .dropdown > a:after,
+      .main-menu__list .dropdown > a:before {
+        color: #fff !important;
+      }
+      .main-menu-two__search,
+      .main-menu-two__cart,
+      .main-menu-two__search-box a,
+      .main-menu-two__cart-box a,
+      .main-menu-two__search-box .icon-magnifying-glass,
+      .main-menu-two__cart-box .icon-shopping-cart,
+      .main-menu-two__search-box i,
+      .main-menu-two__cart-box i {
+        color: #fff !important;
+      }
+      .main-menu__list ul li a {
+        color: #fff !important;
+      }
+      .main-menu__list ul li a:hover {
+        color: #ffb347 !important;
+      }
+      .mobile-nav__toggler i {
+        color: #fff !important;
+      }
+      .main-header-two,
+      .main-menu.main-menu-two,
+      .main-menu-two__wrapper,
+      .stricky-header.stricked-menu.main-menu.main-menu-two,
+      .sticky-header__content {
+        background: #23232a !important;
+      }
+      .main-header-two,
+      .stricky-header.stricked-menu.main-menu.main-menu-two {
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 32px;
+      }
+      @media (max-width: 600px) {
+        .main-header-two,
+        .stricky-header.stricked-menu.main-menu.main-menu-two {
+          margin-bottom: 20px;
+        }
+      }
+      .main-menu-two__logout-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      .main-menu-two__logout {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(90deg, #89868d, #0f0f10);
+        color: #fff !important;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 28px 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+      .main-menu-two__logout i {
+        font-size: 1.2em;
+        margin-right: 6px;
+        transition: color 0.2s;
+      }
+      .main-menu-two__logout:hover,
+      .main-menu-two__logout:focus {
+        background: #0f0f10;
+        color: #ffb347 !important;
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+        text-decoration: none;
+      }
+      .main-menu-two__logout:hover i,
+      .main-menu-two__logout:focus i {
+        color: #ffb347;
+      }
+      /* Under Construction styles */
+      .dashboard-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .dashboard-container {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        padding: 60px 40px;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+      }
+      .dashboard-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f0f10;
+        margin-bottom: 16px;
+      }
+      .dashboard-subtitle {
+        color: #89868d;
+        font-size: 1.2rem;
+        margin-bottom: 24px;
+        font-family: "Inter", sans-serif;
+      }
+      .under-construction-icon {
+        font-size: 4rem;
+        color: #ffb347;
+        margin-bottom: 18px;
+      }
+      @media (max-width: 600px) {
+        .dashboard-container {
+          padding: 30px 10px;
+        }
+        .dashboard-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======= Site Header/Navbar Start ======= -->
+    <header class="main-header-two">
+      <nav class="main-menu main-menu-two">
+        <div class="main-menu-two__wrapper">
+          <div class="main-menu-two__wrapper-inner">
+            <div class="main-menu-two__left">
+              <div class="main-menu-two__logo">
+                <a href="index.html"
+                  ><img src="assets/images/resources/logo-3.svg" alt=""
+                /></a>
+              </div>
+            </div>
+            <div class="main-menu-two__main-menu-box">
+              <a href="#" class="mobile-nav__toggler"
+                ><i class="fa fa-bars"></i
+              ></a>
+              <ul class="main-menu__list">
+                <li>
+                  <a href="dashboard.html">Dashboard</a>
+                </li>
+                <li>
+                  <a href="orders.html">Orders</a>
+                </li>
+                <li>
+                  <a href="addproduct.html">Add Product</a>
+                </li>
+                <li>
+                  <a href="manageproducts.html">Manage Products</a>
+                </li>
+              </ul>
+            </div>
+            <div class="main-menu-two__right">
+              <div class="main-menu-two__logout-box">
+                <a
+                  href="logout.html"
+                  class="main-menu-two__logout"
+                  title="Logout"
+                >
+                  <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="stricky-header stricked-menu main-menu main-menu-two">
+      <div class="sticky-header__content"></div>
+    </div>
+    <!-- ======= Site Header/Navbar End ======= -->
+
+    <div class="dashboard-section">
+      <div class="dashboard-container">
+        <div class="under-construction-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <div class="dashboard-title">Orders</div>
+        <div class="dashboard-subtitle">
+          This page is under construction.<br />
+          Please check back soon!
+        </div>
+      </div>
+    </div>
+    <!-- ...optional JS includes as in addproduct.html... -->
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/fontawesome/js/all.min.js"></script>
+  </body>
+</html>
