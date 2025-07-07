@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Login | Derma Veritas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;700&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --mellis-font: "Inter", sans-serif;
+        --mellis-font-two: "Poppins", sans-serif;
+        --mellis-font-three: "Parisienne", cursive;
+        --mellis-white: #fff;
+        --mellis-base: #89868d;
+        --mellis-black: #0f0f10;
+        --mellis-extra: #fcf5f5;
+        --mellis-gray: #89868d;
+        --mellis-bdr-color: #f0e8e8;
+        --mellis-letter-spacing: 0.1em;
+      }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: var(--mellis-font);
+        background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
+        color: var(--mellis-black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-container {
+        background: var(--mellis-white);
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(137, 134, 141, 0.08);
+        padding: 48px 36px 36px 36px;
+        max-width: 400px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        margin: 40px 0;
+      }
+      .login-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+      .login-logo span {
+        font-family: var(--mellis-font-three);
+        font-size: 2.5rem;
+        color: var(--mellis-base);
+        letter-spacing: 2px;
+      }
+      .login-title {
+        font-family: var(--mellis-font-two);
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 10px;
+        color: var(--mellis-black);
+      }
+      .login-subtitle {
+        text-align: center;
+        color: var(--mellis-gray);
+        font-size: 1rem;
+        margin-bottom: 32px;
+        font-weight: 500;
+      }
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        box-sizing: border-box;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      .login-form label {
+        font-size: 1rem;
+        color: var(--mellis-black);
+        font-weight: 500;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .login-form input[type="email"],
+      .login-form input[type="password"] {
+        width: 98%;
+        padding: 14px 18px;
+        border-radius: 8px;
+        border: 1px solid var(--mellis-bdr-color);
+        background: var(--mellis-extra);
+        font-size: 1rem;
+        font-family: var(--mellis-font);
+        color: var(--mellis-black);
+        transition: border 0.2s;
+        margin-bottom: 2px;
+      }
+      .login-form input:focus {
+        border-color: var(--mellis-base);
+        outline: none;
+      }
+      .login-form .login-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .login-form .remember-me {
+        display: flex;
+        align-items: center;
+        font-size: 0.95rem;
+        color: var(--mellis-gray);
+      }
+      .login-form .remember-me input[type="checkbox"] {
+        margin-right: 7px;
+        accent-color: var(--mellis-base);
+      }
+      .login-form .forgot-link {
+        color: var(--mellis-base);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+      .login-form .forgot-link:hover {
+        color: var(--mellis-black);
+        text-decoration: underline;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 15px 0;
+        background: var(--mellis-base);
+        color: var(--mellis-white);
+        border: none;
+        border-radius: 50px;
+        font-family: var(--mellis-font-two);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        margin-top: 8px;
+        box-shadow: 0 6px 24px rgba(137, 134, 141, 0.1);
+        transition: background 0.2s, transform 0.2s;
+      }
+      .login-btn:hover {
+        background: var(--mellis-black);
+        color: var(--mellis-white);
+        transform: translateY(-2px);
+      }
+      .login-register {
+        text-align: center;
+        margin-top: 18px;
+        color: var(--mellis-gray);
+        font-size: 1rem;
+      }
+      .login-register a {
+        color: var(--mellis-base);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 4px;
+        transition: color 0.2s;
+      }
+      .login-register a:hover {
+        color: var(--mellis-black);
+        text-decoration: underline;
+      }
+      @media (max-width: 500px) {
+        .login-container {
+          padding: 32px 10px 24px 10px;
+          max-width: 98vw;
+        }
+        .login-title {
+          font-size: 1.5rem;
+        }
+      }
+      /* Decorative background */
+      .login-bg-decor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .login-bg-decor::before,
+      .login-bg-decor::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(137, 134, 141, 0.08),
+          rgba(0, 0, 0, 0.03)
+        );
+      }
+      .login-bg-decor::before {
+        width: 220px;
+        height: 220px;
+        top: -80px;
+        left: -80px;
+        animation: float 7s ease-in-out infinite;
+      }
+      .login-bg-decor::after {
+        width: 160px;
+        height: 160px;
+        bottom: -60px;
+        right: -60px;
+        animation: float 5s ease-in-out infinite reverse;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-18px);
+        }
+      }
+    </style>
+    <!-- Font Awesome for icons (social login) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="login-bg-decor"></div>
+    <div class="login-container">
+      <div class="login-logo">
+        <span>Derma Veritas</span>
+      </div>
+      <div class="login-title">Sign In</div>
+      <div class="login-subtitle">
+        Welcome back! Please login to your account.
+      </div>
+      <form class="login-form" autocomplete="off">
+        <div>
+          <label for="login-email">Email</label>
+          <input
+            type="email"
+            id="login-email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            autocomplete="username"
+          />
+        </div>
+        <div>
+          <label for="login-password">Password</label>
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+        <div class="login-actions">
+          <label class="remember-me">
+            <input type="checkbox" name="remember" />
+            Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      <div class="login-register">
+        Don't have an account?
+        <a href="signup.html">Register</a>
+      </div>
+    </div>
+    <script>
+      document
+        .querySelector(".login-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const email = document.getElementById("login-email").value;
+          const password = document.getElementById("login-password").value;
+          try {
+            const res = await fetch("http://localhost:3000/api/users/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+              credentials: "include",
+            });
+            const data = await res.json();
+            if (res.ok) {
+              alert("Login successful!");
+              // Optionally redirect: window.location.href = '/dashboard.html';
+            } else {
+              alert(data.message || "Login failed");
+            }
+          } catch (err) {
+            alert("Network error");
+          }
+        });
+    </script>
+  </body>
+</html>
