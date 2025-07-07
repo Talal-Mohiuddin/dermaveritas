@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Admin Login | Derma Veritas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;700&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
+        color: #0f0f10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-container {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(137, 134, 141, 0.08);
+        padding: 48px 36px 36px 36px;
+        max-width: 400px;
+        width: 100%;
+        margin: 40px 0;
+      }
+      .login-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+      .login-logo span {
+        font-family: "Parisienne", cursive;
+        font-size: 2.5rem;
+        color: #89868d;
+        letter-spacing: 2px;
+      }
+      .login-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #0f0f10;
+      }
+      .login-subtitle {
+        text-align: center;
+        color: #89868d;
+        font-size: 1rem;
+        margin-bottom: 32px;
+        font-weight: 500;
+      }
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        box-sizing: border-box;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      .login-form label {
+        font-size: 1rem;
+        color: #0f0f10;
+        font-weight: 500;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .login-form input[type="email"],
+      .login-form input[type="password"] {
+        width: 98%;
+        padding: 14px 18px;
+        border-radius: 8px;
+        border: 1px solid #f0e8e8;
+        background: #fcf5f5;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+        color: #0f0f10;
+        transition: border 0.2s;
+        margin-bottom: 2px;
+      }
+      .login-form input:focus {
+        border-color: #89868d;
+        outline: none;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 15px 0;
+        background: #89868d;
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        margin-top: 8px;
+        box-shadow: 0 6px 24px rgba(137, 134, 141, 0.1);
+        transition: background 0.2s, transform 0.2s;
+      }
+      .login-btn:hover {
+        background: #0f0f10;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      @media (max-width: 500px) {
+        .login-container {
+          padding: 32px 10px 24px 10px;
+          max-width: 98vw;
+        }
+        .login-title {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-logo">
+        <a href="index.html" style="text-decoration: none">
+          <span>Derma Veritas</span>
+        </a>
+      </div>
+      <div class="login-title">Admin Sign In</div>
+      <div class="login-subtitle">
+        Admin access only. Please login with your admin credentials.
+      </div>
+      <form class="login-form" autocomplete="off">
+        <div>
+          <label for="admin-email">Email</label>
+          <input
+            type="email"
+            id="admin-email"
+            name="email"
+            placeholder="Enter admin email"
+            required
+            autocomplete="username"
+          />
+        </div>
+        <div>
+          <label for="admin-password">Password</label>
+          <input
+            type="password"
+            id="admin-password"
+            name="password"
+            placeholder="Enter admin password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+    <script>
+      document
+        .querySelector(".login-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const email = document.getElementById("admin-email").value;
+          const password = document.getElementById("admin-password").value;
+          try {
+            const res = await fetch("http://localhost:3000/api/users/admin-login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+              credentials: "include",
+            });
+            const data = await res.json();
+            if (res.ok) {
+              // Redirect to dashboard on successful login
+              window.location.href = "dashboard.html";
+            } else {
+              alert(data.message || "Admin login failed");
+            }
+          } catch (err) {
+            alert("Network error");
+          }
+        });
+    </script>
+  </body>
+</html>
