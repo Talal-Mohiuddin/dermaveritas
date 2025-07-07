@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Manage Products | TeamAlpha</title>
+    <!-- favicons and fonts (reuse from addproduct.html) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png"/>
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css/mellis.css"/>
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css"/>
+    <style>
+      body {
+        background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
+        min-height: 100vh;
+      }
+      .manage-products-section {
+        padding: 100px 0;
+        margin-top: 48px;
+      }
+      .manage-products-container {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        padding: 50px 30px;
+        position: relative;
+        box-sizing: border-box;
+      }
+      .manage-products-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f0f10;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .manage-products-subtitle {
+        color: #89868d;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 35px;
+        font-family: "Inter", sans-serif;
+      }
+      .products-table-responsive {
+        overflow-x: auto;
+      }
+      .products-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      }
+      .products-table th, .products-table td {
+        padding: 18px 14px;
+        text-align: left;
+        font-size: 1rem;
+        vertical-align: middle;
+      }
+      .products-table th {
+        background: #fcf5f5;
+        color: #89868d;
+        font-weight: 700;
+        border-bottom: 2px solid #f0e8e8;
+      }
+      .products-table tbody tr {
+        border-bottom: 1px solid #f0e8e8;
+        transition: background 0.15s;
+      }
+      .products-table tbody tr:hover {
+        background: #f8f6fa;
+      }
+      .products-table img {
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .action-btns {
+        display: flex;
+        gap: 10px;
+      }
+      .action-btn {
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        outline: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .action-btn.edit {
+        background: #f5f7fa;
+        color: #0f0f10;
+      }
+      .action-btn.edit:hover {
+        background: #e3e8f0;
+        color: #2d6cdf;
+      }
+      .action-btn.delete {
+        background: #fff0f0;
+        color: #e74c3c;
+      }
+      .action-btn.delete:hover {
+        background: #ffeaea;
+        color: #c0392b;
+      }
+      @media (max-width: 900px) {
+        .manage-products-container {
+          padding: 30px 5px;
+        }
+        .manage-products-title {
+          font-size: 2rem;
+        }
+        .products-table th, .products-table td {
+          padding: 12px 8px;
+          font-size: 0.98rem;
+        }
+      }
+      @media (max-width: 600px) {
+        .manage-products-section {
+          padding: 40px 0;
+        }
+        .manage-products-title {
+          font-size: 1.5rem;
+        }
+        .products-table th, .products-table td {
+          padding: 10px 6px;
+          font-size: 0.95rem;
+        }
+      }
+      /* Navbar styles (reuse from addproduct.html) */
+      .main-menu__logo img { max-height: 48px; width: auto; display: block; }
+      .main-menu__list > li > a,
+      .main-menu__list > li > a:visited,
+      .main-menu__list > li > a:active,
+      .main-menu__list > li > a:focus { color: #fff !important; }
+      .main-menu__list > li > a:hover { color: #ffb347 !important; }
+      .main-menu__list .dropdown > a:after,
+      .main-menu__list .dropdown > a:before { color: #fff !important; }
+      .main-menu-two__search,
+      .main-menu-two__cart,
+      .main-menu-two__search-box a,
+      .main-menu-two__cart-box a,
+      .main-menu-two__search-box .icon-magnifying-glass,
+      .main-menu-two__cart-box .icon-shopping-cart,
+      .main-menu-two__search-box i,
+      .main-menu-two__cart-box i { color: #fff !important; }
+      .main-menu__list ul li a { color: #fff !important; }
+      .main-menu__list ul li a:hover { color: #ffb347 !important; }
+      .mobile-nav__toggler i { color: #fff !important; }
+      .main-header-two,
+      .main-menu.main-menu-two,
+      .main-menu-two__wrapper,
+      .stricky-header.stricked-menu.main-menu.main-menu-two,
+      .sticky-header__content { background: #23232a !important; }
+      .main-header-two,
+      .stricky-header.stricked-menu.main-menu.main-menu-two {
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        margin-bottom: 32px;
+      }
+      @media (max-width: 600px) {
+        .main-header-two,
+        .stricky-header.stricked-menu.main-menu.main-menu-two {
+          margin-bottom: 20px;
+        }
+      }
+      .main-menu-two__logout-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      .main-menu-two__logout {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(90deg, #89868d, #0f0f10);
+        color: #fff !important;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 28px 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+      .main-menu-two__logout i {
+        font-size: 1.2em;
+        margin-right: 6px;
+        transition: color 0.2s;
+      }
+      .main-menu-two__logout:hover,
+      .main-menu-two__logout:focus {
+        background: #0f0f10;
+        color: #ffb347 !important;
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 6px 24px rgba(0,0,0,0.14);
+        text-decoration: none;
+      }
+      .main-menu-two__logout:hover i,
+      .main-menu-two__logout:focus i {
+        color: #ffb347;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======= Site Header/Navbar Start ======= -->
+    <header class="main-header-two">
+      <nav class="main-menu main-menu-two">
+        <div class="main-menu-two__wrapper">
+          <div class="main-menu-two__wrapper-inner">
+            <div class="main-menu-two__left">
+              <div class="main-menu-two__logo">
+                <a href="index.html"><img src="assets/images/resources/logo-3.svg" alt=""/></a>
+              </div>
+            </div>
+            <div class="main-menu-two__main-menu-box">
+              <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+              <ul class="main-menu__list">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="addproduct.html">Add Product</a></li>
+                <li><a href="manageproducts.html">Manage Products</a></li>
+              </ul>
+            </div>
+            <div class="main-menu-two__right">
+              <div class="main-menu-two__logout-box">
+                <a href="logout.html" class="main-menu-two__logout" title="Logout">
+                  <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="stricky-header stricked-menu main-menu main-menu-two">
+      <div class="sticky-header__content"></div>
+    </div>
+    <!-- ======= Site Header/Navbar End ======= -->
+
+    <div class="manage-products-section">
+      <div class="manage-products-container">
+        <div class="manage-products-title">Manage Products</div>
+        <div class="manage-products-subtitle">
+          View, edit, or delete your products below.
+        </div>
+        <div class="products-table-responsive">
+          <table class="products-table" id="productsTable">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price (USD)</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Products will be dynamically inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Fetch and display products
+      async function fetchProducts() {
+        const tableBody = document.querySelector("#productsTable tbody");
+        tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#89868d;">Loading...</td></tr>`;
+        try {
+          const res = await fetch("http://localhost:3000/api/products");
+          const data = await res.json();
+          if (!data.success || !Array.isArray(data.products)) {
+            throw new Error("Failed to fetch products");
+          }
+          if (data.products.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#89868d;">No products found.</td></tr>`;
+            return;
+          }
+          tableBody.innerHTML = "";
+          data.products.forEach(product => {
+            const imgUrl = (product.images && product.images.length > 0) ? product.images[0].url : "assets/images/no-image.png";
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td><img src="${imgUrl}" alt="${product.name}" /></td>
+              <td>${product.name}</td>
+              <td>${product.category}</td>
+              <td>$${Number(product.price).toFixed(2)}</td>
+              <td>${product.stockQuantity}</td>
+              <td>
+                <div class="action-btns">
+                  <button class="action-btn edit" title="Edit" onclick="editProduct('${product._id}')">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                  <button class="action-btn delete" title="Delete" onclick="deleteProduct('${product._id}', this)">
+                    <i class="fas fa-trash"></i> Delete
+                  </button>
+                </div>
+              </td>
+            `;
+            tableBody.appendChild(row);
+          });
+        } catch (err) {
+          tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#e74c3c;">Error loading products.</td></tr>`;
+        }
+      }
+
+      // Edit product (redirect to edit page)
+      function editProduct(productId) {
+        window.location.href = `editproduct.html?id=${productId}`;
+      }
+
+      // Delete product
+      async function deleteProduct(productId, btn) {
+        if (!confirm("Are you sure you want to delete this product?")) return;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting';
+        try {
+          const res = await fetch(`http://localhost:3000/api/products/${productId}`, {
+            method: "DELETE",
+            credentials: "include"
+          });
+          const data = await res.json();
+          if (res.ok) {
+            fetchProducts();
+          } else {
+            alert(data.message || "Failed to delete product.");
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+          }
+        } catch (err) {
+          alert("Error: " + err.message);
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+        }
+      }
+
+      // Initial fetch
+      fetchProducts();
+    </script>
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/fontawesome/js/all.min.js"></script>
+    <script src="assets/js/mellis.js"></script>
+  </body>
+</html>
