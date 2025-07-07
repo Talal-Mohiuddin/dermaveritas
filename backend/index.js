@@ -26,15 +26,13 @@ app.use(cookieParser());
 // Serve static files from public directory
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
-console.log(path.join(__dirname, "../dermaveritas/mellis-html-files"));
-
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
 });
 
-const frontendPath = path.join(__dirname, "../dermaveritas/mellis-html-files");
+const frontendPath = path.join(__dirname, "../frontend");
 app.use(express.static(frontendPath));
 
 // API routes
