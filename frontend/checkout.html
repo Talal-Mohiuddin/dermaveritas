@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Checkout | DermaVeritas </title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="mellis HTML 5 Template " />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css">
+    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+    <link rel="stylesheet" href="assets/vendors/twenty-twenty/twentytwenty.css" />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #89868D;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .checkout-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0f0f0;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f5f5f5;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #89868D;
+            box-shadow: 0 0 0 3px rgba(137, 134, 141, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #89868D;
+        }
+
+        .payment-methods {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .payment-option:hover {
+            border-color: #89868D;
+            background: #fafafa;
+        }
+
+        .payment-option.selected {
+            border-color: #89868D;
+            background: rgba(137, 134, 141, 0.05);
+        }
+
+        .payment-option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: auto;
+        }
+
+        .payment-option label {
+            font-weight: 500;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .card-details {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card-details.active {
+            display: block;
+        }
+
+        .order-summary {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0f0f0;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .summary-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f5f5f5;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-type {
+            background: #89868D;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-quantity {
+            color: #89868D;
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .summary-totals {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f5f5f5;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f0f0f0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .summary-label {
+            font-weight: 500;
+            color: #89868D;
+        }
+
+        .summary-value {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            background: #000;
+            color: white;
+            border: none;
+            padding: 1.25rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .place-order-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .place-order-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            color: #89868D;
+            font-size: 0.85rem;
+        }
+
+        .security-note::before {
+            content: "🔒";
+            margin-right: 0.5rem;
+        }
+
+        .back-to-cart {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-to-cart a {
+            color: #89868D;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-to-cart a:hover {
+            color: #000;
+        }
+
+        @media (max-width: 1024px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .order-summary {
+                position: static;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .checkout-form,
+            .order-summary {
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title,
+            .summary-title {
+                font-size: 1.2rem;
+            }
+
+            .place-order-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .checkout-form,
+            .order-summary {
+                padding: 1rem;
+            }
+
+            .order-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .item-price {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+    <!-- /.preloader -->
+
+
+
+
+    <div class="page-wrapper">
+        <header class="main-header-two">
+            <nav class="main-menu main-menu-two">
+                <div class="main-menu-two__wrapper">
+                    <div class="main-menu-two__wrapper-inner">
+                        <div class="main-menu-two__left">
+                            <div class="main-menu-two__logo">
+                                <a href="index.html"><img src="assets/images/resources/logo-3.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="main-menu-two__main-menu-box">
+                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                            <ul class="main-menu__list">
+                                <li class="dropdown">
+                                    <a href="index3.html">Home </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="services.html">Our Services</a>
+                                </li>
+                                <li class="dropdown menu-item-has-children">
+                                    <a href="#">Pages </a>
+                                    <ul>
+                                        <li><a href="team.html">Team Members</a></li>
+                                        <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                                        <li><a href="membership.html">Membership</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="products.html">Shop</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="affiliate.html">Affiliate</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="main-menu-two__right">
+                            <div class="main-menu-two__search-cart-box">
+                                <div class="main-menu-two__search-box">
+                                    <a href="#" class="main-menu-two__search search-toggler icon-magnifying-glass"></a>
+                                </div>
+                                <div class="main-menu-two__cart-box">
+                                    <a href="addtocart.html" class="main-menu-two__cart icon-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <div class="stricky-header stricked-menu main-menu main-menu-two">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+        <!--Page Header Start-->
+       <section class="page-header" style="height: 350px;">
+            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg); ">
+            </div>
+            <div class="container">
+                <div class="header">
+                    <ul class="thm-breadcrumb list-unstyled">
+                       <h1 style="color: white;">Shopping Cart</h1>
+                    </ul> <p style="color: white;">Review your selected items before checkout</p>
+                </div>
+            </div>
+        </section>
+        
+  <div class="container" >
+
+        <div class="checkout-grid">
+            <div class="checkout-form">
+                <form id="checkout-form">
+                    <div class="form-section">
+                        <h2 class="section-title">Shipping & Billing Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <input type="text" id="address" name="address" required placeholder="Street address">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required placeholder="City">
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Postal Code *</label>
+                                <input type="text" id="postalCode" name="postalCode" required placeholder="12345">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country *</label>
+                            <select id="country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                                <option value="IT">Italy</option>
+                                <option value="ES">Spain</option>
+                                <option value="JP">Japan</option>
+                                <option value="KR">South Korea</option>
+                                <option value="SG">Singapore</option>
+                                <option value="NL">Netherlands</option>
+                                <option value="SE">Sweden</option>
+                                <option value="NO">Norway</option>
+                                <option value="DK">Denmark</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2 class="section-title">Payment Method</h2>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-option selected" onclick="selectPayment('card')">
+                                <input type="radio" id="card" name="payment" value="card" checked>
+                                <label for="card">Credit/Debit Card</label>
+                            </div>
+
+                        </div>
+
+                        <div class="card-details active" id="card-details">
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number *</label>
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiryDate">Expiry Date *</label>
+                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV *</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardName">Name on Card *</label>
+                                <input type="text" id="cardName" name="cardName" placeholder="Full name as on card">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h2 class="summary-title">Order Summary</h2>
+                
+                <div id="order-items">
+                    <!-- Items will be populated by JavaScript -->
+                </div>
+
+                <div class="summary-totals">
+                    <div class="summary-row">
+                        <span class="summary-label">Subtotal:</span>
+                        <span class="summary-value" id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Shipping:</span>
+                        <span class="summary-value" id="shipping">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Tax:</span>
+                        <span class="summary-value" id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Total:</span>
+                        <span class="summary-value" id="total">$0.00</span>
+                    </div>
+                </div>
+
+                <button class="place-order-btn" id="place-order-btn">
+                    Place Order
+                </button>
+
+                <div class="security-note">
+                    Your payment information is secure and encrypted
+                </div>
+            </div>
+        </div>
+
+        <div class="back-to-cart">
+            <a href="addtocart.html">← Back to Cart</a>
+        </div>
+    </div>
+
+    <script>
+        // Sample order data (would typically come from cart)
+        const orderData = [
+            {
+                id: 1,
+                name: "Vitamin C Brightening Serum",
+                type: "product",
+                price: 89.99,
+                quantity: 2
+            },
+            {
+                id: 2,
+                name: "Premium Dermatology Membership",
+                type: "membership",
+                price: 199.99,
+                quantity: 1
+            },
+            {
+                id: 3,
+                name: "Retinol Night Treatment",
+                type: "product",
+                price: 129.99,
+                quantity: 1
+            },
+            {
+                id: 4,
+                name: "Hyaluronic Acid Moisturizer",
+                type: "product",
+                price: 67.99,
+                quantity: 3
+            }
+        ];
+
+        function renderOrderSummary() {
+            const orderItemsContainer = document.getElementById('order-items');
+            
+            orderItemsContainer.innerHTML = orderData.map(item => `
+                <div class="order-item">
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-type">${item.type}</div>
+                        <div class="item-quantity">Qty: ${item.quantity}</div>
+                    </div>
+                    <div class="item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+
+            updateTotals();
+        }
+
+        function updateTotals() {
+            const subtotal = orderData.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 100 ? 0 : 15.99; // Free shipping over $100
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('shipping').textContent = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function selectPayment(method) {
+            // Remove selected class from all options
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+
+            // Show/hide card details
+            const cardDetails = document.getElementById('card-details');
+            if (method === 'card') {
+                cardDetails.classList.add('active');
+            } else {
+                cardDetails.classList.remove('active');
+            }
+        }
+
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.replace(/(.{4})/g, '$1 ').trim();
+            if (formattedValue.length > 19) {
+                formattedValue = formattedValue.substring(0, 19);
+            }
+            e.target.value = formattedValue;
+        });
+
+        // Format expiry date input
+        document.getElementById('expiryDate').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVV input - numbers only
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Form submission
+        document.getElementById('place-order-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const form = document.getElementById('checkout-form');
+            const formData = new FormData(form);
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            // Check required fields
+            let isValid = true;
+            const requiredFields = ['fullName', 'email', 'phone', 'address', 'city', 'postalCode', 'country'];
+            
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#f0f0f0';
+                }
+            });
+
+            if (paymentMethod === 'card') {
+                const cardFields = ['cardNumber', 'expiryDate', 'cvv', 'cardName'];
+                cardFields.forEach(field => {
+                    const input = document.getElementById(field);
+                    if (!input.value.trim()) {
+                        input.style.borderColor = '#dc3545';
+                        isValid = false;
+                    } else {
+                        input.style.borderColor = '#f0f0f0';
+                    }
+                });
+            }
+
+            if (isValid) {
+                // Simulate order processing
+                this.disabled = true;
+                this.textContent = 'Processing Order...';
+                
+                setTimeout(() => {
+                    alert('Order placed successfully! You will receive a confirmation email shortly.');
+                    this.disabled = false;
+                    this.textContent = 'Place Order';
+                }, 2000);
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Initialize page
+        renderOrderSummary();
+    </script>
+
+
+        <!--Site Footer Start-->
+        <footer class="site-footer">
+            <div class="site-footer__shape-1 float-bob-x">
+                <img src="assets/images/shapes/site-footer-shape-1.png" alt="">
+            </div>
+            <div class="site-footer__shape-2 float-bob-y">
+                <img src="assets/images/shapes/site-footer-shape-2.png" alt="">
+            </div>
+            <div class="container">
+                <div class="site-footer__top">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="footer-widget__column footer-widget__contact-box">
+                                <div class="footer-widget__contact">
+                                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
+                                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
+                                </div>
+                                <div class="footer-widget__contact-form-box">
+                                    <form class="footer-widget__contact-form mc-form" data-url="MC_FORM_URL"
+                                        novalidate="novalidate">
+                                        <div class="footer-widget__contact-form-input-box">
+                                            <input type="email" placeholder="Email address" name="EMAIL">
+                                            <button type="submit" class="footer-widget__newsletter-btn"><img
+                                                    src="assets/images/icon/paper-plan-icon.png" alt=""></button>
+                                        </div>
+                                    </form>
+                                    <div class="mc-form__response"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="footer-widget__column footer-widget__links">
+                                <div class="footer-widget__title-box">
+                                    <h4 class="footer-widget__title">Links</h4>
+                                </div>
+                                <ul class="footer-widget__links-list list-unstyled">
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                                    <li><a href="membership.html">Membership</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="footer-widget__column footer-widget__timing">
+                                <div class="footer-widget__title-box">
+                                    <h4 class="footer-widget__title">Timing</h4>
+                                </div>
+                                <ul class="footer-widget__timing-list list-unstyled">
+                                    <li>Monday to Friday: 8:00 to 19:00</li>
+                                    <li>Saturday: 8:00 to 3:30</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                            <div class="footer-widget__column footer-widget__social-box">
+                                <div class="site-footer__social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                                <p>Unit 2
+                                    Oak tree rise,
+                                    Codsall,
+                                    WV8 1DT
+                                    <br> United Kingdom
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="site-footer__bottom">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="site-footer__bottom-inner">
+                                <p class="site-footer__bottom-text">© Copyright 2025 by <a href="#">dermaveritas.com</a>
+                                </p>
+                                <ul class="list-unstyled site-footer__bottom-menu">
+                                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Site Footer End-->
+
+
+
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler">
+                <i class="fa fa-times"></i>
+            </span>
+
+            <div class="logo-box">
+                <a href="index.html" aria-label="Derma Veritas logo">
+                    <img src="assets/images/resources/logo-3.svg" width="90" alt="Derma Veritas Logo" />
+                </a>
+            </div>
+
+            <!-- Dynamic Menu Items -->
+            <div class="mobile-nav__container"></div>
+
+            <!-- Contact Info -->
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="#">+92-7741-340615</a>
+                </li>
+            </ul>
+
+            <!-- Social Icons -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+
+    <!-- Search Popup -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">Search here</label>
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="thm-btn">
+                    <i class="icon-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- /.search-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/timepicker/timePicker.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/sidebar-content/jquery-sidebar-content.js"></script>
+    <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
+    <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
+
+
+
+
+    <!-- template js -->
+    <script src="assets/js//mellis.js"></script>
+</body>
+
+</html>

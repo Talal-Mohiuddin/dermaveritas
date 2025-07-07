@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> About Us | DermaVeritas </title>
+    <title> Cart | DermaVeritas </title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
@@ -50,10 +50,320 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
-
-
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #89868D;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .cart-section {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            color: #89868D;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #f5f5f5;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .item-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-type {
+            background: #89868D;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-price {
+            color: #89868D;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: #f5f5f5;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .quantity-btn:hover {
+            background: #89868D;
+            color: white;
+        }
+
+        .quantity-btn:disabled {
+            background: #e0e0e0;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .quantity-display {
+            font-weight: 600;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .item-subtotal {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            min-width: 100px;
+            text-align: right;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #89868D;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .remove-btn:hover {
+            background: #f5f5f5;
+            color: #d63384;
+        }
+
+        .cart-summary {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .summary-label {
+            font-weight: 500;
+            color: #89868D;
+        }
+
+        .summary-value {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #000;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .checkout-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .continue-shopping {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .continue-shopping a {
+            color: #89868D;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .continue-shopping a:hover {
+            color: #000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .cart-section {
+                padding: 1rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+
+            .item-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .item-subtotal {
+                text-align: left;
+            }
+
+            .summary-row {
+                font-size: 0.9rem;
+            }
+
+            .checkout-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .item-name {
+                font-size: 1rem;
+            }
+
+            .quantity-control {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 
@@ -123,193 +433,175 @@
             </nav>
         </header>
 
+
         <div class="stricky-header stricked-menu main-menu main-menu-two">
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
         <!--Page Header Start-->
-        <section class="page-header">
+         <section class="page-header" style="height: 350px;">
             <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
             </div>
             <div class="container">
-                <div class="page-header__inner">
+                <div class="header">
                     <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><span>/</span></li>
-                        <li>About Us</li>
-                    </ul>
-                    <h2>About Us</h2>
+                       <h1 style="color: white;">Shopping Cart</h1>
+                    </ul> <p style="color: white;">Review your selected items before checkout</p>
                 </div>
             </div>
         </section>
         <!--Page Header End-->
 
+         <div class="container">
 
-
-        <!--About Us Start-->
-        <section class="our-intro" style="background-color: #f9f9f9; padding: 100px 0;">
-            <div class="our-intro__shape-1 float-bob-y">
-                <img src="assets/images/shapes/our-intro-shape-1.png" alt="">
+        <div class="cart-section">
+            <div id="cart-items"></div>
+            <div class="cart-empty" id="cart-empty">
+                <h3>Your cart is empty</h3>
+                <p>Add some products or memberships to get started</p>
             </div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-6 mb-5 mb-xl-0">
-                        <div class="our-intro__left">
-                            <div class="our-intro__img-box wow slideInLeft" data-wow-delay="100ms"
-                                data-wow-duration="2500ms">
-                                <div class="our-intro__img" style="border-radius: 20px; overflow: hidden;">
-                                    <img src="assets/images/resources/dermaveritas-about.jpg" alt="About Derma Veritas">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="our-intro__right">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline" style="color: #89868D;">About Derma Veritas</span>
-                                <h2 class="section-title__title" style="color: #000;">Where Clinical Expertise Meets
-                                    Aesthetic Excellence</h2>
-                            </div>
-                            <p class="our-intro__text" style="color: #555;">
-                                At Derma Veritas, we are dedicated to delivering advanced aesthetic treatments with
-                                integrity, precision, and care. Our clinic is founded on evidence-based practices,
-                                offering a curated range of non-surgical cosmetic solutions tailored to enhance natural
-                                beauty and restore confidence.
-                            </p>
+        </div>
 
-                            <div class="our-intro__points-and-spa-center">
-                                <div class="our-intro__points-box">
-                                    <ul class="our-intro__points list-unstyled">
-                                        <li>
-                                            <div class="icon"><span class="fa fa-check" style="color: #89868D;"></span>
-                                            </div>
-                                            <div class="text">
-                                                <p>GMC-registered & experienced clinicians</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon"><span class="fa fa-check" style="color: #89868D;"></span>
-                                            </div>
-                                            <div class="text">
-                                                <p>Science-backed treatments with visible results</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon"><span class="fa fa-check" style="color: #89868D;"></span>
-                                            </div>
-                                            <div class="text">
-                                                <p>Tailored, ethical, and honest aesthetic care</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="our-intro__spa-center">
-                                    <div class="our-intro__spa-center-icon">
-                                        <span class="icon-spa-candles" style="color: #89868D;"></span>
-                                    </div>
-                                    <h3 class="our-intro__spa-center-title" style="color: #000;">Medical Aesthetics<br>
-                                        You Can Trust</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mission and Vision Cards -->
-                <div class="row mt-5">
-                    <div class="col-md-6 mb-4">
-                        <div
-                            style="background: #fff; border-radius: 16px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07); padding: 30px; transition: all 0.3s ease; border-left: 5px solid #89868D;">
-                            <h3
-                                style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #000; font-size: 22px; margin-bottom: 15px;">
-                                Our Mission
-                            </h3>
-                            <p
-                                style="font-family: 'Inter', sans-serif; color: #555; font-size: 16px; line-height: 1.6;">
-                                To provide ethical, personalized, and innovative aesthetic treatments that prioritize
-                                patient wellbeing and deliver natural-looking, confidence-boosting outcomes.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 mb-4">
-                        <div
-                            style="background: #fff; border-radius: 16px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07); padding: 30px; transition: all 0.3s ease; border-left: 5px solid #89868D;">
-                            <h3
-                                style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #000; font-size: 22px; margin-bottom: 15px;">
-                                Our Vision
-                            </h3>
-                            <p
-                                style="font-family: 'Inter', sans-serif; color: #555; font-size: 16px; line-height: 1.6;">
-                                To be the most trusted destination for medical aesthetics in the UK, where clinical
-                                excellence and compassion are at the heart of every treatment.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- FAQs -->
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="section-title text-left">
-                            <h2 class="section-title__title" style="color: #000;">Frequently Asked Questions</h2>
-                        </div>
-                        <div class="accordion" id="faqAccordion">
-                            <div class="accordion-item" style="border: none; margin-bottom: 15px;">
-                                <h2 class="accordion-header" id="faqOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faqCollapseOne" style="background: #fff; color: #000;">
-                                        Are your treatments safe and regulated?
-                                    </button>
-                                </h2>
-                                <div id="faqCollapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body" style="color: #555;">
-                                        Absolutely. All treatments are performed by certified professionals using
-                                        MHRA-approved products and clinically tested procedures.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item" style="border: none; margin-bottom: 15px;">
-                                <h2 class="accordion-header" id="faqTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faqCollapseTwo" style="background: #fff; color: #000;">
-                                        Do you offer personalized treatment plans?
-                                    </button>
-                                </h2>
-                                <div id="faqCollapseTwo" class="accordion-collapse collapse"
-                                    data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body" style="color: #555;">
-                                        Yes. Every consultation includes a thorough skin assessment to develop a bespoke
-                                        plan tailored to your goals and needs.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item" style="border: none;">
-                                <h2 class="accordion-header" id="faqThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faqCollapseThree" style="background: #fff; color: #000;">
-                                        What treatments do you specialize in?
-                                    </button>
-                                </h2>
-                                <div id="faqCollapseThree" class="accordion-collapse collapse"
-                                    data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body" style="color: #555;">
-                                        We specialize in facial aesthetics, skin rejuvenation, anti-aging injectables,
-                                        regenerative therapies like PRP and exosomes, and non-surgical contouring.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="cart-summary" id="cart-summary">
+            <div class="summary-row">
+                <span class="summary-label">Subtotal:</span>
+                <span class="summary-value" id="subtotal">$0.00</span>
             </div>
-        </section>
-        <!--About Us End-->
+            <div class="summary-row">
+                <span class="summary-label">Tax:</span>
+                <span class="summary-value" id="tax">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Total:</span>
+                <span class="summary-value" id="total">$0.00</span>
+            </div>
+            
+            <button class="checkout-btn" id="checkout-btn" href="checkout.html" >
+                Proceed to Checkout
+            </button>
+        </div>
 
+        <div class="continue-shopping">
+            <a href="products.html">← Continue Shopping</a>
+        </div>
+    </div>
+
+    <script>
+        // Sample cart data - mix of products and memberships
+        let cartData = [
+            {
+                id: 1,
+                name: "Vitamin C Brightening Serum",
+                type: "product",
+                price: 89.99,
+                quantity: 2
+            },
+            {
+                id: 2,
+                name: "Premium Dermatology Membership",
+                type: "membership",
+                price: 199.99,
+                quantity: 1
+            },
+            {
+                id: 3,
+                name: "Retinol Night Treatment",
+                type: "product",
+                price: 129.99,
+                quantity: 1
+            },
+            {
+                id: 4,
+                name: "Hyaluronic Acid Moisturizer",
+                type: "product",
+                price: 67.99,
+                quantity: 3
+            },
+            {
+                id: 5,
+                name: "Monthly Consultation Package",
+                type: "membership",
+                price: 99.99,
+                quantity: 1
+            }
+        ];
+
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartEmpty = document.getElementById('cart-empty');
+            const cartSummary = document.getElementById('cart-summary');
+            
+            if (cartData.length === 0) {
+                cartEmpty.style.display = 'block';
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            cartEmpty.style.display = 'none';
+            cartSummary.style.display = 'block';
+
+            cartItemsContainer.innerHTML = cartData.map(item => `
+                <div class="cart-item">
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-type">${item.type}</div>
+                        <div class="item-price">$${item.price.toFixed(2)} each</div>
+                    </div>
+                    <div class="item-controls">
+                        ${item.type === 'product' ? `
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                                <span class="quantity-display">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        ` : '<div class="quantity-control"><span class="quantity-display">1 license</span></div>'}
+                        <div class="item-subtotal">$${(item.price * item.quantity).toFixed(2)}</div>
+                        <button class="remove-btn" onclick="removeItem(${item.id})" title="Remove item">×</button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateSummary();
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cartData.find(i => i.id === itemId);
+            if (item && item.type === 'product') {
+                item.quantity = Math.max(1, item.quantity + change);
+                renderCart();
+            }
+        }
+
+        function removeItem(itemId) {
+            cartData = cartData.filter(item => item.id !== itemId);
+            renderCart();
+        }
+
+        function updateSummary() {
+            const subtotal = cartData.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+
+            const checkoutBtn = document.getElementById('checkout-btn');
+            checkoutBtn.disabled = cartData.length === 0;
+        }
+
+       document.getElementById('checkout-btn').addEventListener('click', function () {
+    if (cartData.length > 0) {
+        alert('Proceeding to checkout...');
+        window.location.href = 'checkout.html'; // Redirect to checkout page
+    } else {
+        alert('Your cart is empty.');
+    }
+});
+
+
+        // Initialize cart on page load
+        renderCart();
+    </script>
         <!--Site Footer Start-->
         <footer class="site-footer">
             <div class="site-footer__shape-1 float-bob-x">
@@ -403,7 +695,6 @@
 
     </div><!-- /.page-wrapper -->
 
-
     <div class="mobile-nav__wrapper">
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
         <!-- /.mobile-nav__overlay -->
@@ -461,7 +752,6 @@
         </div>
     </div>
     <!-- /.search-popup -->
-
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
