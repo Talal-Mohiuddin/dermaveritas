@@ -150,6 +150,17 @@
           font-size: 2rem;
         }
       }
+
+      .main-menu__list > li.dropdown ul {
+        background-color: #23232a !important;
+      }
+      .main-menu__list > li.dropdown ul li a {
+        color: #fff !important;
+        text-align: left;
+      }
+      .main-menu__list > li.dropdown ul li a:hover {
+        color: #ffb347 !important;
+      }
     </style>
   </head>
   <body>
@@ -176,11 +187,19 @@
                 <li>
                   <a href="orders.html">Orders</a>
                 </li>
-                <li>
-                  <a href="addproduct.html">Add Product</a>
+                <li class="dropdown">
+                  <a href="#">Products</a>
+                  <ul>
+                    <li><a href="addproduct.html">Add Product</a></li>
+                    <li><a href="manageproducts.html">Manage Products</a></li>
+                  </ul>
                 </li>
-                <li>
-                  <a href="manageproducts.html">Manage Products</a>
+                <li class="dropdown">
+                  <a href="#">Blogs</a>
+                  <ul>
+                    <li><a href="addblog.html">Add Blog</a></li>
+                    <li><a href="manageblogs.html">Manage Blogs</a></li>
+                  </ul>
                 </li>
               </ul>
             </div>

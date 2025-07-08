@@ -56,10 +56,6 @@ const getBlogById = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Blog not found", 404));
   }
 
-  // Increment views
-  blog.views += 1;
-  await blog.save();
-
   res.status(200).json({
     success: true,
     blog,

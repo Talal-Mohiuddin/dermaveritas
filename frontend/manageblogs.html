@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manage Products | TeamAlpha</title>
+    <title>Manage Blogs | TeamAlpha</title>
     <!-- favicons and fonts (reuse from addproduct.html) -->
     <link
       rel="apple-touch-icon"
@@ -49,11 +49,11 @@
         background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
         min-height: 100vh;
       }
-      .manage-products-section {
+      .manage-blogs-section {
         padding: 100px 0;
         margin-top: 48px;
       }
-      .manage-products-container {
+      .manage-blogs-container {
         width: 100%;
         max-width: 1100px;
         margin: 0 auto;
@@ -64,7 +64,7 @@
         position: relative;
         box-sizing: border-box;
       }
-      .manage-products-title {
+      .manage-blogs-title {
         font-family: "Poppins", sans-serif;
         font-size: 2.5rem;
         font-weight: 700;
@@ -72,17 +72,17 @@
         margin-bottom: 10px;
         text-align: center;
       }
-      .manage-products-subtitle {
+      .manage-blogs-subtitle {
         color: #89868d;
         font-size: 1.1rem;
         text-align: center;
         margin-bottom: 35px;
         font-family: "Inter", sans-serif;
       }
-      .products-table-responsive {
+      .blogs-table-responsive {
         overflow-x: auto;
       }
-      .products-table {
+      .blogs-table {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
@@ -91,33 +91,55 @@
         overflow: hidden;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
       }
-      .products-table th,
-      .products-table td {
+      .blogs-table th,
+      .blogs-table td {
         padding: 18px 14px;
         text-align: left;
         font-size: 1rem;
         vertical-align: middle;
       }
-      .products-table th {
+      .blogs-table th {
         background: #fcf5f5;
         color: #89868d;
         font-weight: 700;
         border-bottom: 2px solid #f0e8e8;
       }
-      .products-table tbody tr {
+      .blogs-table tbody tr {
         border-bottom: 1px solid #f0e8e8;
         transition: background 0.15s;
       }
-      .products-table tbody tr:hover {
+      .blogs-table tbody tr:hover {
         background: #f8f6fa;
       }
-      .products-table img {
+      .blogs-table img {
         width: 56px;
         height: 56px;
         object-fit: cover;
         border-radius: 10px;
         border: 1px solid #eee;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 30px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .status-published {
+        background-color: #e3f5e6;
+        color: #2ecc71;
+      }
+      .status-draft {
+        background-color: #f5f0e3;
+        color: #f39c12;
+      }
+      .truncate-text {
+        max-width: 280px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
       }
       .action-btns {
         display: flex;
@@ -152,28 +174,50 @@
         background: #ffeaea;
         color: #c0392b;
       }
+      .action-btn.add-new {
+        background: linear-gradient(90deg, #2ecc71, #27ae60);
+        color: white;
+        padding: 12px 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        align-self: flex-end;
+        box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+      }
+      .action-btn.add-new:hover {
+        background: linear-gradient(90deg, #27ae60, #219651);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(46, 204, 113, 0.3);
+      }
+      .action-btn.add-new i {
+        font-size: 1.1em;
+      }
+      .date-cell {
+        white-space: nowrap;
+        color: #666;
+        font-size: 0.9rem;
+      }
       @media (max-width: 900px) {
-        .manage-products-container {
+        .manage-blogs-container {
           padding: 30px 5px;
         }
-        .manage-products-title {
+        .manage-blogs-title {
           font-size: 2rem;
         }
-        .products-table th,
-        .products-table td {
+        .blogs-table th,
+        .blogs-table td {
           padding: 12px 8px;
           font-size: 0.98rem;
         }
       }
       @media (max-width: 600px) {
-        .manage-products-section {
+        .manage-blogs-section {
           padding: 40px 0;
         }
-        .manage-products-title {
+        .manage-blogs-title {
           font-size: 1.5rem;
         }
-        .products-table th,
-        .products-table td {
+        .blogs-table th,
+        .blogs-table td {
           padding: 10px 6px;
           font-size: 0.95rem;
         }
@@ -276,16 +320,6 @@
       .main-menu-two__logout:focus i {
         color: #ffb347;
       }
-      .main-menu__list > li.dropdown ul {
-        background-color: #23232a !important;
-      }
-      .main-menu__list > li.dropdown ul li a {
-        color: #fff !important;
-        text-align: left;
-      }
-      .main-menu__list > li.dropdown ul li a:hover {
-        color: #ffb347 !important;
-      }
     </style>
   </head>
   <body>
@@ -345,68 +379,122 @@
     </div>
     <!-- ======= Site Header/Navbar End ======= -->
 
-    <div class="manage-products-section">
-      <div class="manage-products-container">
-        <div class="manage-products-title">Manage Products</div>
-        <div class="manage-products-subtitle">
-          View, edit, or delete your products below.
+    <div class="manage-blogs-section">
+      <div class="manage-blogs-container">
+        <div class="manage-blogs-title">Manage Blogs</div>
+        <div class="manage-blogs-subtitle">
+          View, edit, or delete your blog posts below.
         </div>
-        <div class="products-table-responsive">
-          <table class="products-table" id="productsTable">
+        <div
+          style="display: flex; justify-content: flex-end; margin-bottom: 20px"
+        >
+          <a href="addblog.html" class="action-btn add-new">
+            <i class="fas fa-plus"></i> Add New Blog
+          </a>
+        </div>
+        <div class="blogs-table-responsive">
+          <table class="blogs-table" id="blogsTable">
             <thead>
               <tr>
                 <th>Image</th>
-                <th>Name</th>
+                <th>Title</th>
                 <th>Category</th>
-                <th>Price (USD)</th>
-                <th>Stock</th>
+                <th>Date</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <!-- Products will be dynamically inserted here -->
+              <!-- Blogs will be dynamically inserted here -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
     <script>
-      // Fetch and display products
-      async function fetchProducts() {
-        const tableBody = document.querySelector("#productsTable tbody");
+      // Fetch and display blogs
+      async function fetchBlogs() {
+        const tableBody = document.querySelector("#blogsTable tbody");
         tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#89868d;">Loading...</td></tr>`;
         try {
-          const res = await fetch("http://localhost:3000/api/products");
-          const data = await res.json();
-          if (!data.success || !Array.isArray(data.products)) {
-            throw new Error("Failed to fetch products");
+          const res = await fetch("http://localhost:3000/api/blog/all");
+
+          // Check if response is OK before trying to parse JSON
+          if (!res.ok) {
+            throw new Error(`Server returned ${res.status}: ${res.statusText}`);
           }
-          if (data.products.length === 0) {
-            tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#89868d;">No products found.</td></tr>`;
+
+          // Try to parse the response as JSON
+          const text = await res.text();
+          let data;
+          try {
+            data = JSON.parse(text);
+          } catch (parseError) {
+            throw new Error("Invalid JSON response from server");
+          }
+
+          // Check if we have the expected data structure
+          if (!data || !data.blogs) {
+            throw new Error("Unexpected response format");
+          }
+
+          // Handle empty blogs array
+          if (data.blogs.length === 0) {
+            tableBody.innerHTML = `
+              <tr>
+                <td colspan="6" style="text-align:center;padding:30px 0;">
+                  <div style="color:#89868d;margin-bottom:10px;">
+                    <i class="fas fa-file-alt" style="font-size:48px;opacity:0.5;margin-bottom:15px;"></i>
+                    <p style="font-size:18px;font-weight:600;">No blogs found</p>
+                    <p style="font-size:14px;">Create your first blog post to get started</p>
+                  </div>
+                  <a href="addblog.html" class="action-btn add-new" style="display:inline-flex;margin-top:10px;">
+                    <i class="fas fa-plus"></i> Create New Blog
+                  </a>
+                </td>
+              </tr>`;
             return;
           }
+
+          // Render blogs
           tableBody.innerHTML = "";
-          data.products.forEach((product) => {
-            const imgUrl =
-              product.images && product.images.length > 0
-                ? product.images[0].url
-                : "assets/images/no-image.png";
+          data.blogs.forEach((blog) => {
+            const imgUrl = blog.coverImage
+              ? blog.coverImage
+              : "assets/images/no-image.png";
+            const createdAt = new Date(blog.createdAt).toLocaleDateString(
+              "en-US",
+              {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              }
+            );
+
             const row = document.createElement("tr");
             row.innerHTML = `
-              <td><img src="${imgUrl}" alt="${product.name}" /></td>
-              <td>${product.name}</td>
-              <td>${product.category}</td>
-              <td>$${Number(product.price).toFixed(2)}</td>
-              <td>${product.stockQuantity}</td>
+              <td><img src="${imgUrl}" alt="${blog.title}" /></td>
+              <td><span class="truncate-text" title="${blog.title}">${
+              blog.title
+            }</span></td>
+              <td>${blog.category}</td>
+              <td class="date-cell">${createdAt}</td>
+              <td>
+                <span class="status-badge ${
+                  blog.isPublished ? "status-published" : "status-draft"
+                }">
+                  ${blog.isPublished ? "Published" : "Draft"}
+                </span>
+              </td>
               <td>
                 <div class="action-btns">
-                  <button class="action-btn edit" title="Edit" onclick="editProduct('${
-                    product._id
+                  <button class="action-btn edit" title="Edit" onclick="editBlog('${
+                    blog._id
                   }')">
                     <i class="fas fa-edit"></i> Edit
                   </button>
-                  <button class="action-btn delete" title="Delete" onclick="deleteProduct('${
-                    product._id
+                  <button class="action-btn delete" title="Delete" onclick="deleteBlog('${
+                    blog._id
                   }', this)">
                     <i class="fas fa-trash"></i> Delete
                   </button>
@@ -416,36 +504,55 @@
             tableBody.appendChild(row);
           });
         } catch (err) {
-          tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#e74c3c;">Error loading products.</td></tr>`;
+          console.error("Error loading blogs:", err);
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="6" style="text-align:center;padding:30px 0;">
+                <div style="color:#e74c3c;margin-bottom:10px;">
+                  <i class="fas fa-exclamation-triangle" style="font-size:48px;margin-bottom:15px;"></i>
+                  <p style="font-size:18px;font-weight:600;">Error loading blogs</p>
+                  <p style="font-size:14px;">${
+                    err.message || "Please try again later"
+                  }</p>
+                </div>
+                <button onclick="fetchBlogs()" class="action-btn edit" style="margin-top:15px;display:inline-flex;">
+                  <i class="fas fa-sync-alt"></i> Try Again
+                </button>
+              </td>
+            </tr>`;
         }
       }
 
-      // Edit product (redirect to edit page)
-      function editProduct(productId) {
-        window.location.href = `editproduct.html?id=${productId}`;
+      // Edit blog (redirect to edit page)
+      function editBlog(blogId) {
+        window.location.href = `editblog.html?id=${blogId}`;
       }
 
-      // Delete product
-      async function deleteProduct(productId, btn) {
-        if (!confirm("Are you sure you want to delete this product?")) return;
+      // Delete blog
+      async function deleteBlog(blogId, btn) {
+        if (!confirm("Are you sure you want to delete this blog post?")) return;
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting';
         try {
-          const res = await fetch(
-            `http://localhost:3000/api/products/${productId}`,
-            {
-              method: "DELETE",
-              credentials: "include",
+          const res = await fetch(`http://localhost:3000/api/blogs/${blogId}`, {
+            method: "DELETE",
+            credentials: "include",
+          });
+
+          if (!res.ok) {
+            const text = await res.text();
+            let errorMessage = "Failed to delete blog post";
+            try {
+              const errorData = JSON.parse(text);
+              errorMessage = errorData.message || errorMessage;
+            } catch (e) {
+              // If response is not valid JSON, use default error message
             }
-          );
-          const data = await res.json();
-          if (res.ok) {
-            fetchProducts();
-          } else {
-            alert(data.message || "Failed to delete product.");
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+            throw new Error(errorMessage);
           }
+
+          // Success - refresh the blogs list
+          fetchBlogs();
         } catch (err) {
           alert("Error: " + err.message);
           btn.disabled = false;
@@ -454,7 +561,7 @@
       }
 
       // Initial fetch
-      fetchProducts();
+      fetchBlogs();
     </script>
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
