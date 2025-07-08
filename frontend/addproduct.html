@@ -719,6 +719,37 @@
             alert("Error: " + err.message);
           }
         });
+
+      // Admin logout handler
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.querySelector(".main-menu-two__logout");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            try {
+              const response = await fetch(
+                "http://localhost:3000/api/users/admin-logout",
+                {
+                  method: "GET",
+                  credentials: "include",
+                }
+              );
+
+              if (response.ok) {
+                alert("Logged out successfully!");
+                window.location.href = "index.html";
+              } else {
+                const data = await response.json();
+                alert(data.message || "Failed to logout.");
+              }
+            } catch (error) {
+              console.error("Logout error:", error);
+              alert("Error during logout. Please try again.");
+            }
+          });
+        }
+      });
     </script>
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -747,7 +778,7 @@
     <script src="assets/vendors/sidebar-content/jquery-sidebar-content.js"></script>
     <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
-
+    <script src="assets/js/auth.js"></script>
     <!-- template js -->
     <script src="assets/js//mellis.js"></script>
   </body>

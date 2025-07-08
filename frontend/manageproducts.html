@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="assets/js/auth.js"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manage Products | TeamAlpha</title>
@@ -452,6 +454,36 @@
           btn.innerHTML = '<i class="fas fa-trash"></i> Delete';
         }
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.querySelector(".main-menu-two__logout");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            try {
+              const response = await fetch(
+                "http://localhost:3000/api/users/admin-logout",
+                {
+                  method: "GET",
+                  credentials: "include",
+                }
+              );
+
+              if (response.ok) {
+                alert("Logged out successfully!");
+                window.location.href = "index.html";
+              } else {
+                const data = await response.json();
+                alert(data.message || "Failed to logout.");
+              }
+            } catch (error) {
+              console.error("Logout error:", error);
+              alert("Error during logout. Please try again.");
+            }
+          });
+        }
+      });
 
       // Initial fetch
       fetchProducts();

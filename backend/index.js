@@ -10,6 +10,7 @@ import Userrouter from "./routes/user-route.js";
 import Cartrouter from "./routes/cart-route.js";
 import Productrouter from "./routes/product-route.js";
 import Blogrouter from "./routes/blog-route.js";
+import VerifyTokenRouter from "./routes/verifyToken-route.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -41,6 +42,7 @@ app.use("/api/users", Userrouter);
 app.use("/api/cart", Cartrouter);
 app.use("/api/products", Productrouter);
 app.use("/api/blog", Blogrouter);
+app.use("/api", VerifyTokenRouter);
 
 // Serve index.html for non-API routes
 app.get(/^\/(?!api).*/, (req, res) => {

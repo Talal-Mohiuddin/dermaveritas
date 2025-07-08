@@ -1,23 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="assets/js/auth.js"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Product | TeamAlpha</title>
     <!-- favicons and fonts (reuse from addproduct.html) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png"/>
-    <link rel="manifest" href="assets/images/favicons/site.webmanifest"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/css/mellis.css"/>
-    <link rel="stylesheet" href="assets/css/mellis-responsive.css"/>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
     <style>
       /* ...copy styles from addproduct.html... */
       .add-product-section {
@@ -319,7 +347,7 @@
         object-fit: cover;
         border-radius: 8px;
         border: 1px solid #eee;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       }
     </style>
   </head>
@@ -331,11 +359,15 @@
           <div class="main-menu-two__wrapper-inner">
             <div class="main-menu-two__left">
               <div class="main-menu-two__logo">
-                <a href="index.html"><img src="assets/images/resources/logo-3.svg" alt=""/></a>
+                <a href="index.html"
+                  ><img src="assets/images/resources/logo-3.svg" alt=""
+                /></a>
               </div>
             </div>
             <div class="main-menu-two__main-menu-box">
-              <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+              <a href="#" class="mobile-nav__toggler"
+                ><i class="fa fa-bars"></i
+              ></a>
               <ul class="main-menu__list">
                 <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a href="orders.html">Orders</a></li>
@@ -345,7 +377,11 @@
             </div>
             <div class="main-menu-two__right">
               <div class="main-menu-two__logout-box">
-                <a href="logout.html" class="main-menu-two__logout" title="Logout">
+                <a
+                  href="logout.html"
+                  class="main-menu-two__logout"
+                  title="Logout"
+                >
                   <i class="fas fa-sign-out-alt"></i>
                   Logout
                 </a>
@@ -465,9 +501,11 @@
             <span class="upload-icon"
               ><i class="fas fa-cloud-upload-alt"></i
             ></span>
-            <span class="upload-text">Click or drag images here to upload (optional)</span>
+            <span class="upload-text"
+              >Click or drag images here to upload (optional)</span
+            >
             <span class="upload-hint"
-              >You can select multiple images (JPG, PNG, etc.)<br>
+              >You can select multiple images (JPG, PNG, etc.)<br />
               <b>Leave empty to keep current images.</b>
             </span>
             <input
@@ -504,12 +542,14 @@
         try {
           const res = await fetch(`http://localhost:3000/api/products/${id}`);
           const data = await res.json();
-          if (!data.success || !data.product) throw new Error("Product not found");
+          if (!data.success || !data.product)
+            throw new Error("Product not found");
           const p = data.product;
           document.getElementById("name").value = p.name || "";
           document.getElementById("description").value = p.description || "";
           document.getElementById("price").value = p.price || "";
-          document.getElementById("stockQuantity").value = p.stockQuantity || "";
+          document.getElementById("stockQuantity").value =
+            p.stockQuantity || "";
           document.getElementById("category").value = p.category || "";
           document.getElementById("servingSize").value = p.servingSize || "";
           document.getElementById("howToUse").value = p.howToUse || "";
@@ -518,12 +558,16 @@
           const group = document.getElementById("ingredientsGroup");
           group.innerHTML = "";
           if (Array.isArray(p.ingredients) && p.ingredients.length > 0) {
-            p.ingredients.forEach(ing => {
+            p.ingredients.forEach((ing) => {
               const row = document.createElement("div");
               row.className = "ingredient-row";
               row.innerHTML = `
-                <input type="text" name="ingredientName[]" placeholder="Ingredient name" required value="${ing.name || ""}" />
-                <input type="text" name="ingredientQuantity[]" placeholder="Quantity (e.g. 10mg)" required value="${ing.quantity || ""}" />
+                <input type="text" name="ingredientName[]" placeholder="Ingredient name" required value="${
+                  ing.name || ""
+                }" />
+                <input type="text" name="ingredientQuantity[]" placeholder="Quantity (e.g. 10mg)" required value="${
+                  ing.quantity || ""
+                }" />
                 <button type="button" class="remove-ingredient" title="Remove">&times;</button>
               `;
               group.appendChild(row);
@@ -544,7 +588,7 @@
           const currentImagesDiv = document.getElementById("currentImages");
           currentImagesDiv.innerHTML = "";
           if (Array.isArray(p.images) && p.images.length > 0) {
-            p.images.forEach(img => {
+            p.images.forEach((img) => {
               const image = document.createElement("img");
               image.src = img.url;
               image.alt = img.altText || "";
@@ -558,23 +602,27 @@
       }
 
       // Ingredient dynamic add/remove
-      document.getElementById("addIngredientBtn").addEventListener("click", function () {
-        const group = document.getElementById("ingredientsGroup");
-        const row = document.createElement("div");
-        row.className = "ingredient-row";
-        row.innerHTML = `
+      document
+        .getElementById("addIngredientBtn")
+        .addEventListener("click", function () {
+          const group = document.getElementById("ingredientsGroup");
+          const row = document.createElement("div");
+          row.className = "ingredient-row";
+          row.innerHTML = `
           <input type="text" name="ingredientName[]" placeholder="Ingredient name" required />
           <input type="text" name="ingredientQuantity[]" placeholder="Quantity (e.g. 10mg)" required />
           <button type="button" class="remove-ingredient" title="Remove">&times;</button>
         `;
-        group.appendChild(row);
-      });
-      document.getElementById("ingredientsGroup").addEventListener("click", function (e) {
-        if (e.target.classList.contains("remove-ingredient")) {
-          const rows = document.querySelectorAll(".ingredient-row");
-          if (rows.length > 1) e.target.parentElement.remove();
-        }
-      });
+          group.appendChild(row);
+        });
+      document
+        .getElementById("ingredientsGroup")
+        .addEventListener("click", function (e) {
+          if (e.target.classList.contains("remove-ingredient")) {
+            const rows = document.querySelectorAll(".ingredient-row");
+            if (rows.length > 1) e.target.parentElement.remove();
+          }
+        });
 
       // Custom image upload preview
       const customUpload = document.getElementById("customImageUpload");
@@ -620,61 +668,100 @@
       }
 
       // Form submit handler
-      document.getElementById("editProductForm").addEventListener("submit", async function (e) {
-        e.preventDefault();
-        const id = getProductIdFromUrl();
-        if (!id) {
-          alert("No product ID specified.");
-          return;
-        }
-        const form = e.target;
-        const formData = new FormData();
-
-        // Gather fields
-        formData.append("name", form.name.value);
-        formData.append("description", form.description.value);
-        formData.append("price", form.price.value);
-        formData.append("stockQuantity", form.stockQuantity.value);
-        formData.append("category", form.category.value);
-        formData.append("servingSize", form.servingSize.value);
-        formData.append("howToUse", form.howToUse.value);
-
-        // Gather ingredients as array of objects
-        const ingredientNames = Array.from(form.querySelectorAll('input[name="ingredientName[]"]')).map(i => i.value);
-        const ingredientQuantities = Array.from(form.querySelectorAll('input[name="ingredientQuantity[]"]')).map(i => i.value);
-        const ingredients = [];
-        for (let i = 0; i < ingredientNames.length; i++) {
-          if (ingredientNames[i] && ingredientQuantities[i]) {
-            ingredients.push({
-              name: ingredientNames[i],
-              quantity: ingredientQuantities[i],
-            });
+      document
+        .getElementById("editProductForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const id = getProductIdFromUrl();
+          if (!id) {
+            alert("No product ID specified.");
+            return;
           }
-        }
-        formData.append("ingredients", JSON.stringify(ingredients));
+          const form = e.target;
+          const formData = new FormData();
 
-        // Images (optional)
-        if (fileInput.files.length > 0) {
-          for (let i = 0; i < fileInput.files.length; i++) {
-            formData.append("images", fileInput.files[i]);
+          // Gather fields
+          formData.append("name", form.name.value);
+          formData.append("description", form.description.value);
+          formData.append("price", form.price.value);
+          formData.append("stockQuantity", form.stockQuantity.value);
+          formData.append("category", form.category.value);
+          formData.append("servingSize", form.servingSize.value);
+          formData.append("howToUse", form.howToUse.value);
+
+          // Gather ingredients as array of objects
+          const ingredientNames = Array.from(
+            form.querySelectorAll('input[name="ingredientName[]"]')
+          ).map((i) => i.value);
+          const ingredientQuantities = Array.from(
+            form.querySelectorAll('input[name="ingredientQuantity[]"]')
+          ).map((i) => i.value);
+          const ingredients = [];
+          for (let i = 0; i < ingredientNames.length; i++) {
+            if (ingredientNames[i] && ingredientQuantities[i]) {
+              ingredients.push({
+                name: ingredientNames[i],
+                quantity: ingredientQuantities[i],
+              });
+            }
           }
-        }
+          formData.append("ingredients", JSON.stringify(ingredients));
 
-        try {
-          const response = await fetch(`http://localhost:3000/api/products/${id}`, {
-            method: "PUT",
-            body: formData,
-            credentials: "include"
+          // Images (optional)
+          if (fileInput.files.length > 0) {
+            for (let i = 0; i < fileInput.files.length; i++) {
+              formData.append("images", fileInput.files[i]);
+            }
+          }
+
+          try {
+            const response = await fetch(
+              `http://localhost:3000/api/products/${id}`,
+              {
+                method: "PUT",
+                body: formData,
+                credentials: "include",
+              }
+            );
+            const data = await response.json();
+            if (response.ok) {
+              alert("Product updated successfully!");
+              window.location.href = "manageproducts.html";
+            } else {
+              alert(data.message || "Failed to update product.");
+            }
+          } catch (err) {
+            alert("Error: " + err.message);
+          }
+        });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.querySelector(".main-menu-two__logout");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            try {
+              const response = await fetch(
+                "http://localhost:3000/api/users/admin-logout",
+                {
+                  method: "GET",
+                  credentials: "include",
+                }
+              );
+
+              if (response.ok) {
+                alert("Logged out successfully!");
+                window.location.href = "index.html";
+              } else {
+                const data = await response.json();
+                alert(data.message || "Failed to logout.");
+              }
+            } catch (error) {
+              console.error("Logout error:", error);
+              alert("Error during logout. Please try again.");
+            }
           });
-          const data = await response.json();
-          if (response.ok) {
-            alert("Product updated successfully!");
-            window.location.href = "manageproducts.html";
-          } else {
-            alert(data.message || "Failed to update product.");
-          }
-        } catch (err) {
-          alert("Error: " + err.message);
         }
       });
 
