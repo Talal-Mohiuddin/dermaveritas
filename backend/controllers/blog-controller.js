@@ -10,14 +10,14 @@ const createBlog = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Please provide all required fields", 400));
   }
 
-  // Handle uploaded cover image
+  // Handle uploaded cover image with correct path for blogs
   let coverImage = "";
   if (req.file) {
+    // Making sure we're using /uploads/blogs/ in the path
     coverImage = `${req.protocol}://${req.get("host")}/uploads/blogs/${
       req.file.filename
     }`;
   }
-
   const blog = await Blog.create({
     title,
     content,

@@ -439,6 +439,7 @@
           let data;
           try {
             data = JSON.parse(text);
+            console.log("Fetched blogs:", data);
           } catch (parseError) {
             throw new Error("Invalid JSON response from server");
           }
@@ -544,7 +545,7 @@
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting';
         try {
-          const res = await fetch(`http://localhost:3000/api/blogs/${blogId}`, {
+          const res = await fetch(`http://localhost:3000/api/blog/${blogId}`, {
             method: "DELETE",
             credentials: "include",
           });
