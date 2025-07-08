@@ -379,6 +379,36 @@
       .main-menu__list > li.dropdown ul li a:hover {
         color: #ffb347 !important;
       }
+      /* Tags Styles */
+      .tags-container {
+        margin-bottom: 18px;
+      }
+      .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        background: #f0e8e8;
+        border-radius: 20px;
+        padding: 6px 12px;
+        font-size: 0.95rem;
+        color: #0f0f10;
+        font-family: "Inter", sans-serif;
+      }
+      .tag .delete-tag {
+        margin-left: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #89868d;
+        transition: color 0.2s;
+      }
+      .tag .delete-tag:hover {
+        color: #0f0f10;
+      }
     </style>
   </head>
   <body>
@@ -473,6 +503,18 @@
             placeholder="e.g. Lifestyle"
           />
 
+          <label for="tags">Tags</label>
+          <input
+            type="text"
+            id="tags"
+            name="tagsInput"
+            placeholder="Enter a tag and press Enter"
+          />
+          <div class="tags-container">
+            <div class="tags-list" id="tagsList"></div>
+          </div>
+          <input type="hidden" id="tags" name="tags" />
+
           <label for="content">Content *</label>
           <div id="editor" style="min-height: 300px"></div>
           <input type="hidden" id="content" name="content" required />
@@ -546,6 +588,57 @@
         },
       });
 
+      // Tags handling
+      const tagsInput = document.getElementById("tags");
+      const tagsList = document.getElementById("tagsList");
+      const hiddenTagsInput = document.getElementById("tags");
+      let tags = [];
+
+      function updateTagsInput() {
+        hiddenTagsInput.value = tags.length > 0 ? JSON.stringify(tags) : "";
+      }
+
+      function addTag(tag) {
+        if (tag.trim() && !tags.includes(tag.trim())) {
+          tags.push(tag.trim());
+          updateTagsList();
+          updateTagsInput();
+        }
+      }
+
+      function removeTag(tag) {
+        tags = tags.filter((t) => t !== tag);
+        updateTagsList();
+        updateTagsInput();
+      }
+
+      function updateTagsList() {
+        tagsList.innerHTML = "";
+        tags.forEach((tag) => {
+          const tagElement = document.createElement("span");
+          tagElement.className = "tag";
+          tagElement.innerHTML = `
+            ${tag}
+            <span class="delete-tag"><i class="fas fa-times"></i></span>
+          `;
+          tagsList.appendChild(tagElement);
+          tagElement
+            .querySelector(".delete-tag")
+            .addEventListener("click", () => removeTag(tag));
+        });
+      }
+
+      tagsInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const tagValue = tagsInput.value.trim();
+          if (tagValue) {
+            addTag(tagValue);
+            tagsInput.value = "";
+          }
+        }
+      });
+
       // Custom image upload preview
       const customUpload = document.getElementById("customImageUpload");
       const fileInput = document.getElementById("coverImage");
@@ -599,6 +692,9 @@
           const content = quill.root.innerHTML;
           formData.set("content", content);
 
+          // Ensure tags are included in formData
+          formData.set("tags", JSON.stringify(tags));
+
           try {
             const response = await fetch(
               "http://localhost:3000/api/blog/create",
@@ -613,6 +709,9 @@
               form.reset();
               quill.setContents([]);
               selectedImages.innerHTML = "";
+              tags = [];
+              updateTagsList();
+              updateTagsInput();
             } else {
               alert(data.message || "Failed to publish blog.");
             }

@@ -368,6 +368,36 @@
       .main-menu__list > li.dropdown ul li a:hover {
         color: #ffb347 !important;
       }
+      /* Tags Styles */
+      .tags-container {
+        margin-bottom: 18px;
+      }
+      .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        background: #f0e8e8;
+        border-radius: 20px;
+        padding: 6px 12px;
+        font-size: 0.95rem;
+        color: #0f0f10;
+        font-family: "Inter", sans-serif;
+      }
+      .tag .delete-tag {
+        margin-left: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #89868d;
+        transition: color 0.2s;
+      }
+      .tag .delete-tag:hover {
+        color: #0f0f10;
+      }
     </style>
   </head>
   <body>
@@ -457,6 +487,18 @@
             placeholder="e.g. Lifestyle"
           />
 
+          <label for="tagsInput">Tags</label>
+          <input
+            type="text"
+            id="tagsInput"
+            name="tagsInput"
+            placeholder="Enter a tag and press Enter"
+          />
+          <div class="tags-container">
+            <div class="tags-list" id="tagsList"></div>
+          </div>
+          <input type="hidden" id="tagsHidden" name="tags" />
+
           <label for="content">Content *</label>
           <div id="editor" style="min-height: 300px"></div>
           <input type="hidden" id="content" name="content" required />
@@ -536,6 +578,57 @@
         },
       });
 
+      // Tags handling
+      const tagsInput = document.getElementById("tagsInput");
+      const tagsList = document.getElementById("tagsList");
+      const hiddenTagsInput = document.getElementById("tagsHidden");
+      let tags = [];
+
+      function updateTagsInput() {
+        hiddenTagsInput.value = tags.length > 0 ? JSON.stringify(tags) : "";
+      }
+
+      function addTag(tag) {
+        if (tag.trim() && !tags.includes(tag.trim())) {
+          tags.push(tag.trim());
+          updateTagsList();
+          updateTagsInput();
+        }
+      }
+
+      function removeTag(tag) {
+        tags = tags.filter((t) => t !== tag);
+        updateTagsList();
+        updateTagsInput();
+      }
+
+      function updateTagsList() {
+        tagsList.innerHTML = ""; // Fixed: removed incorrect 'формы' text
+        tags.forEach((tag) => {
+          const tagElement = document.createElement("span");
+          tagElement.className = "tag"; // Fixed: removed incorrect 'において' text
+          tagElement.innerHTML = `
+            ${tag}
+            <span class="delete-tag"><i class="fas fa-times"></i></span>
+          `;
+          tagsList.appendChild(tagElement);
+          tagElement
+            .querySelector(".delete-tag")
+            .addEventListener("click", () => removeTag(tag));
+        });
+      }
+
+      tagsInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const tagValue = tagsInput.value.trim();
+          if (tagValue) {
+            addTag(tagValue);
+            tagsInput.value = "";
+          }
+        }
+      });
+
       // Custom image upload preview
       const customUpload = document.getElementById("customImageUpload");
       const fileInput = document.getElementById("coverImage");
@@ -608,9 +701,11 @@
           document.getElementById("title").value = blog.title || "";
           document.getElementById("category").value = blog.category || "";
           quill.root.innerHTML = blog.content || "";
-          document.getElementById("isPublished").value = blog.isPublished
-            ? "true"
-            : "false";
+          document.getElementById("isPublished").value =
+            blog.status === "published" ? "true" : "false";
+          tags = blog.tags || [];
+          updateTagsList();
+          updateTagsInput();
 
           if (blog.coverImage) {
             const img = document.createElement("img");
@@ -637,12 +732,31 @@
             return;
           }
 
-          const form = e.target;
-          const formData = new FormData(form);
+          // Create a regular FormData object
+          const formData = new FormData();
 
-          // Add Quill content to formData
-          const content = quill.root.innerHTML;
-          formData.set("content", content);
+          // Add basic form fields
+          formData.append("title", document.getElementById("title").value);
+          formData.append(
+            "category",
+            document.getElementById("category").value
+          );
+          formData.append("content", quill.root.innerHTML);
+          formData.append(
+            "status",
+            document.getElementById("isPublished").value === "true"
+              ? "published"
+              : "draft"
+          );
+
+          // Handle tags properly
+          formData.append("tags", JSON.stringify(tags));
+
+          // Add file if present
+          const coverImage = document.getElementById("coverImage").files[0];
+          if (coverImage) {
+            formData.append("coverImage", coverImage);
+          }
 
           try {
             const response = await fetch(
@@ -653,14 +767,16 @@
                 credentials: "include",
               }
             );
+
             const data = await response.json();
             if (response.ok) {
               alert("Blog updated successfully!");
               window.location.href = "manageblogs.html";
             } else {
-              alert(data.message || "Failed to update blog.");
+              throw new Error(data.message || "Failed to update blog.");
             }
           } catch (err) {
+            console.error("Update error:", err);
             alert("Error: " + err.message);
           }
         });
@@ -693,8 +809,8 @@
             }
           });
         }
+        fetchBlogData();
       });
-      fetchBlogData();
     </script>
   </body>
 </html>

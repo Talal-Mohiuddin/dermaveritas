@@ -21,10 +21,6 @@ const blogSchema = new Schema(
       type: String,
       required: [true, "Blog category is required"],
     },
-    isPublished: {
-      type: Boolean,
-      default: true,
-    },
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
@@ -35,6 +31,34 @@ const blogSchema = new Schema(
       enum: ["draft", "published"],
       default: "draft",
     },
+    tags: {
+      type: [String],
+      default: [],
+    },
+    comments: [
+      {
+        name: {
+          type: String,
+          required: [true, "Name is required for comments"],
+        },
+        email: {
+          type: String,
+          required: [true, "Email is required for comments"],
+        },
+        content: {
+          type: String,
+          required: [true, "Comment content is required"],
+        },
+        website: {
+          type: String,
+          default: "",
+        },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );

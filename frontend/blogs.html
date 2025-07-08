@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Blogs | DermaVeritas </title>
+    <title>Blogs | DermaVeritas</title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="mellis HTML 5 Template " />
+    <meta name="description" content="DermaVeritas Blog Page" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
@@ -50,19 +43,29 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+    <style>
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            background: #f0e8e8;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            color: #0f0f10;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-
 <body>
-
-
-
     <div class="preloader">
         <div class="preloader__image"></div>
     </div>
-    <!-- /.preloader -->
-
-
-
 
     <div class="page-wrapper">
         <header class="main-header-two">
@@ -78,20 +81,19 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li class="dropdown">
-                                    <a href="index3.html">Home </a>
+                                    <a href="index3.html">Home</a>
                                 </li>
                                 <li class="dropdown">
                                     <a href="services.html">Our Services</a>
                                 </li>
                                 <li class="dropdown menu-item-has-children">
-                                    <a href="#">Pages </a>
+                                    <a href="#">Pages</a>
                                     <ul>
                                         <li><a href="team.html">Team Members</a></li>
                                         <li><a href="pricing-plans.html">Pricing Plans</a></li>
                                         <li><a href="membership.html">Membership</a></li>
                                     </ul>
                                 </li>
-
                                 <li class="dropdown">
                                     <a href="products.html">Shop</a>
                                 </li>
@@ -118,18 +120,13 @@
             </nav>
         </header>
 
-
         <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-        <!-- BLOGS PAGE FOR DERMA VERITAS -->
-        <!-- Place this code inside the <body> tag of your existing layout -->
-        <!-- Reuses the header and footer from the Contact page -->
+            <div class="sticky-header__content"></div>
+        </div>
 
         <!--Page Header Start-->
         <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
-            </div>
+            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);"></div>
             <div class="container">
                 <div class="page-header__inner">
                     <ul class="thm-breadcrumb list-unstyled">
@@ -144,673 +141,15 @@
         <!--Page Header End-->
 
         <!--Blog Section Start-->
-        <section class="blog-one"
-            style="padding: 100px 0; background-color: #ffffff; font-family: 'Inter', sans-serif;">
+        <section class="blog-one" style="padding: 100px 0; background-color: #ffffff; font-family: 'Inter', sans-serif;">
             <div class="container">
                 <div class="section-title text-center">
                     <span class="section-title__tagline" style="color: #89868D; font-size: 1rem;">Blog Posts</span>
-                    <h2 class="section-title__title"
-                        style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: #000000; font-weight: 600;">
+                    <h2 class="section-title__title" style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: #000000; font-weight: 600;">
                         Insights, Advice & News</h2>
                 </div>
 
-                <div id="blogContainer" class="row">
-                    <!-- Place all your blog cards here — even more than 9 -->
-                    <!-- You already have them — paste here -->
-
-
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="blogpage.html"
-                                        style="color: #89868D; text-decoration: none; font-weight: 600;">Read more <span
-                                            class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>March</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-                    <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
-                        <div class="blog-one__single"
-                            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
-                            <div class="blog-one__img">
-                                <img src="assets/images/blog/blog-1-1.jpg" alt="" style="width: 100%; display: block;">
-                            </div>
-                            <div class="blog-one__content"
-                                style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
-                                <div class="blog-one__date"
-                                    style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
-                                    <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">28</p>
-                                    <span>July</span>
-                                </div>
-                                <ul class="blog-one__meta list-unstyled"
-                                    style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
-                                    <li><i class="far fa-user-circle"></i> Admin</li>
-                                    <li><i class="far fa-comments"></i> 2 Comments</li>
-                                </ul>
-                                <h3 class="blog-one__title"
-                                    style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
-                                    <a href="#" style="color: #000; text-decoration: none;">Best place of true
-                                        splendor</a>
-                                </h3>
-                                <p class="blog-one__text"
-                                    style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    Explore top locations for rejuvenating skin therapies with natural ambiance. Learn
-                                    about calming spaces for full-body wellness and peace of mind.
-                                </p>
-                                <div class="blog-one__read-more" style="margin-top: auto;">
-                                    <a href="#" style="color: #89868D; text-decoration: none; font-weight: 600;">Read
-                                        more <span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CARD -->
-
-                </div>
+                <div id="blogContainer" class="row"></div>
 
                 <!-- Pagination -->
                 <div id="pagination" style="margin-top: 40px; text-align: center;"></div>
@@ -818,44 +157,6 @@
         </section>
         <!--Blog Section End-->
 
-        <!-- Pagination Script -->
-        <script>
-            const blogCards = document.querySelectorAll('#blogContainer .col-xl-4');
-            const itemsPerPage = 9;
-            const paginationContainer = document.getElementById('pagination');
-            let currentPage = 1;
-
-            function showPage(page) {
-                const start = (page - 1) * itemsPerPage;
-                const end = start + itemsPerPage;
-                currentPage = page;
-
-                blogCards.forEach((card, index) => {
-                    card.style.display = (index >= start && index < end) ? 'block' : 'none';
-                });
-
-                renderPagination(page);
-            }
-
-            function renderPagination(activePage) {
-                const totalPages = Math.ceil(blogCards.length / itemsPerPage);
-                let buttons = '';
-
-                // Prev button
-                buttons += `<button onclick="showPage(${Math.max(1, activePage - 1)})" style="margin: 0 5px; padding: 8px 15px; border: none; border-radius: 5px; background-color: #89868D; color: #fff; cursor: pointer;">&laquo;</button>`;
-
-                for (let i = 1; i <= totalPages; i++) {
-                    buttons += `<button onclick="showPage(${i})" style="margin: 0 5px; padding: 8px 15px; border: none; border-radius: 5px; background-color: ${i === activePage ? '#000' : '#89868D'}; color: #fff; cursor: pointer;">${i}</button>`;
-                }
-
-                // Next button
-                buttons += `<button onclick="showPage(${Math.min(totalPages, activePage + 1)})" style="margin: 0 5px; padding: 8px 15px; border: none; border-radius: 5px; background-color: #89868D; color: #fff; cursor: pointer;">&raquo;</button>`;
-
-                paginationContainer.innerHTML = buttons;
-            }
-
-            showPage(1);
-        </script>
         <!--Site Footer Start-->
         <footer class="site-footer">
             <div class="site-footer__shape-1 float-bob-x">
@@ -874,12 +175,10 @@
                                     <a href="tel:+92-7741-340615">+92-7741-340615</a>
                                 </div>
                                 <div class="footer-widget__contact-form-box">
-                                    <form class="footer-widget__contact-form mc-form" data-url="MC_FORM_URL"
-                                        novalidate="novalidate">
+                                    <form class="footer-widget__contact-form mc-form" data-url="MC_FORM_URL" novalidate="novalidate">
                                         <div class="footer-widget__contact-form-input-box">
                                             <input type="email" placeholder="Email address" name="EMAIL">
-                                            <button type="submit" class="footer-widget__newsletter-btn"><img
-                                                    src="assets/images/icon/paper-plan-icon.png" alt=""></button>
+                                            <button type="submit" class="footer-widget__newsletter-btn"><img src="assets/images/icon/paper-plan-icon.png" alt=""></button>
                                         </div>
                                     </form>
                                     <div class="mc-form__response"></div>
@@ -932,8 +231,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyright 2025 by <a href="#">dermaveritas.com</a>
-                                </p>
+                                <p class="site-footer__bottom-text">© Copyright 2025 by <a href="#">dermaveritas.com</a></p>
                                 <ul class="list-unstyled site-footer__bottom-menu">
                                     <li><a href="privacypolicy.html">Privacy Policy</a></li>
                                 </ul>
@@ -944,29 +242,18 @@
             </div>
         </footer>
         <!--Site Footer End-->
-
-
-
-    </div><!-- /.page-wrapper -->
+    </div>
 
     <div class="mobile-nav__wrapper">
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
         <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler">
-                <i class="fa fa-times"></i>
-            </span>
-
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
             <div class="logo-box">
                 <a href="index.html" aria-label="Derma Veritas logo">
                     <img src="assets/images/resources/logo-3.svg" width="90" alt="Derma Veritas Logo" />
                 </a>
             </div>
-
-            <!-- Dynamic Menu Items -->
             <div class="mobile-nav__container"></div>
-
-            <!-- Contact Info -->
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
@@ -977,8 +264,6 @@
                     <a href="#">+92-7741-340615</a>
                 </li>
             </ul>
-
-            <!-- Social Icons -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -988,11 +273,8 @@
                 </div>
             </div>
         </div>
-        <!-- /.mobile-nav__content -->
     </div>
-    <!-- /.mobile-nav__wrapper -->
 
-    <!-- Search Popup -->
     <div class="search-popup">
         <div class="search-popup__overlay search-toggler"></div>
         <div class="search-popup__content">
@@ -1005,10 +287,8 @@
             </form>
         </div>
     </div>
-    <!-- /.search-popup -->
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1037,12 +317,112 @@
     <script src="assets/vendors/sidebar-content/jquery-sidebar-content.js"></script>
     <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
+    <script src="assets/js/mellis.js"></script>
 
+    <script>
+        // Function to strip HTML tags and get plain text
+        function stripHTML(html) {
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            return div.textContent || div.innerText || '';
+        }
 
+        // Function to format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = date.getDate();
+            const month = date.toLocaleString('default', { month: 'long' });
+            return { day, month };
+        }
 
+        // Function to fetch and display blogs
+        async function fetchBlogs() {
+            try {
+                const response = await fetch('http://localhost:3000/api/blog/all', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                if (!data || !data.blogs) {
+                    throw new Error('Unexpected response format');
+                }
+                return data.blogs;
+            } catch (err) {
+                console.error('Error fetching blogs:', err);
+                alert('Error loading blogs: ' + err.message);
+                return [];
+            }
+        }
 
-    <!-- template js -->
-    <script src="assets/js//mellis.js"></script>
+        // Function to create blog card HTML
+        function createBlogCard(blog) {
+            const { day, month } = formatDate(blog.createdAt);
+            const contentSnippet = stripHTML(blog.content).substring(0, 100) + '...';
+            const tagsHTML = blog.tags && blog.tags.length > 0
+                ? `<div class="tags-list">${blog.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>`
+                : '';
+            return `
+                <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px;">
+                    <div class="blog-one__single" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
+                        <div class="blog-one__img">
+                            <img src="${blog.coverImage || 'assets/images/blog/blog-1-1.jpg'}" alt="${blog.title}" style="width: 100%; display: block;">
+                        </div>
+                        <div class="blog-one__content" style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <div class="blog-one__date" style="color: #89868D; font-size: 0.9rem; margin-bottom: 10px;">
+                                <p style="margin: 0; font-size: 1.25rem; font-weight: 600;">${day}</p>
+                                <span>${month}</span>
+                            </div>
+                            <ul class="blog-one__meta list-unstyled" style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868D;">
+                                <li><i class="far fa-user-circle"></i> Admin</li>
+                                <li><i class="far fa-comments"></i> ${blog.comments ? blog.comments.length : 0} Comments</li>
+                            </ul>
+                            <h3 class="blog-one__title" style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
+                                <a href="blogpage.html?id=${blog._id}" style="color: #000; text-decoration: none;">${blog.title}</a>
+                            </h3>
+                            <p class="blog-one__text" style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                ${contentSnippet}
+                            </p>
+                            ${tagsHTML}
+                            <div class="blog-one__read-more" style="margin-top: auto;">
+                                <a href="blogpage.html?id=${blog._id}" style="color: #89868D; text-decoration: none; font-weight: 600;">Read more <span class="icon-right-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Pagination logic
+        async function displayBlogs(page = 1) {
+            const blogContainer = document.getElementById('blogContainer');
+            const paginationContainer = document.getElementById('pagination');
+            const itemsPerPage = 9;
+
+            const blogs = await fetchBlogs();
+            const totalPages = Math.ceil(blogs.length / itemsPerPage);
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            // Display blogs for the current page
+            blogContainer.innerHTML = blogs.slice(start, end).map(blog => createBlogCard(blog)).join('');
+
+            // Render pagination
+            let buttons = '';
+            buttons += `<button onclick="displayBlogs(${Math.max(1, page - 1)})" style="margin: 0 5px; padding: 8px 15px; border: none; border-radius: 5px; background-color: #89868D; color: #fff; cursor: pointer;">«</button>`;
+            for (let i = 1; i <= totalPages; i++) {
+                buttons += `<button onclick="displayBlogs(${i})" style="margin: 0 5px; padding: 8px 15px; border: none; border-radius: 5px; background-color: ${i === page ? '#000' : '#89868D'}; color: #fff; cursor: pointer;">${i}</button>`;
+            }
+            buttons += `<button onclick="displayBlogs(${Math.min(totalPages, page + 1)})" style="margin: 0 5px; padding: 8px 15px; border: none; border-radius: 5px; background-color: #89868D; color: #fff; cursor: pointer;">»</button>`;
+            paginationContainer.innerHTML = buttons;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            displayBlogs(1);
+        });
+    </script>
 </body>
-
 </html>

@@ -1,816 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>DermaVeritas Blog</title>
-<script>
-  const blogTitle = "Your Dynamic Blog Title";
-  document.title = `${blogTitle} | DermaVeritas Blog`;
-</script>
+    <title>DermaVeritas Blog</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetchBlogData().then((blog) => {
+          if (blog && blog.title) {
+            document.title = `${blog.title} | DermaVeritas Blog`;
+          }
+        });
+      });
+    </script>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="Explore top locations for rejuvenating skin therapies with natural ambiance. Learn about calming spaces for full-body wellness and peace of mind." />
+    <meta
+      name="description"
+      content="Explore top locations for rejuvenating skin therapies with natural ambiance. Learn about calming spaces for full-body wellness and peace of mind."
+    />
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
     <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
     <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
     <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
     <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css">
-    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
     <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
-    <link rel="stylesheet" href="assets/vendors/twenty-twenty/twentytwenty.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-            background: #fff;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        color: #333;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+      }
 
-        .blog-post-section {
-            padding: 80px 0;
-            background-color: #ffffff;
-        }
+      .blog-post-section {
+        padding: 80px 0;
+        background-color: #ffffff;
+      }
 
-        .blog-post-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .blog-post-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        .blog-post-header {
-            margin-bottom: 40px;
+      .blog-post-header {
+        margin-bottom: 40px;
+      }
+
+      .blog-post-meta {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        color: #89868d;
+        font-size: 0.9rem;
+      }
+
+      .blog-post-meta .date {
+        font-weight: 600;
+        color: #000;
+      }
+
+      .blog-post-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .blog-post-image {
+        width: 100%;
+        height: 200px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .blog-post-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333;
+      }
+
+      .blog-post-content p {
+        margin-bottom: 25px;
+      }
+
+      .blog-post-content h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #000;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+
+      .blog-post-content h3 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #000;
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+
+      .blog-post-content blockquote {
+        border-left: 4px solid #89868d;
+        padding-left: 25px;
+        margin: 30px 0;
+        font-style: italic;
+        color: #666;
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 8px;
+      }
+
+      .blog-post-content ul,
+      .blog-post-content ol {
+        margin-bottom: 25px;
+        padding-left: 25px;
+      }
+
+      .blog-post-content li {
+        margin-bottom: 8px;
+      }
+
+      .blog-post-tags {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid #eee;
+      }
+
+      .blog-post-tags h4 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #000;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        background-color: #f8f9fa;
+        color: #89868d;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .tag:hover {
+        background-color: #89868d;
+        color: #fff;
+      }
+
+      .blog-post-navigation {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #89868d;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #000;
+      }
+
+      .back-to-blog {
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      .back-to-blog a {
+        display: inline-block;
+        background-color: #89868d;
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .back-to-blog a:hover {
+        background-color: #000;
+        transform: translateY(-2px);
+      }
+
+      .comments-section {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 2px solid #f0f0f0;
+      }
+
+      .comments-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 30px;
+      }
+
+      .existing-comments {
+        margin-bottom: 40px;
+      }
+
+      .comment-item {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-left: 4px solid #89868d;
+      }
+
+      .comment-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      .comment-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .comment-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #89868d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .comment-info h5 {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #000;
+      }
+
+      .comment-date {
+        font-size: 0.85rem;
+        color: #89868d;
+        margin: 0;
+      }
+
+      .comment-text {
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .comment-form-section {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+      }
+
+      .comment-form-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 20px;
+      }
+
+      .comment-form {
+        display: grid;
+        gap: 20px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        font-family: "Inter", sans-serif;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #89868d;
+        box-shadow: 0 0 0 3px rgba(137, 134, 141, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        background-color: #89868d;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        justify-self: start;
+      }
+
+      .submit-btn:hover {
+        background-color: #000;
+        transform: translateY(-2px);
+      }
+
+      .form-note {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .blog-post-title {
+          font-size: 2rem;
         }
 
         .blog-post-meta {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            color: #89868D;
-            font-size: 0.9rem;
-        }
-
-        .blog-post-meta .date {
-            font-weight: 600;
-            color: #000;
-        }
-
-        .blog-post-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #000;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .blog-post-image {
-            width: 100%;
-            height: 200px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .blog-post-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .blog-post-content p {
-            margin-bottom: 25px;
-        }
-
-        .blog-post-content h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #000;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .blog-post-content h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #000;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        .blog-post-content blockquote {
-            border-left: 4px solid #89868D;
-            padding-left: 25px;
-            margin: 30px 0;
-            font-style: italic;
-            color: #666;
-            background-color: #f8f9fa;
-            padding: 25px;
-            border-radius: 8px;
-        }
-
-        .blog-post-content ul, .blog-post-content ol {
-            margin-bottom: 25px;
-            padding-left: 25px;
-        }
-
-        .blog-post-content li {
-            margin-bottom: 8px;
-        }
-
-        .blog-post-tags {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-
-        .blog-post-tags h4 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #000;
-        }
-
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tag {
-            background-color: #f8f9fa;
-            color: #89868D;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            background-color: #89868D;
-            color: #fff;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
         }
 
         .blog-post-navigation {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #89868D;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #000;
-        }
-
-        .back-to-blog {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .back-to-blog a {
-            display: inline-block;
-            background-color: #89868D;
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .back-to-blog a:hover {
-            background-color: #000;
-            transform: translateY(-2px);
-        }
-
-        /* Comments Section Styles */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 2px solid #f0f0f0;
-        }
-
-        .comments-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 30px;
-        }
-
-        .existing-comments {
-            margin-bottom: 40px;
-        }
-
-        .comment-item {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 4px solid #89868D;
-        }
-
-        .comment-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        .comment-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .comment-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #89868D;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .comment-info h5 {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #000;
-        }
-
-        .comment-date {
-            font-size: 0.85rem;
-            color: #89868D;
-            margin: 0;
-        }
-
-        .comment-reply-btn {
-            background: none;
-            border: none;
-            color: #89868D;
-            font-size: 0.9rem;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .comment-reply-btn:hover {
-            background-color: #89868D;
-            color: white;
-        }
-
-        .comment-text {
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .comment-form-section {
-            background-color: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 40px;
-        }
-
-        .comment-form-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 20px;
-        }
-
-        .comment-form {
-            display: grid;
-            gap: 20px;
+          flex-direction: column;
+          gap: 20px;
         }
 
         .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+          grid-template-columns: 1fr;
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
+        .comment-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
         }
-
-        .form-group label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #89868D;
-            box-shadow: 0 0 0 3px rgba(137, 134, 141, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            background-color: #89868D;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            justify-self: start;
-        }
-
-        .submit-btn:hover {
-            background-color: #000;
-            transform: translateY(-2px);
-        }
-
-        .form-note {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .blog-post-title {
-                font-size: 2rem;
-            }
-            
-            .blog-post-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .blog-post-navigation {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .comment-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-        }
+      }
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="preloader">
-        <div class="preloader__image"></div>
+      <div class="preloader__image"></div>
     </div>
 
     <div class="page-wrapper">
-        <header class="main-header-two">
-            <nav class="main-menu main-menu-two">
-                <div class="main-menu-two__wrapper">
-                    <div class="main-menu-two__wrapper-inner">
-                        <div class="main-menu-two__left">
-                            <div class="main-menu-two__logo">
-                                <a href="index.html"><img src="assets/images/resources/logo-3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="main-menu-two__main-menu-box">
-                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                            <ul class="main-menu__list">
-                                <li class="dropdown">
-                                    <a href="index3.html">Home </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="services.html">Our Services</a>
-                                </li>
-                                <li class="dropdown menu-item-has-children">
-                                    <a href="#">Pages </a>
-                                    <ul>
-                                        <li><a href="team.html">Team Members</a></li>
-                                        <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                        <li><a href="membership.html">Membership</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="products.html">Shop</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="affiliate.html">Affiliate</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="main-menu-two__right">
-                            <div class="main-menu-two__search-cart-box">
-                                <div class="main-menu-two__search-box">
-                                    <a href="#" class="main-menu-two__search search-toggler icon-magnifying-glass"></a>
-                                </div>
-                                <div class="main-menu-two__cart-box">
-                                    <a href="addtocart.html" class="main-menu-two__cart icon-shopping-cart"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <header class="main-header-two">
+        <nav class="main-menu main-menu-two">
+          <div class="main-menu-two__wrapper">
+            <div class="main-menu-two__wrapper-inner">
+              <div class="main-menu-two__left">
+                <div class="main-menu-two__logo">
+                  <a href="index.html"
+                    ><img src="assets/images/resources/logo-3.svg" alt=""
+                  /></a>
                 </div>
-            </nav>
-        </header>
-
-        <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div>
-        </div>
-
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><span>/</span></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><span>/</span></li>
-                        <li>Blog Post</li>
+              </div>
+              <div class="main-menu-two__main-menu-box">
+                <a href="#" class="mobile-nav__toggler"
+                  ><i class="fa fa-bars"></i
+                ></a>
+                <ul class="main-menu__list">
+                  <li class="dropdown">
+                    <a href="index3.html">Home </a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="services.html">Our Services</a>
+                  </li>
+                  <li class="dropdown menu-item-has-children">
+                    <a href="#">Pages </a>
+                    <ul>
+                      <li><a href="team.html">Team Members</a></li>
+                      <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                      <li><a href="membership.html">Membership</a></li>
                     </ul>
-                    <h2>Blog Post</h2>
+                  </li>
+                  <li class="dropdown">
+                    <a href="products.html">Shop</a>
+                  </li>
+                  <li>
+                    <a href="contact.html">Contact</a>
+                  </li>
+                  <li>
+                    <a href="affiliate.html">Affiliate</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="main-menu-two__right">
+                <div class="main-menu-two__search-cart-box">
+                  <div class="main-menu-two__search-box">
+                    <a
+                      href="#"
+                      class="main-menu-two__search search-toggler icon-magnifying-glass"
+                    ></a>
+                  </div>
+                  <div class="main-menu-two__cart-box">
+                    <a
+                      href="addtocart.html"
+                      class="main-menu-two__cart icon-shopping-cart"
+                    ></a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
-        <!--Page Header End-->
+          </div>
+        </nav>
+      </header>
 
-        <!--Blog Post Section Start-->
-        <section class="blog-post-section">
-            <div class="container">
-                <div class="blog-post-container">
-                    <div class="blog-post-header">
-                        <div class="blog-post-meta">
-                            <span class="date">July 28, 2024</span>
-                            <span><i class="far fa-user-circle"></i> Admin</span>
-                            <span><i class="far fa-comments"></i> 2 Comments</span>
-                            <span><i class="far fa-clock"></i> 5 min read</span>
-                        </div>
-                        <h1 class="blog-post-title">Best Place of True Splendor</h1>
+      <div class="stricky-header stricked-menu main-menu main-menu-two">
+        <div class="sticky-header__content"></div>
+      </div>
+
+      <section class="page-header">
+        <div
+          class="page-header__bg"
+          style="
+            background-image: url(assets/images/backgrounds/page-header-bg.jpg);
+          "
+        ></div>
+        <div class="container">
+          <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><span>/</span></li>
+              <li><a href="blogs.html">Blog</a></li>
+              <li><span>/</span></li>
+              <li>Blog Post</li>
+            </ul>
+            <h2 id="pageHeaderTitle">Blog Post</h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="blog-post-section">
+        <div class="container">
+          <div class="blog-post-container">
+            <div class="blog-post-header">
+              <div class="blog-post-meta">
+                <span class="date" id="blogDate"></span>
+                <span id="blogAuthor"><i class="far fa-user-circle"></i> </span>
+                <span id="blogComments"><i class="far fa-comments"></i> </span>
+                <span id="blogReadTime"><i class="far fa-clock"></i> </span>
+              </div>
+              <h1 class="blog-post-title" id="blogTitle"></h1>
+            </div>
+
+            <img id="blogImage" src="" alt="" class="blog-post-image" />
+
+            <div class="blog-post-content" id="blogContent"></div>
+
+            <div class="blog-post-tags">
+              <h4>Tags:</h4>
+              <div class="tag-list" id="blogTags"></div>
+            </div>
+
+            <div class="blog-post-navigation">
+              <a href="#" class="nav-link" id="prevPostLink">
+                <i class="fas fa-chevron-left"></i>
+                <span>Previous Post</span>
+              </a>
+              <a href="#" class="nav-link" id="nextPostLink">
+                <span>Next Post</span>
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </div>
+
+            <div class="back-to-blog">
+              <a href="blogs.html">← Back to Blog</a>
+            </div>
+
+            <div class="comments-section">
+              <h3 class="comments-title" id="commentsTitle">Comments</h3>
+
+              <div class="existing-comments" id="existingComments"></div>
+
+              <div class="comment-form-section">
+                <h4 class="comment-form-title">Leave a Comment</h4>
+                <form class="comment-form" id="commentForm">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="name">Name *</label>
+                      <input type="text" id="name" name="name" required />
                     </div>
-
-                    <img src="assets/images/blog/blog-1-1.jpg" alt="Best Place of True Splendor" class="blog-post-image">
-
-                    <div class="blog-post-content">
-                        <p>Welcome to a journey of discovery where beauty meets tranquility, and wellness finds its perfect sanctuary. In our quest for the ultimate rejuvenating experience, we've uncovered some of the most spectacular locations that offer not just skin therapy, but a complete transformation of mind, body, and spirit.</p>
-
-                        <p>The concept of true splendor goes beyond surface-level beauty treatments. It encompasses the entire environment where healing takes place – from the gentle whisper of wind through ancient trees to the soothing sounds of flowing water that create a symphony of natural harmony.</p>
-
-                        <h2>What Makes a Location Truly Special</h2>
-
-                        <p>When we talk about the best places for skin therapy and wellness, we're not just referring to luxurious facilities or state-of-the-art equipment. True splendor is found in locations that understand the deep connection between environment and healing.</p>
-
-                        <blockquote>
-                            "Healing is a matter of time, but it is sometimes also a matter of opportunity. The right environment can accelerate the body's natural ability to restore and rejuvenate itself."
-                        </blockquote>
-
-                        <h3>Natural Ambiance: The Foundation of Wellness</h3>
-
-                        <p>The most effective wellness centers are those that harness the power of their natural surroundings. Whether nestled in rolling hills, perched beside serene lakes, or surrounded by lush forests, these locations understand that nature itself is the most powerful healer.</p>
-
-                        <p>Key elements that define these exceptional spaces include:</p>
-
-                        <ul>
-                            <li><strong>Natural Light:</strong> Abundance of soft, natural illumination that promotes vitamin D synthesis and improves mood</li>
-                            <li><strong>Fresh Air Circulation:</strong> Constant flow of purified air that enhances oxygen levels and promotes deeper breathing</li>
-                            <li><strong>Water Features:</strong> Natural or designed water elements that provide both visual beauty and therapeutic negative ions</li>
-                            <li><strong>Botanical Integration:</strong> Carefully selected plants and herbs that contribute to air purification and aromatherapy</li>
-                            <li><strong>Acoustic Environment:</strong> Thoughtfully designed spaces that minimize noise pollution while maximizing natural sounds</li>
-                        </ul>
-
-                        <h3>The Science Behind Environmental Healing</h3>
-
-                        <p>Modern research has consistently shown that our environment plays a crucial role in our body's ability to heal and regenerate. Studies indicate that exposure to natural settings can reduce cortisol levels, lower blood pressure, and boost immune function – all essential factors for effective skin therapy and overall wellness.</p>
-
-                        <p>When we place ourselves in environments that support our natural healing processes, we create the optimal conditions for treatments to be most effective. This is why the best wellness centers invest so heavily in creating spaces that feel more like natural sanctuaries than clinical facilities.</p>
-
-                        <h2>Creating Your Personal Wellness Journey</h2>
-
-                        <p>Finding your perfect wellness destination isn't just about location – it's about finding a place that resonates with your personal healing journey. Some prefer the energy of mountain retreats, while others find solace in coastal environments or forest settings.</p>
-
-                        <p>The key is to identify what natural elements speak to you and seek out facilities that incorporate these elements into their treatment philosophy. Remember, true splendor isn't just about what you see – it's about how a place makes you feel and how it supports your journey toward optimal health and beauty.</p>
-
-                        <p>As you embark on your own quest for the perfect wellness sanctuary, keep in mind that the best locations are those that view beauty and health as interconnected aspects of a single journey. These are the places where true splendor reveals itself, not just in the treatments offered, but in every breath you take and every moment you spend in their embrace.</p>
+                    <div class="form-group">
+                      <label for="email">Email *</label>
+                      <input type="email" id="email" name="email" required />
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Website (Optional)</label>
+                    <input type="url" id="website" name="website" />
+                  </div>
+                  <div class="form-group">
+                    <label for="comment">Comment *</label>
+                    <textarea
+                      id="comment"
+                      name="comment"
+                      placeholder="Share your thoughts..."
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="submit-btn">Post Comment</button>
+                  <p class="form-note">
+                    Your email address will not be published. Required fields
+                    are marked *
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                    <div class="blog-post-tags">
-                        <h4>Tags:</h4>
-                        <div class="tag-list">
-                            <a href="#" class="tag">Wellness</a>
-                            <a href="#" class="tag">Skin Therapy</a>
-                            <a href="#" class="tag">Natural Healing</a>
-                            <a href="#" class="tag">Spa</a>
-                            <a href="#" class="tag">Health</a>
-                            <a href="#" class="tag">Beauty</a>
-                        </div>
-                    </div>
-
-                    <div class="blog-post-navigation">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-chevron-left"></i>
-                            <span>Previous Post</span>
-                        </a>
-                        <a href="#" class="nav-link">
-                            <span>Next Post</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </div>
-
-                    <div class="back-to-blog">
-                        <a href="blogs.html">← Back to Blog</a>
-                    </div>
-
-                    <!-- Comments Section -->
-                    <div class="comments-section">
-                        <h3 class="comments-title">Comments (2)</h3>
-                        
-                        <!-- Existing Comments -->
-                        <div class="existing-comments">
-                            <div class="comment-item">
-                                <div class="comment-header">
-                                    <div class="comment-author">
-                                        <div class="comment-avatar">SA</div>
-                                        <div class="comment-info">
-                                            <h5>Sarah Anderson</h5>
-                                            <p class="comment-date">July 29, 2024 at 2:30 PM</p>
-                                        </div>
-                                    </div>
-                                    <button class="comment-reply-btn">Reply</button>
-                                </div>
-                                <p class="comment-text">
-                                    This is such a beautiful and insightful article! I've been looking for a wellness center that focuses on natural healing, and your description of what makes a location truly special really resonates with me. The emphasis on natural ambiance and environmental healing is exactly what I've been searching for.
-                                </p>
-                            </div>
-
-                            <div class="comment-item">
-                                <div class="comment-header">
-                                    <div class="comment-author">
-                                        <div class="comment-avatar">MJ</div>
-                                        <div class="comment-info">
-                                            <h5>Michael Johnson</h5>
-                                            <p class="comment-date">July 30, 2024 at 10:15 AM</p>
-                                        </div>
-                                    </div>
-                                    <button class="comment-reply-btn">Reply</button>
-                                </div>
-                                <p class="comment-text">
-                                    The science behind environmental healing that you mentioned is fascinating. I had no idea that natural settings could have such a profound impact on cortisol levels and immune function. Do you have any recommendations for specific locations that embody these principles?
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Comment Form -->
-                        <div class="comment-form-section">
-                            <h4 class="comment-form-title">Leave a Comment</h4>
-                            <form class="comment-form" id="commentForm">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="name">Name *</label>
-                                        <input type="text" id="name" name="name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email *</label>
-                                        <input type="email" id="email" name="email" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="website">Website (Optional)</label>
-                                    <input type="url" id="website" name="website">
-                                </div>
-                                <div class="form-group">
-                                    <label for="comment">Comment *</label>
-                                    <textarea id="comment" name="comment" placeholder="Share your thoughts..." required></textarea>
-                                </div>
-                                <button type="submit" class="submit-btn">Post Comment</button>
-                                <p class="form-note">
-                                    Your email address will not be published. Required fields are marked *
-                                </p>
-                            </form>
-                        </div>
-                    </div>
+      <footer class="site-footer">
+        <div class="site-footer__shape-1 float-bob-x">
+          <img src="assets/images/shapes/site-footer-shape-1.png" alt="" />
+        </div>
+        <div class="site-footer__shape-2 float-bob-y">
+          <img src="assets/images/shapes/site-footer-shape-2.png" alt="" />
+        </div>
+        <div class="container">
+          <div class="site-footer__top">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                <div class="footer-widget__column footer-widget__contact-box">
+                  <div class="footer-widget__contact">
+                    <a href="mailto:info@dermaveritas.com"
+                      >info@dermaveritas.com</a
+                    >
+                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
+                  </div>
+                  <div class="footer-widget__contact-form-box">
+                    <form
+                      class="footer-widget__contact-form mc-form"
+                      data-url="MC_FORM_URL"
+                      novalidate="novalidate"
+                    >
+                      <div class="footer-widget__contact-form-input-box">
+                        <input
+                          type="email"
+                          placeholder="Email address"
+                          name="EMAIL"
+                        />
+                        <button
+                          type="submit"
+                          class="footer-widget__newsletter-btn"
+                        >
+                          <img
+                            src="assets/images/icon/paper-plan-icon.png"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                    </form>
+                    <div class="mc-form__response"></div>
+                  </div>
                 </div>
-            </div>
-        </section>
-        <!--Blog Post Section End-->
-
-        <!--Site Footer Start-->
-        <footer class="site-footer">
-            <div class="site-footer__shape-1 float-bob-x">
-                <img src="assets/images/shapes/site-footer-shape-1.png" alt="">
-            </div>
-            <div class="site-footer__shape-2 float-bob-y">
-                <img src="assets/images/shapes/site-footer-shape-2.png" alt="">
-            </div>
-            <div class="container">
-                <div class="site-footer__top">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                            <div class="footer-widget__column footer-widget__contact-box">
-                                <div class="footer-widget__contact">
-                                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
-                                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
-                                </div>
-                                <div class="footer-widget__contact-form-box">
-                                    <form class="footer-widget__contact-form mc-form" data-url="MC_FORM_URL" novalidate="novalidate">
-                                        <div class="footer-widget__contact-form-input-box">
-                                            <input type="email" placeholder="Email address" name="EMAIL">
-                                            <button type="submit" class="footer-widget__newsletter-btn"><img src="assets/images/icon/paper-plan-icon.png" alt=""></button>
-                                        </div>
-                                    </form>
-                                    <div class="mc-form__response"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                            <div class="footer-widget__column footer-widget__links">
-                                <div class="footer-widget__title-box">
-                                    <h4 class="footer-widget__title">Links</h4>
-                                </div>
-                                <ul class="footer-widget__links-list list-unstyled">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                    <li><a href="membership.html">Membership</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="footer-widget__column footer-widget__timing">
-                                <div class="footer-widget__title-box">
-                                    <h4 class="footer-widget__title">Timing</h4>
-                                </div>
-                                <ul class="footer-widget__timing-list list-unstyled">
-                                    <li>Monday to Friday: 8:00 to 19:00</li>
-                                    <li>Saturday: 8:00 to 3:30</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                            <div class="footer-widget__column footer-widget__social-box">
-                                <div class="site-footer__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                                <p>Unit 2
-                                    Oak tree rise,
-                                    Codsall,
-                                    WV8 1DT
-                                    <br> United Kingdom
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div
+                class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="200ms"
+              >
+                <div class="footer-widget__column footer-widget__links">
+                  <div class="footer-widget__title-box">
+                    <h4 class="footer-widget__title">Links</h4>
+                  </div>
+                  <ul class="footer-widget__links-list list-unstyled">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
                 </div>
-                <div class="site-footer__bottom">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyright 2025 by <a href="#">dermaveritas.com</a></p>
-                                <ul class="list-unstyled site-footer__bottom-menu">
-                                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="300ms"
+              >
+                <div class="footer-widget__column footer-widget__timing">
+                  <div class="footer-widget__title-box">
+                    <h4 class="footer-widget__title">Timing</h4>
+                  </div>
+                  <ul class="footer-widget__timing-list list-unstyled">
+                    <li>Monday to Friday: 8:00 to 19:00</li>
+                    <li>Saturday: 8:00 to 3:30</li>
+                  </ul>
                 </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="400ms"
+              >
+                <div class="footer-widget__column footer-widget__social-box">
+                  <div class="site-footer__social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <p>
+                    Unit 2 Oak tree rise, Codsall, WV8 1DT <br />
+                    United Kingdom
+                  </p>
+                </div>
+              </div>
             </div>
-        </footer>
-        <!--Site Footer End-->
+          </div>
+          <div class="site-footer__bottom">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="site-footer__bottom-inner">
+                  <p class="site-footer__bottom-text">
+                    © Copyright 2025 by <a href="#">dermaveritas.com</a>
+                  </p>
+                  <ul class="list-unstyled site-footer__bottom-menu">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler">
-                <i class="fa fa-times"></i>
-            </span>
-
-            <div class="logo-box">
-                <a href="index.html" aria-label="Derma Veritas logo">
-                    <img src="assets/images/resources/logo-3.svg" width="90" alt="Derma Veritas Logo" />
-                </a>
-            </div>
-
-            <div class="mobile-nav__container"></div>
-
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="#">(Phone TBC)</a>
-                </li>
-            </ul>
-
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+      <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+      <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler">
+          <i class="fa fa-times"></i>
+        </span>
+        <div class="logo-box">
+          <a href="index.html" aria-label="Derma Veritas logo">
+            <img
+              src="assets/images/resources/logo-3.svg"
+              width="90"
+              alt="Derma Veritas Logo"
+            />
+          </a>
         </div>
+        <div class="mobile-nav__container"></div>
+        <ul class="mobile-nav__contact list-unstyled">
+          <li>
+            <i class="fa fa-envelope"></i>
+            <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
+          </li>
+          <li>
+            <i class="fa fa-phone-alt"></i>
+            <a href="#">+92-7741-340615</a>
+          </li>
+        </ul>
+        <div class="mobile-nav__top">
+          <div class="mobile-nav__social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">Search here</label>
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
+      <div class="search-popup__overlay search-toggler"></div>
+      <div class="search-popup__content">
+        <form action="#">
+          <label for="search" class="sr-only">Search here</label>
+          <input type="text" id="search" placeholder="Search Here..." />
+          <button type="submit" aria-label="search submit" class="thm-btn">
+            <i class="icon-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
     </div>
 
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"
+      ><i class="fa fa-angle-up"></i
+    ></a>
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -839,42 +850,239 @@
     <script src="assets/vendors/sidebar-content/jquery-sidebar-content.js"></script>
     <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
+    <script src="assets/js/mellis.js"></script>
 
-    <script src="assets/js//mellis.js"></script>
-    
     <script>
-        // Comment form submission
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const website = document.getElementById('website').value;
-            const comment = document.getElementById('comment').value;
-            
-            if (name && email && comment) {
-                // Here you would typically send the data to your server
-                alert('Thank you for your comment! It will be reviewed and published soon.');
-                
-                // Reset form
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
+      // Get blog ID from URL
+      function getBlogId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("id");
+      }
+
+      // Format date
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+      }
+
+      // Estimate read time
+      function estimateReadTime(content) {
+        const wordsPerMinute = 200;
+        const wordCount = content.split(/\s+/).length;
+        const minutes = Math.ceil(wordCount / wordsPerMinute);
+        return `${minutes} min read`;
+      }
+
+      // Fetch blog data
+      async function fetchBlogData() {
+        const blogId = getBlogId();
+        if (!blogId) {
+          alert("No blog ID provided in the URL");
+          return null;
+        }
+        try {
+          const response = await fetch(
+            `http://localhost:3000/api/blog/${blogId}`,
+            {
+              method: "GET",
+              credentials: "include",
             }
+          );
+          if (!response.ok) {
+            throw new Error(
+              `Server returned ${response.status}: ${response.statusText}`
+            );
+          }
+          const data = await response.json();
+          return data.blog;
+        } catch (err) {
+          console.error("Error fetching blog:", err);
+          alert("Error loading blog: " + err.message);
+          return null;
+        }
+      }
+
+      // Fetch all blogs for navigation
+      async function fetchAllBlogs() {
+        try {
+          const response = await fetch("http://localhost:3000/api/blog/all", {
+            method: "GET",
+            credentials: "include",
+          });
+          if (!response.ok) {
+            throw new Error(
+              `Server returned ${response.status}: ${response.statusText}`
+            );
+          }
+          const data = await response.json();
+          return data.blogs;
+        } catch (err) {
+          console.error("Error fetching blogs:", err);
+          return [];
+        }
+      }
+
+      // Render blog data
+      async function renderBlog() {
+        const blog = await fetchBlogData();
+        if (!blog) return;
+
+        // Update page header title
+        document.getElementById("pageHeaderTitle").textContent = blog.title;
+
+        // Update meta information
+        document.getElementById("blogDate").textContent = formatDate(
+          blog.createdAt
+        );
+        document.getElementById(
+          "blogAuthor"
+        ).innerHTML = `<i class="far fa-user-circle"></i> Admin`;
+        document.getElementById(
+          "blogComments"
+        ).innerHTML = `<i class="far fa-comments"></i> ${
+          blog.comments ? blog.comments.length : 0
+        } Comments`;
+        document.getElementById(
+          "blogReadTime"
+        ).innerHTML = `<i class="far fa-clock"></i> ${estimateReadTime(
+          stripHTML(blog.content)
+        )}`;
+
+        // Update title
+        document.getElementById("blogTitle").textContent = blog.title;
+
+        // Update image
+        document.getElementById("blogImage").src =
+          blog.coverImage || "assets/images/blog/blog-1-1.jpg";
+        document.getElementById("blogImage").alt = blog.title;
+
+        // Update content
+        document.getElementById("blogContent").innerHTML = blog.content;
+
+        // Update tags
+        const tagsContainer = document.getElementById("blogTags");
+        tagsContainer.innerHTML =
+          blog.tags && blog.tags.length > 0
+            ? blog.tags
+                .map((tag) => `<a href="#" class="tag">${tag}</a>`)
+                .join("")
+            : "<span>No tags</span>";
+
+        // Update comments
+        const commentsContainer = document.getElementById("existingComments");
+        commentsContainer.innerHTML =
+          blog.comments && blog.comments.length > 0
+            ? blog.comments
+                .map(
+                  (comment) => `
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <div class="comment-author">
+                                <div class="comment-avatar">${
+                                  comment.name
+                                    ? comment.name.charAt(0).toUpperCase()
+                                    : "A"
+                                }</div>
+                                <div class="comment-info">
+                                    <h5>${comment.name || "Anonymous"}</h5>
+                                    <p class="comment-date">${formatDate(
+                                      comment.date
+                                    )}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="comment-text">${comment.content}</p>
+                    </div>
+                `
+                )
+                .join("")
+            : "<p>No comments yet.</p>";
+        document.getElementById("commentsTitle").textContent = `Comments (${
+          blog.comments ? blog.comments.length : 0
+        })`;
+
+        // Navigation links
+        const allBlogs = await fetchAllBlogs();
+        const currentIndex = allBlogs.findIndex((b) => b._id === blog._id);
+        const prevPostLink = document.getElementById("prevPostLink");
+        const nextPostLink = document.getElementById("nextPostLink");
+
+        if (currentIndex > 0) {
+          prevPostLink.href = `blogpage.html?id=${
+            allBlogs[currentIndex - 1]._id
+          }`;
+          prevPostLink.querySelector("span").textContent =
+            allBlogs[currentIndex - 1].title;
+        } else {
+          prevPostLink.style.display = "none";
+        }
+
+        if (currentIndex < allBlogs.length - 1) {
+          nextPostLink.href = `blogpage.html?id=${
+            allBlogs[currentIndex + 1]._id
+          }`;
+          nextPostLink.querySelector("span").textContent =
+            allBlogs[currentIndex + 1].title;
+        } else {
+          nextPostLink.style.display = "none";
+        }
+      }
+
+      // Comment form submission
+      document
+        .getElementById("commentForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const blogId = getBlogId();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const website = document.getElementById("website").value;
+          const content = document.getElementById("comment").value;
+
+          if (name && email && content && blogId) {
+            try {
+              const response = await fetch(
+                `http://localhost:3000/api/blog/${blogId}/comment`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  credentials: "include",
+                  body: JSON.stringify({ name, email, website, content }),
+                }
+              );
+              if (!response.ok) {
+                throw new Error(
+                  `Server returned ${response.status}: ${response.statusText}`
+                );
+              }
+              alert("Thank you for your comment");
+              this.reset();
+              renderBlog(); // Refresh comments
+            } catch (err) {
+              console.error("Error posting comment:", err);
+              alert("Error posting comment: " + err.message);
+            }
+          } else {
+            alert("Please fill in all required fields.");
+          }
         });
 
-        // Reply button functionality
-        document.querySelectorAll('.comment-reply-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const commentText = document.getElementById('comment');
-                const authorName = this.closest('.comment-item').querySelector('.comment-info h5').textContent;
-                
-                commentText.focus();
-                commentText.value = `@${authorName} `;
-                commentText.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+      // Strip HTML for read time calculation
+      function stripHTML(html) {
+        const div = document.createElement("div");
+        div.innerHTML = html;
+        return div.textContent || div.innerText || "";
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", renderBlog);
     </script>
-</body>
-
+  </body>
 </html>
