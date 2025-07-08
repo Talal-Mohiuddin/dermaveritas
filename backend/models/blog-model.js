@@ -30,6 +30,11 @@ const blogSchema = new Schema(
       ref: "User",
       required: [true, "Author is required"],
     },
+    status: {
+      type: String,
+      enum: ["draft", "published"],
+      default: "draft",
+    },
   },
   { timestamps: true }
 );

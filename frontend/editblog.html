@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Blog | TeamAlpha</title>
+    <!-- favicons Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="mellis HTML 5 Template " />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
+    <!-- Include Quill CSS for the editor -->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+    <style>
+      .edit-blog-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
+        min-height: 100vh;
+        margin-top: 48px;
+      }
+      .edit-blog-container {
+        width: 100%;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        padding: 50px 40px;
+        position: relative;
+        box-sizing: border-box;
+      }
+      .edit-blog-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f0f10;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .edit-blog-subtitle {
+        color: #89868d;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 35px;
+        font-family: "Inter", sans-serif;
+      }
+      .edit-blog-form label {
+        font-weight: 600;
+        color: #0f0f10;
+        margin-bottom: 7px;
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+      }
+      .edit-blog-form input,
+      .edit-blog-form textarea,
+      .edit-blog-form select {
+        border-radius: 10px;
+        border: 1px solid #f0e8e8;
+        background: #fcf5f5;
+        padding: 14px 18px;
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 18px;
+        width: 100%;
+        font-family: "Inter", sans-serif;
+        transition: border-color 0.2s;
+        box-sizing: border-box;
+      }
+      .edit-blog-form input:focus,
+      .edit-blog-form textarea:focus,
+      .edit-blog-form select:focus {
+        border-color: #89868d;
+        outline: none;
+      }
+      .edit-blog-form .form-row {
+        display: flex;
+        gap: 20px;
+      }
+      .edit-blog-form .form-row > div {
+        flex: 1;
+      }
+      .custom-image-upload {
+        border: 2px dashed #89868d;
+        border-radius: 14px;
+        background: #fcf5f5;
+        padding: 32px 20px;
+        text-align: center;
+        margin-bottom: 18px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        position: relative;
+      }
+      .custom-image-upload:hover {
+        border-color: #0f0f10;
+      }
+      .custom-image-upload input[type="file"] {
+        display: none;
+      }
+      .custom-image-upload .upload-icon {
+        font-size: 2.5rem;
+        color: #89868d;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .custom-image-upload .upload-text {
+        color: #0f0f10;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .custom-image-upload .upload-hint {
+        color: #89868d;
+        font-size: 0.95rem;
+      }
+      .custom-image-upload .selected-images {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+      }
+      .custom-image-upload .selected-images img {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .edit-blog-form .form-actions {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .edit-blog-form .submit-btn {
+        background: linear-gradient(90deg, #89868d, #0f0f10);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        padding: 16px 50px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        transition: background 0.2s, transform 0.2s;
+        cursor: pointer;
+      }
+      .edit-blog-form .submit-btn:hover {
+        background: #0f0f10;
+        transform: translateY(-2px);
+      }
+      /* Quill Editor Styles */
+      .ql-container {
+        min-height: 300px;
+        border-radius: 10px;
+        border: 1px solid #f0e8e8;
+        background: #fcf5f5;
+        margin-bottom: 18px;
+      }
+      .ql-toolbar {
+        border-radius: 10px 10px 0 0;
+        border: 1px solid #f0e8e8;
+        background: #fff;
+      }
+      .main-menu__logo img {
+        max-height: 48px;
+        width: auto;
+        display: block;
+      }
+      .main-menu__list > li > a,
+      .main-menu__list > li > a:visited,
+      .main-menu__list > li > a:active,
+      .main-menu__list > li > a:focus {
+        color: #fff !important;
+      }
+      .main-menu__list > li > a:hover {
+        color: #ffb347 !important;
+      }
+      .main-menu__list .dropdown > a:after,
+      .main-menu__list .dropdown > a:before {
+        color: #fff !important;
+      }
+      .main-menu-two__search,
+      .main-menu-two__cart,
+      .main-menu-two__search-box a,
+      .main-menu-two__cart-box a,
+      .main-menu-two__search-box .icon-magnifying-glass,
+      .main-menu-two__cart-box .icon-shopping-cart,
+      .main-menu-two__search-box i,
+      .main-menu-two__cart-box i {
+        color: #fff !important;
+      }
+      .main-menu__list ul li a {
+        color: #fff !important;
+      }
+      .main-menu__list ul li a:hover {
+        color: #ffb347 !important;
+      }
+      .mobile-nav__toggler i {
+        color: #fff !important;
+      }
+      .main-header-two,
+      .main-menu.main-menu-two,
+      .main-menu-two__wrapper,
+      .stricky-header.stricked-menu.main-menu.main-menu-two,
+      .sticky-header__content {
+        background: #23232a !important;
+      }
+      .main-header-two,
+      .stricky-header.stricked-menu.main-menu.main-menu-two {
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 32px;
+      }
+      @media (max-width: 600px) {
+        .edit-blog-container {
+          padding: 30px 10px;
+        }
+        .edit-blog-title {
+          font-size: 2rem;
+        }
+        .edit-blog-form .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+        .main-header-two,
+        .stricky-header.stricked-menu.main-menu.main-menu-two {
+          margin-bottom: 20px;
+        }
+      }
+      .main-menu-two__logout-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      .main-menu-two__logout {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(90deg, #89868d, #0f0f10);
+        color: #fff !important;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 28px 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+      .main-menu-two__logout i {
+        font-size: 1.2em;
+        margin-right: 6px;
+        transition: color 0.2s;
+      }
+      .main-menu-two__logout:hover,
+      .main-menu-two__logout:focus {
+        background: #0f0f10;
+        color: #ffb347 !important;
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+        text-decoration: none;
+      }
+      .main-menu-two__logout:hover i,
+      .main-menu-two__logout:focus i {
+        color: #ffb347;
+      }
+      .main-menu__list > li.dropdown ul {
+        background-color: #23232a !important;
+      }
+      .main-menu__list > li.dropdown ul li a {
+        color: #fff !important;
+        text-align: left;
+      }
+      .main-menu__list > li.dropdown ul li a:hover {
+        color: #ffb347 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======= Site Header/Navbar Start ======= -->
+    <header class="main-header-two">
+      <nav class="main-menu main-menu-two">
+        <div class="main-menu-two__wrapper">
+          <div class="main-menu-two__wrapper-inner">
+            <div class="main-menu-two__left">
+              <div class="main-menu-two__logo">
+                <a href="index.html"
+                  ><img src="assets/images/resources/logo-3.svg" alt=""
+                /></a>
+              </div>
+            </div>
+            <div class="main-menu-two__main-menu-box">
+              <a href="#" class="mobile-nav__toggler"
+                ><i class="fa fa-bars"></i
+              ></a>
+              <ul class="main-menu__list">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li class="dropdown">
+                  <a href="#">Products</a>
+                  <ul>
+                    <li><a href="addproduct.html">Add Product</a></li>
+                    <li><a href="manageproducts.html">Manage Products</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Blogs</a>
+                  <ul>
+                    <li><a href="addblog.html">Add Blog</a></li>
+                    <li><a href="manageblogs.html">Manage Blogs</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="main-menu-two__right">
+              <div class="main-menu-two__logout-box">
+                <a
+                  href="logout.html"
+                  class="main-menu-two__logout"
+                  title="Logout"
+                >
+                  <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="stricky-header stricked-menu main-menu main-menu-two">
+      <div class="sticky-header__content"></div>
+    </div>
+    <!-- ======= Site Header/Navbar End ======= -->
+
+    <div class="edit-blog-section">
+      <div class="edit-blog-container">
+        <div class="edit-blog-title">Edit Blog</div>
+        <div class="edit-blog-subtitle">
+          Update the details below to edit your blog post.
+        </div>
+        <form
+          class="edit-blog-form"
+          id="editBlogForm"
+          enctype="multipart/form-data"
+          autocomplete="off"
+        >
+          <label for="title">Blog Title *</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            required
+            placeholder="Enter blog title"
+          />
+
+          <label for="category">Category *</label>
+          <input
+            type="text"
+            id="category"
+            name="category"
+            required
+            placeholder="e.g. Lifestyle"
+          />
+
+          <label for="content">Content *</label>
+          <div id="editor" style="min-height: 300px"></div>
+          <input type="hidden" id="content" name="content" required />
+
+          <label for="coverImage">Cover Image</label>
+          <div class="custom-image-upload" id="customImageUpload">
+            <span class="upload-icon"
+              ><i class="fas fa-cloud-upload-alt"></i
+            ></span>
+            <span class="upload-text">Click or drag image here to upload</span>
+            <span class="upload-hint">Select an image (JPG, PNG, etc.)</span>
+            <input
+              type="file"
+              id="coverImage"
+              name="coverImage"
+              accept="image/*"
+            />
+            <div class="selected-images" id="selectedImages"></div>
+          </div>
+
+          <label for="isPublished">Publish Status</label>
+          <select id="isPublished" name="isPublished">
+            <option value="true">Published</option>
+            <option value="false">Draft</option>
+          </select>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">Update Blog</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Include Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/timepicker/timePicker.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/sidebar-content/jquery-sidebar-content.js"></script>
+    <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
+    <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
+    <script src="assets/js/mellis.js"></script>
+
+    <script>
+      // Initialize Quill editor
+      var quill = new Quill("#editor", {
+        theme: "snow",
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ["bold", "italic", "underline"],
+            ["link", "image"],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["clean"],
+          ],
+        },
+      });
+
+      // Custom image upload preview
+      const customUpload = document.getElementById("customImageUpload");
+      const fileInput = document.getElementById("coverImage");
+      const selectedImages = document.getElementById("selectedImages");
+
+      customUpload.addEventListener("click", function (e) {
+        if (e.target !== fileInput) fileInput.click();
+      });
+
+      customUpload.addEventListener("dragover", function (e) {
+        e.preventDefault();
+        customUpload.style.borderColor = "#0f0f10";
+      });
+      customUpload.addEventListener("dragleave", function (e) {
+        e.preventDefault();
+        customUpload.style.borderColor = "#89868d";
+      });
+      customUpload.addEventListener("drop", function (e) {
+        e.preventDefault();
+        customUpload.style.borderColor = "#89868d";
+        fileInput.files = e.dataTransfer.files;
+        showSelectedImages();
+      });
+
+      fileInput.addEventListener("change", showSelectedImages);
+
+      function showSelectedImages() {
+        selectedImages.innerHTML = "";
+        const file = fileInput.files[0];
+        if (file && file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            selectedImages.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Fetch blog data and populate form
+      async function fetchBlogData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogId = urlParams.get("id");
+        if (!blogId) {
+          alert("No blog ID provided.");
+          window.location.href = "manageblogs.html";
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `http://localhost:3000/api/blog/${blogId}`,
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
+          if (!response.ok) {
+            throw new Error(
+              `Server returned ${response.status}: ${response.statusText}`
+            );
+          }
+          const data = await response.json();
+          if (!data || !data.blog) {
+            throw new Error("Unexpected response format");
+          }
+
+          const blog = data.blog;
+          document.getElementById("title").value = blog.title || "";
+          document.getElementById("category").value = blog.category || "";
+          quill.root.innerHTML = blog.content || "";
+          document.getElementById("isPublished").value = blog.isPublished
+            ? "true"
+            : "false";
+
+          if (blog.coverImage) {
+            const img = document.createElement("img");
+            img.src = blog.coverImage;
+            selectedImages.appendChild(img);
+          }
+        } catch (err) {
+          console.error("Error fetching blog:", err);
+          alert("Error loading blog data: " + err.message);
+          window.location.href = "manageblogs.html";
+        }
+      }
+
+      // Form submit handler
+      document
+        .getElementById("editBlogForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const blogId = urlParams.get("id");
+          if (!blogId) {
+            alert("No blog ID provided.");
+            return;
+          }
+
+          const form = e.target;
+          const formData = new FormData(form);
+
+          // Add Quill content to formData
+          const content = quill.root.innerHTML;
+          formData.set("content", content);
+
+          try {
+            const response = await fetch(
+              `http://localhost:3000/api/blog/${blogId}`,
+              {
+                method: "PUT",
+                body: formData,
+                credentials: "include",
+              }
+            );
+            const data = await response.json();
+            if (response.ok) {
+              alert("Blog updated successfully!");
+              window.location.href = "manageblogs.html";
+            } else {
+              alert(data.message || "Failed to update blog.");
+            }
+          } catch (err) {
+            alert("Error: " + err.message);
+          }
+        });
+
+      fetchBlogData();
+    </script>
+  </body>
+</html>

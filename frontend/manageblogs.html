@@ -492,9 +492,11 @@
               <td class="date-cell">${createdAt}</td>
               <td>
                 <span class="status-badge ${
-                  blog.isPublished ? "status-published" : "status-draft"
+                  blog.status === "published"
+                    ? "status-published"
+                    : "status-draft"
                 }">
-                  ${blog.isPublished ? "Published" : "Draft"}
+                  ${blog.status === "published" ? "Published" : "Draft"}
                 </span>
               </td>
               <td>

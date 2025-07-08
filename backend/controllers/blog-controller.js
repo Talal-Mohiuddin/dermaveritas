@@ -23,6 +23,7 @@ const createBlog = catchAsyncErrors(async (req, res, next) => {
     content,
     category,
     coverImage,
+    status: "published",
     author: req.user._id,
   });
 
@@ -65,7 +66,7 @@ const getBlogById = catchAsyncErrors(async (req, res, next) => {
 // Update blog
 const updateBlog = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
-  const { title, content, category, coverImage, isPublished } = req.body;
+  const { title, content, category, coverImage, status } = req.body;
 
   const blog = await Blog.findById(id);
 
@@ -84,7 +85,7 @@ const updateBlog = catchAsyncErrors(async (req, res, next) => {
   if (content) blog.content = content;
   if (category) blog.category = category;
   if (coverImage) blog.coverImage = coverImage;
-  if (isPublished !== undefined) blog.isPublished = isPublished;
+  if (status) blog.status = status;
 
   await blog.save();
 
