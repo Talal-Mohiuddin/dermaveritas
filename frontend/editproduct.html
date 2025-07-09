@@ -542,6 +542,7 @@
         try {
           const res = await fetch(`http://localhost:3000/api/products/${id}`);
           const data = await res.json();
+          console.log(data);
           if (!data.success || !data.product)
             throw new Error("Product not found");
           const p = data.product;

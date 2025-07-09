@@ -97,10 +97,20 @@ const createProduct = catchAsyncErrors(async (req, res, next) => {
 
   // Clean ingredients array if it exists
   let cleanIngredients = [];
-  if (ingredients && Array.isArray(ingredients)) {
-    cleanIngredients = ingredients.filter(
-      (ingredient) => ingredient && ingredient.name && ingredient.quantity
-    );
+  if (ingredients) {
+    let parsedIngredients = ingredients;
+    if (typeof ingredients === "string") {
+      try {
+        parsedIngredients = JSON.parse(ingredients);
+      } catch (err) {
+        return next(new ErrorHandler("Invalid ingredients format", 400));
+      }
+    }
+    if (Array.isArray(parsedIngredients)) {
+      cleanIngredients = parsedIngredients.filter(
+        (ingredient) => ingredient && ingredient.name && ingredient.quantity
+      );
+    }
   }
 
   const product = await Product.create({
@@ -172,8 +182,17 @@ const updateProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Product not found", 404));
   }
 
-  // Validate fields if they are being updated
-  const { missingFields, cleanFields } = validateRequiredFields(req.body, true);
+  const body = req.body || {};
+
+  if (body.ingredients && typeof body.ingredients === "string") {
+    try {
+      body.ingredients = JSON.parse(body.ingredients);
+    } catch (err) {
+      return next(new ErrorHandler("Invalid ingredients format", 400));
+    }
+  }
+
+  const { missingFields, cleanFields } = validateRequiredFields(body, true);
   if (missingFields.length > 0) {
     return next(
       new ErrorHandler(`Invalid field values: ${missingFields.join(", ")}`, 400)
@@ -186,6 +205,47 @@ const updateProduct = catchAsyncErrors(async (req, res, next) => {
   }
   if (cleanFields.stockQuantity !== undefined) {
     cleanFields.stockQuantity = parseInt(cleanFields.stockQuantity);
+  }
+
+  // Handle uploaded images (replace images if new ones are uploaded)
+  if (req.files && req.files.length > 0) {
+    // Delete old images from server
+    if (product.images && product.images.length > 0) {
+      product.images.forEach((image) => {
+        const filename = path.basename(image.url);
+        const filepath = path.join(
+          process.cwd(),
+          "public/uploads/products",
+          filename
+        );
+        if (fs.existsSync(filepath)) {
+          fs.unlinkSync(filepath);
+        }
+      });
+    }
+    cleanFields.images = req.files.map((file) => ({
+      url: `${req.protocol}://${req.get("host")}/uploads/products/${
+        file.filename
+      }`,
+      altText: cleanFields.altText || "",
+    }));
+  }
+
+  // Clean ingredients array if it exists
+  if (cleanFields.ingredients) {
+    let parsedIngredients = cleanFields.ingredients;
+    if (typeof parsedIngredients === "string") {
+      try {
+        parsedIngredients = JSON.parse(parsedIngredients);
+      } catch (err) {
+        return next(new ErrorHandler("Invalid ingredients format", 400));
+      }
+    }
+    if (Array.isArray(parsedIngredients)) {
+      cleanFields.ingredients = parsedIngredients.filter(
+        (ingredient) => ingredient && ingredient.name && ingredient.quantity
+      );
+    }
   }
 
   product = await Product.findByIdAndUpdate(id, cleanFields, {

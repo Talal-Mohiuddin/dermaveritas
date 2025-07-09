@@ -26,7 +26,12 @@ router.post(
   upload.array("images", 5),
   createProduct
 );
-router.put("/:id", isadminAuthenticated, updateProduct);
+router.put(
+  "/:id",
+  isadminAuthenticated,
+  upload.array("images", 5),
+  updateProduct
+);
 router.delete("/:id", isadminAuthenticated, deleteProduct);
 
 // User only routes
