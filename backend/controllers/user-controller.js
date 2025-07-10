@@ -89,4 +89,64 @@ const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-export { registerUser, loginUser, logoutUser, loginAdmin, logoutAdmin };
+const changeUserName = catchAsyncErrors(async (req, res, next) => {
+  const { name } = req.body;
+  if (!name) {
+    return next(new ErrorHandler("Please provide a name", 400));
+  }
+  const user = await User.findById(req.user._id);
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+  user.name = name;
+  await user.save();
+  res.status(200).json({
+    success: true,
+    message: "Name updated successfully",
+    user,
+  });
+});
+
+const changeUserPassword = catchAsyncErrors(async (req, res, next) => {
+  const { oldPassword, newPassword } = req.body;
+  if (!oldPassword || !newPassword) {
+    return next(new ErrorHandler("Please provide old and new passwords", 400));
+  }
+  const user = await User.findById(req.user._id).select("+password");
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+  const isPasswordMatched = await user.comparePassword(oldPassword);
+  if (!isPasswordMatched) {
+    return next(new ErrorHandler("Old password is incorrect", 401));
+  }
+  user.password = newPassword;
+  await user.save();
+  res.status(200).json({
+    success: true,
+    message: "Password updated successfully",
+    user,
+  });
+});
+
+const getUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user._id).select("-password");
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+export {
+  registerUser,
+  loginUser,
+  logoutUser,
+  loginAdmin,
+  logoutAdmin,
+  changeUserName,
+  changeUserPassword,
+  getUser,
+};

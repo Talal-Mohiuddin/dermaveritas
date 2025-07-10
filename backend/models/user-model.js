@@ -41,6 +41,11 @@ const userSchema = new Schema(
         },
       },
     ],
+    plan: {
+      type: String,
+      enum: ["Veritas Glow", "Veritas Sculpt", "Veritas Prestige"],
+      default: null,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
