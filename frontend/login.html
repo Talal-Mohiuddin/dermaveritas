@@ -294,7 +294,7 @@
             const data = await res.json();
             if (res.ok) {
               alert("Login successful!");
-              // Optionally redirect: window.location.href = '/dashboard.html';
+              window.location.href = "/index.html"; // Redirect to home page
             } else {
               alert(data.message || "Login failed");
             }

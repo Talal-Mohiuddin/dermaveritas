@@ -1,425 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <script src="assets/js/UserExsists.js"></script>
 
-<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Contact | DermaVeritas </title>
+    <title>Contact | DermaVeritas</title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
     <meta name="description" content="mellis HTML 5 Template " />
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
     <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
     <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
     <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
     <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css">
-    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
     <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
-    <link rel="stylesheet" href="assets/vendors/twenty-twenty/twentytwenty.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
-</head>
+  </head>
 
-<body>
-
-
-
+  <body>
     <div class="preloader">
-        <div class="preloader__image"></div>
+      <div class="preloader__image"></div>
     </div>
     <!-- /.preloader -->
 
-
-
-
     <div class="page-wrapper">
-        <header class="main-header-two">
-            <nav class="main-menu main-menu-two">
-                <div class="main-menu-two__wrapper">
-                    <div class="main-menu-two__wrapper-inner">
-                        <div class="main-menu-two__left">
-                            <div class="main-menu-two__logo">
-                                <a href="index.html"><img src="assets/images/resources/logo-3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="main-menu-two__main-menu-box">
-                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                            <ul class="main-menu__list">
-                                <li class="dropdown">
-                                    <a href="index3.html">Home </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="services.html">Our Services</a>
-                                </li>
-                                <li class="dropdown menu-item-has-children">
-                                    <a href="#">Pages </a>
-                                    <ul>
-                                        <li><a href="team.html">Team Members</a></li>
-                                        <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                        <li><a href="membership.html">Membership</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="products.html">Shop</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="affiliate.html">Affiliate</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="main-menu-two__right">
-                            <div class="main-menu-two__search-cart-box">
-                                <div class="main-menu-two__search-box">
-                                    <a href="#" class="main-menu-two__search search-toggler icon-magnifying-glass"></a>
-                                </div>
-                                <div class="main-menu-two__cart-box">
-                                    <a href="addtocart.html" class="main-menu-two__cart icon-shopping-cart"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <header class="main-header-two">
+        <nav class="main-menu main-menu-two">
+          <div class="main-menu-two__wrapper">
+            <div class="main-menu-two__wrapper-inner">
+              <div class="main-menu-two__left">
+                <div class="main-menu-two__logo">
+                  <a href="index.html"
+                    ><img src="assets/images/resources/logo-3.svg" alt=""
+                  /></a>
                 </div>
-            </nav>
-        </header>
-
-
-        <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><span>/</span></li>
-                        <li>Contact</li>
+              </div>
+              <div class="main-menu-two__main-menu-box">
+                <a href="#" class="mobile-nav__toggler"
+                  ><i class="fa fa-bars"></i
+                ></a>
+                <ul class="main-menu__list">
+                  <li class="dropdown">
+                    <a href="index3.html">Home </a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="services.html">Our Services</a>
+                  </li>
+                  <li class="dropdown menu-item-has-children">
+                    <a href="#">Pages </a>
+                    <ul>
+                      <li><a href="team.html">Team Members</a></li>
+                      <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                      <li><a href="membership.html">Membership</a></li>
                     </ul>
-                    <h2>Contact</h2>
+                  </li>
+
+                  <li class="dropdown">
+                    <a href="products.html">Shop</a>
+                  </li>
+                  <li>
+                    <a href="contact.html">Contact</a>
+                  </li>
+                  <li>
+                    <a href="affiliate.html">Affiliate</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="main-menu-two__right">
+                <div class="main-menu-two__search-cart-box">
+                  <div class="main-menu-two__search-box">
+                    <a
+                      href="#"
+                      class="main-menu-two__search search-toggler icon-magnifying-glass"
+                    ></a>
+                  </div>
+                  <div class="main-menu-two__cart-box">
+                    <a
+                      href="addtocart.html"
+                      class="main-menu-two__cart icon-shopping-cart"
+                    ></a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
-        <!--Page Header End-->
+          </div>
+        </nav>
+      </header>
 
-        <!--Clinic Location Start-->
-        <section class="spa-center-three text-center py-5">
-            <div class="container">
-                <div class="section-title">
-                    <span class="section-title__tagline">Our Clinic</span>
-                    <h2 class="section-title__title">Visit Derma Veritas</h2>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-8 col-md-10">
-                        <div style="background: none; box-shadow: none; padding: 0;">
-                            <h3 class="spa-center-three__title mb-3">Codsall, Wolverhampton</h3>
-                            <p class="spa-center-three__text mb-2">
-                                Unit 2, Oak Tree Rise, WV8 1DT<br>
-                                <strong>Monday to Friday:</strong> 08:00 AM – 19:00 PM<br>
-                                <strong>Saturday to Sunday:</strong> 08:00 AM – 03:30 PM
-                            </p>
-                            <div class="spa-center-three__contact">
-                                <a href="mailto:info@dermaveritas.com" class="d-block">info@dermaveritas.com</a>
-                                <a href="#" class="d-block">+92-7741-340615</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Clinic Location End-->
-
-
-
-
-        <!--Contact One Start-->
-        <section class="contact-one">
-            <div class="contact-one__shape-1 float-bob-x">
-                <img src="assets/images/shapes/contact-one-shape-1.png" alt="">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <!-- Left Side: Text + Image + Counters -->
-                    <div class="col-xl-6 col-lg-7">
-                        <div class="contact-one__left">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">Get in Touch</span>
-                                <h2 class="section-title__title">Book Your Consultation or Ask a Question</h2>
-                            </div>
-                            <p class="contact-one__text">
-                                Whether you're interested in skin rejuvenation, fillers, or a tailored facial plan —
-                                we're here to help.
-                                Reach out to us with your questions or appointment requests and let our experts guide
-                                you.
-                            </p>
-                            <div class="contact-one__img-and-counter">
-                                <div class="contact-one__img">
-                                    <img src="assets/images/resources/contact.jpg" alt="Aesthetic consultation">
-                                </div>
-                                <ul class="contact-one__counter list-unstyled">
-                                    <li>
-                                        <div class="contact-one__count-box">
-                                            <h3 class="odometer" data-count="2150">00</h3>
-                                        </div>
-                                        <p class="contact-one__count-text">Successful Treatments</p>
-                                    </li>
-                                    <li>
-                                        <div class="contact-one__count-box">
-                                            <h3 class="odometer" data-count="370">00</h3>
-                                        </div>
-                                        <p class="contact-one__count-text">Loyal Clients</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Side: Contact Form -->
-                    <div class="col-xl-6 col-lg-5">
-                        <div class="contact-one__right">
-                            <div class="contact-one__content">
-                                <form action="assets/inc/sendemail.php" class="contact-one__form contact-form-validated"
-                                    novalidate="novalidate">
-                                    <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="contact-one__form-input-box">
-                                                <input type="text" placeholder="Your Name" name="name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <div class="contact-one__form-input-box">
-                                                <input type="email" placeholder="Email Address" name="email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="contact-one__form-input-box">
-                                                <input type="text" placeholder="Phone" name="phone">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="contact-one__form-input-box">
-                                                <input type="text" placeholder="Service Interested In" name="service">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <div class="contact-one__form-input-box text-message-box">
-                                                <textarea name="message" placeholder="Write Message"></textarea>
-                                            </div>
-                                            <div class="contact-one__btn-box">
-                                                <button type="submit" class="thm-btn contact-one__btn">Send
-                                                    Message</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="result"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Contact One End-->
-
-        <!--Google Map Start-->
-        <section class="contact-page__google-map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.618012272158!2d-2.2089964237643804!3d52.6307467280248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870832fbb115555%3A0x9ec9ace060417cce!2s2%20Oaktree%20Rise%2C%20Codsall%2C%20Wolverhampton%20WV8%201DP%2C%20UK!5e0!3m2!1sen!2s!4v1751641054805!5m2!1sen!2s"
-                class="google-map__one" allowfullscreen>
-            </iframe>
-
-        </section>
-        <!--Google Map End-->
-        <!--Site Footer Start-->
-        <footer class="site-footer">
-            <div class="site-footer__shape-1 float-bob-x">
-                <img src="assets/images/shapes/site-footer-shape-1.png" alt="">
-            </div>
-            <div class="site-footer__shape-2 float-bob-y">
-                <img src="assets/images/shapes/site-footer-shape-2.png" alt="">
-            </div>
-            <div class="container">
-                <div class="site-footer__top">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                            <div class="footer-widget__column footer-widget__contact-box">
-                                <div class="footer-widget__contact">
-                                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
-                                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
-                                </div>
-                                <div class="footer-widget__contact-form-box">
-                                    <form class="footer-widget__contact-form mc-form" data-url="MC_FORM_URL"
-                                        novalidate="novalidate">
-                                        <div class="footer-widget__contact-form-input-box">
-                                            <input type="email" placeholder="Email address" name="EMAIL">
-                                            <button type="submit" class="footer-widget__newsletter-btn"><img
-                                                    src="assets/images/icon/paper-plan-icon.png" alt=""></button>
-                                        </div>
-                                    </form>
-                                    <div class="mc-form__response"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                            <div class="footer-widget__column footer-widget__links">
-                                <div class="footer-widget__title-box">
-                                    <h4 class="footer-widget__title">Links</h4>
-                                </div>
-                                <ul class="footer-widget__links-list list-unstyled">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                    <li><a href="membership.html">Membership</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="footer-widget__column footer-widget__timing">
-                                <div class="footer-widget__title-box">
-                                    <h4 class="footer-widget__title">Timing</h4>
-                                </div>
-                                <ul class="footer-widget__timing-list list-unstyled">
-                                    <li>Monday to Friday: 8:00 to 19:00</li>
-                                    <li>Saturday: 8:00 to 3:30</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                            <div class="footer-widget__column footer-widget__social-box">
-                                <div class="site-footer__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                                <p>Unit 2
-                                    Oak tree rise,
-                                    Codsall,
-                                    WV8 1DT
-                                    <br> United Kingdom
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="site-footer__bottom">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyright 2025 by <a href="#">dermaveritas.com</a>
-                                </p>
-                                <ul class="list-unstyled site-footer__bottom-menu">
-                                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--Site Footer End-->
-
-
-
-    </div><!-- /.page-wrapper -->
-
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler">
-                <i class="fa fa-times"></i>
-            </span>
-
-            <div class="logo-box">
-                <a href="index.html" aria-label="Derma Veritas logo">
-                    <img src="assets/images/resources/logo-3.svg" width="90" alt="Derma Veritas Logo" />
-                </a>
-            </div>
-
-            <!-- Dynamic Menu Items -->
-            <div class="mobile-nav__container"></div>
-
-            <!-- Contact Info -->
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="#">+92-7741-340615</a>
-                </li>
+      <div class="stricky-header stricked-menu main-menu main-menu-two">
+        <div class="sticky-header__content"></div>
+        <!-- /.sticky-header__content -->
+      </div>
+      <!-- /.stricky-header -->
+      <!--Page Header Start-->
+      <section class="page-header">
+        <div
+          class="page-header__bg"
+          style="
+            background-image: url(assets/images/backgrounds/page-header-bg.jpg);
+          "
+        ></div>
+        <div class="container">
+          <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><span>/</span></li>
+              <li>Contact</li>
             </ul>
+            <h2>Contact</h2>
+          </div>
+        </div>
+      </section>
+      <!--Page Header End-->
 
-            <!-- Social Icons -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
+      <!--Clinic Location Start-->
+      <section class="spa-center-three text-center py-5">
+        <div class="container">
+          <div class="section-title">
+            <span class="section-title__tagline">Our Clinic</span>
+            <h2 class="section-title__title">Visit Derma Veritas</h2>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+              <div style="background: none; box-shadow: none; padding: 0">
+                <h3 class="spa-center-three__title mb-3">
+                  Codsall, Wolverhampton
+                </h3>
+                <p class="spa-center-three__text mb-2">
+                  Unit 2, Oak Tree Rise, WV8 1DT<br />
+                  <strong>Monday to Friday:</strong> 08:00 AM – 19:00 PM<br />
+                  <strong>Saturday to Sunday:</strong> 08:00 AM – 03:30 PM
+                </p>
+                <div class="spa-center-three__contact">
+                  <a href="mailto:info@dermaveritas.com" class="d-block"
+                    >info@dermaveritas.com</a
+                  >
+                  <a href="#" class="d-block">+92-7741-340615</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Clinic Location End-->
+
+      <!--Contact One Start-->
+      <section class="contact-one">
+        <div class="contact-one__shape-1 float-bob-x">
+          <img src="assets/images/shapes/contact-one-shape-1.png" alt="" />
+        </div>
+        <div class="container">
+          <div class="row">
+            <!-- Left Side: Text + Image + Counters -->
+            <div class="col-xl-6 col-lg-7">
+              <div class="contact-one__left">
+                <div class="section-title text-left">
+                  <span class="section-title__tagline">Get in Touch</span>
+                  <h2 class="section-title__title">
+                    Book Your Consultation or Ask a Question
+                  </h2>
+                </div>
+                <p class="contact-one__text">
+                  Whether you're interested in skin rejuvenation, fillers, or a
+                  tailored facial plan — we're here to help. Reach out to us
+                  with your questions or appointment requests and let our
+                  experts guide you.
+                </p>
+                <div class="contact-one__img-and-counter">
+                  <div class="contact-one__img">
+                    <img
+                      src="assets/images/resources/contact.jpg"
+                      alt="Aesthetic consultation"
+                    />
+                  </div>
+                  <ul class="contact-one__counter list-unstyled">
+                    <li>
+                      <div class="contact-one__count-box">
+                        <h3 class="odometer" data-count="2150">00</h3>
+                      </div>
+                      <p class="contact-one__count-text">
+                        Successful Treatments
+                      </p>
+                    </li>
+                    <li>
+                      <div class="contact-one__count-box">
+                        <h3 class="odometer" data-count="370">00</h3>
+                      </div>
+                      <p class="contact-one__count-text">Loyal Clients</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="col-xl-6 col-lg-5">
+              <div class="contact-one__right">
+                <div class="contact-one__content">
+                  <form
+                    action="assets/inc/sendemail.php"
+                    class="contact-one__form contact-form-validated"
+                    novalidate="novalidate"
+                  >
+                    <div class="row">
+                      <div class="col-xl-12">
+                        <div class="contact-one__form-input-box">
+                          <input
+                            type="text"
+                            placeholder="Your Name"
+                            name="name"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-xl-12">
+                        <div class="contact-one__form-input-box">
+                          <input
+                            type="email"
+                            placeholder="Email Address"
+                            name="email"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="contact-one__form-input-box">
+                          <input type="text" placeholder="Phone" name="phone" />
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="contact-one__form-input-box">
+                          <input
+                            type="text"
+                            placeholder="Service Interested In"
+                            name="service"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-xl-12">
+                        <div
+                          class="contact-one__form-input-box text-message-box"
+                        >
+                          <textarea
+                            name="message"
+                            placeholder="Write Message"
+                          ></textarea>
+                        </div>
+                        <div class="contact-one__btn-box">
+                          <button
+                            type="submit"
+                            class="thm-btn contact-one__btn"
+                          >
+                            Send Message
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="result"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Contact One End-->
+
+      <!--Google Map Start-->
+      <section class="contact-page__google-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.618012272158!2d-2.2089964237643804!3d52.6307467280248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870832fbb115555%3A0x9ec9ace060417cce!2s2%20Oaktree%20Rise%2C%20Codsall%2C%20Wolverhampton%20WV8%201DP%2C%20UK!5e0!3m2!1sen!2s!4v1751641054805!5m2!1sen!2s"
+          class="google-map__one"
+          allowfullscreen
+        >
+        </iframe>
+      </section>
+      <!--Google Map End-->
+      <!--Site Footer Start-->
+      <footer class="site-footer">
+        <div class="site-footer__shape-1 float-bob-x">
+          <img src="assets/images/shapes/site-footer-shape-1.png" alt="" />
+        </div>
+        <div class="site-footer__shape-2 float-bob-y">
+          <img src="assets/images/shapes/site-footer-shape-2.png" alt="" />
+        </div>
+        <div class="container">
+          <div class="site-footer__top">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                <div class="footer-widget__column footer-widget__contact-box">
+                  <div class="footer-widget__contact">
+                    <a href="mailto:info@dermaveritas.com"
+                      >info@dermaveritas.com</a
+                    >
+                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
+                  </div>
+                  <div class="footer-widget__contact-form-box">
+                    <form
+                      class="footer-widget__contact-form mc-form"
+                      data-url="MC_FORM_URL"
+                      novalidate="novalidate"
+                    >
+                      <div class="footer-widget__contact-form-input-box">
+                        <input
+                          type="email"
+                          placeholder="Email address"
+                          name="EMAIL"
+                        />
+                        <button
+                          type="submit"
+                          class="footer-widget__newsletter-btn"
+                        >
+                          <img
+                            src="assets/images/icon/paper-plan-icon.png"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                    </form>
+                    <div class="mc-form__response"></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="200ms"
+              >
+                <div class="footer-widget__column footer-widget__links">
+                  <div class="footer-widget__title-box">
+                    <h4 class="footer-widget__title">Links</h4>
+                  </div>
+                  <ul class="footer-widget__links-list list-unstyled">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="300ms"
+              >
+                <div class="footer-widget__column footer-widget__timing">
+                  <div class="footer-widget__title-box">
+                    <h4 class="footer-widget__title">Timing</h4>
+                  </div>
+                  <ul class="footer-widget__timing-list list-unstyled">
+                    <li>Monday to Friday: 8:00 to 19:00</li>
+                    <li>Saturday: 8:00 to 3:30</li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="400ms"
+              >
+                <div class="footer-widget__column footer-widget__social-box">
+                  <div class="site-footer__social">
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <p>
+                    Unit 2 Oak tree rise, Codsall, WV8 1DT <br />
+                    United Kingdom
+                  </p>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="site-footer__bottom">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="site-footer__bottom-inner">
+                  <p class="site-footer__bottom-text">
+                    © Copyright 2025 by <a href="#">dermaveritas.com</a>
+                  </p>
+                  <ul class="list-unstyled site-footer__bottom-menu">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /.mobile-nav__content -->
+      </footer>
+      <!--Site Footer End-->
+    </div>
+    <!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+      <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+      <!-- /.mobile-nav__overlay -->
+      <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler">
+          <i class="fa fa-times"></i>
+        </span>
+
+        <div class="logo-box">
+          <a href="index.html" aria-label="Derma Veritas logo">
+            <img
+              src="assets/images/resources/logo-3.svg"
+              width="90"
+              alt="Derma Veritas Logo"
+            />
+          </a>
+        </div>
+
+        <!-- Dynamic Menu Items -->
+        <div class="mobile-nav__container"></div>
+
+        <!-- Contact Info -->
+        <ul class="mobile-nav__contact list-unstyled">
+          <li>
+            <i class="fa fa-envelope"></i>
+            <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
+          </li>
+          <li>
+            <i class="fa fa-phone-alt"></i>
+            <a href="#">+92-7741-340615</a>
+          </li>
+        </ul>
+
+        <!-- Social Icons -->
+        <div class="mobile-nav__top">
+          <div class="mobile-nav__social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /.mobile-nav__content -->
     </div>
     <!-- /.mobile-nav__wrapper -->
 
     <!-- Search Popup -->
     <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">Search here</label>
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
+      <div class="search-popup__overlay search-toggler"></div>
+      <div class="search-popup__content">
+        <form action="#">
+          <label for="search" class="sr-only">Search here</label>
+          <input type="text" id="search" placeholder="Search Here..." />
+          <button type="submit" aria-label="search submit" class="thm-btn">
+            <i class="icon-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
     </div>
     <!-- /.search-popup -->
 
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"
+      ><i class="fa fa-angle-up"></i
+    ></a>
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -449,11 +572,7 @@
     <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
 
-
-
-
     <!-- template js -->
     <script src="assets/js//mellis.js"></script>
-</body>
-
+  </body>
 </html>

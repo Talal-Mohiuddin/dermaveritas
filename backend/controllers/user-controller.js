@@ -45,6 +45,7 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 const logoutUser = catchAsyncErrors(async (req, res, next) => {
+  console.log("User logout called");
   res
     .status(200)
     .cookie("user", null, {

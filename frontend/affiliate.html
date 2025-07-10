@@ -1,602 +1,792 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <script src="assets/js/UserExsists.js"></script>
 
-<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Affiliate Program | DermaVeritas</title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description"
-        content="Join the DermaVeritas affiliate program and earn generous commissions promoting premium skincare products." />
+    <meta
+      name="description"
+      content="Join the DermaVeritas affiliate program and earn generous commissions promoting premium skincare products."
+    />
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
     <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
     <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
     <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
     <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css">
-    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
     <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
     <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
-    <link rel="stylesheet" href="assets/vendors/twenty-twenty/twentytwenty.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
 
-    <style>
+    <style></style>
+  </head>
 
-    </style>
-</head>
-
-<body>
+  <body>
     <div class="preloader">
-        <div class="preloader__image"></div>
+      <div class="preloader__image"></div>
     </div>
     <!-- /.preloader -->
 
-
-
-
     <div class="page-wrapper">
-        <header class="main-header-two">
-            <nav class="main-menu main-menu-two">
-                <div class="main-menu-two__wrapper">
-                    <div class="main-menu-two__wrapper-inner">
-                        <div class="main-menu-two__left">
-                            <div class="main-menu-two__logo">
-                                <a href="index.html"><img src="assets/images/resources/logo-3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="main-menu-two__main-menu-box">
-                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
-                            <ul class="main-menu__list">
-                                <li class="dropdown">
-                                    <a href="index3.html">Home </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="services.html">Our Services</a>
-                                </li>
-                                <li class="dropdown menu-item-has-children">
-                                    <a href="#">Pages </a>
-                                    <ul>
-                                        <li><a href="team.html">Team Members</a></li>
-                                        <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                        <li><a href="membership.html">Membership</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="products.html">Shop</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="affiliate.html">Affiliate</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="main-menu-two__right">
-                            <div class="main-menu-two__search-cart-box">
-                                <div class="main-menu-two__search-box">
-                                    <a href="#" class="main-menu-two__search search-toggler icon-magnifying-glass"></a>
-                                </div>
-                                <div class="main-menu-two__cart-box">
-                                    <a href="addtocart.html" class="main-menu-two__cart icon-shopping-cart"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <header class="main-header-two">
+        <nav class="main-menu main-menu-two">
+          <div class="main-menu-two__wrapper">
+            <div class="main-menu-two__wrapper-inner">
+              <div class="main-menu-two__left">
+                <div class="main-menu-two__logo">
+                  <a href="index.html"
+                    ><img src="assets/images/resources/logo-3.svg" alt=""
+                  /></a>
                 </div>
-            </nav>
-        </header>
+              </div>
+              <div class="main-menu-two__main-menu-box">
+                <a href="#" class="mobile-nav__toggler"
+                  ><i class="fa fa-bars"></i
+                ></a>
+                <ul class="main-menu__list">
+                  <li class="dropdown">
+                    <a href="index3.html">Home </a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="services.html">Our Services</a>
+                  </li>
+                  <li class="dropdown menu-item-has-children">
+                    <a href="#">Pages </a>
+                    <ul>
+                      <li><a href="team.html">Team Members</a></li>
+                      <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                      <li><a href="membership.html">Membership</a></li>
+                    </ul>
+                  </li>
 
-        <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);"
-                loading="lazy"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h1 class="display-4 fw-bold mb-4 wow fadeInUp" data-wow-delay="100ms"
-                        style="color: white; padding-top: 120px;">
-                        Join Our Premium Affiliate Program
-                    </h1>
-                    <p class="lead mb-5 wow fadeInUp" data-wow-delay="200ms" style="color: white;">
-                        Partner with DermaVeritas and earn generous commissions promoting the finest luxury skincare
-                        products. Turn your passion for beauty into a profitable business.
-                    </p>
-                    <div
-                        class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-items-center gap-3">
-                        <a href="#commission-details" class="cta-button">View Commission Rates</a>
-                        <a href="#join-now" class="cta-button">Join Now</a>
-                    </div>
-
-
+                  <li class="dropdown">
+                    <a href="products.html">Shop</a>
+                  </li>
+                  <li>
+                    <a href="contact.html">Contact</a>
+                  </li>
+                  <li>
+                    <a href="affiliate.html">Affiliate</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="main-menu-two__right">
+                <div class="main-menu-two__search-cart-box">
+                  <div class="main-menu-two__search-box">
+                    <a
+                      href="#"
+                      class="main-menu-two__search search-toggler icon-magnifying-glass"
+                    ></a>
+                  </div>
+                  <div class="main-menu-two__cart-box">
+                    <a
+                      href="addtocart.html"
+                      class="main-menu-two__cart icon-shopping-cart"
+                    ></a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </nav>
+      </header>
 
-        <section class="py-5">
-            <div class="container">
-                <div class="stats-grid wow fadeInUp" data-wow-delay="100ms">
-                    <div class="stat-item">
-                        <div class="stat-number">25%</div>
-                        <h5>Commission Rate</h5>
-                        <p>Industry-leading commission on all sales</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">$150</div>
-                        <h5>Average Order Value</h5>
-                        <p>High-value luxury products</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">90</div>
-                        <h5>Cookie Duration</h5>
-                        <p>Days to earn commission</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <h5>Support</h5>
-                        <p>Dedicated affiliate support</p>
-                    </div>
-                </div>
+      <div class="stricky-header stricked-menu main-menu main-menu-two">
+        <div class="sticky-header__content"></div>
+        <!-- /.sticky-header__content -->
+      </div>
+      <!-- /.stricky-header -->
+
+      <section class="page-header">
+        <div
+          class="page-header__bg"
+          style="
+            background-image: url(assets/images/backgrounds/page-header-bg.jpg);
+          "
+          loading="lazy"
+        ></div>
+        <div class="container">
+          <div class="page-header__inner">
+            <h1
+              class="display-4 fw-bold mb-4 wow fadeInUp"
+              data-wow-delay="100ms"
+              style="color: white; padding-top: 120px"
+            >
+              Join Our Premium Affiliate Program
+            </h1>
+            <p
+              class="lead mb-5 wow fadeInUp"
+              data-wow-delay="200ms"
+              style="color: white"
+            >
+              Partner with DermaVeritas and earn generous commissions promoting
+              the finest luxury skincare products. Turn your passion for beauty
+              into a profitable business.
+            </p>
+            <div
+              class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-items-center gap-3"
+            >
+              <a href="#commission-details" class="cta-button"
+                >View Commission Rates</a
+              >
+              <a href="#join-now" class="cta-button">Join Now</a>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="commission-details" class="py-5 bg-light">
-            <div class="container">
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-5 fw-bold mb-4 wow fadeInUp" data-wow-delay="100ms">
-                            Commission Structure
-                        </h2>
-                        <p class="lead wow fadeInUp" data-wow-delay="200ms">
-                            We offer competitive commission rates that reward your marketing efforts
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="commission-card wow fadeInUp" data-wow-delay="100ms">
-                            <div class="commission-percentage">25%</div>
-                            <div class="commission-type">Standard Products</div>
-                            <p>Earn 25% commission on all regular skincare products including cleansers, moisturizers,
-                                and serums.</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i>All facial products</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Body care items</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Gift sets</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="commission-card wow fadeInUp" data-wow-delay="200ms">
-                            <div class="commission-percentage">30%</div>
-                            <div class="commission-type">Premium Collections</div>
-                            <p>Higher commission rate for our luxury premium collections and limited edition products.
-                            </p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i>Anti-aging collections</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Limited editions</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Professional treatments</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="commission-card wow fadeInUp" data-wow-delay="300ms">
-                            <div class="commission-percentage">35%</div>
-                            <div class="commission-type">VIP Tier</div>
-                            <p>Exclusive commission rate for top-performing affiliates with consistent high sales
-                                volume.</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i>$5,000+ monthly sales</li>
-                                <li><i class="fas fa-check text-success me-2"></i>All product categories</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Priority support</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+      <section class="py-5">
+        <div class="container">
+          <div class="stats-grid wow fadeInUp" data-wow-delay="100ms">
+            <div class="stat-item">
+              <div class="stat-number">25%</div>
+              <h5>Commission Rate</h5>
+              <p>Industry-leading commission on all sales</p>
             </div>
-        </section>
-
-        <section class="py-5">
-            <div class="container">
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-5 fw-bold mb-4 wow fadeInUp" data-wow-delay="100ms">
-                            Why Choose Our Affiliate Program?
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 mb-4">
-                        <div class="benefit-item wow fadeInUp" data-wow-delay="100ms">
-                            <div class="benefit-icon">
-                                <i class="fas fa-dollar-sign"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-2">High Commission Rates</h5>
-                                <p class="mb-0">Industry-leading commission rates starting at 25% with opportunities to
-                                    earn up to 35%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="benefit-item wow fadeInUp" data-wow-delay="200ms">
-                            <div class="benefit-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-2">90-Day Cookie Duration</h5>
-                                <p class="mb-0">Long cookie duration ensures you get credited for sales even if
-                                    customers purchase weeks later</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="benefit-item wow fadeInUp" data-wow-delay="300ms">
-                            <div class="benefit-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-2">Real-Time Analytics</h5>
-                                <p class="mb-0">Track your performance with detailed analytics and reporting through our
-                                    affiliate dashboard</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="benefit-item wow fadeInUp" data-wow-delay="400ms">
-                            <div class="benefit-icon">
-                                <i class="fas fa-images"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-2">Marketing Materials</h5>
-                                <p class="mb-0">Access to high-quality banners, product images, and promotional content
-                                    to boost your conversions</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="benefit-item wow fadeInUp" data-wow-delay="500ms">
-                            <div class="benefit-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-2">Dedicated Support</h5>
-                                <p class="mb-0">Personal affiliate manager and 24/7 support to help you maximize your
-                                    earnings</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="benefit-item wow fadeInUp" data-wow-delay="600ms">
-                            <div class="benefit-icon">
-                                <i class="fas fa-money-check"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-2">Weekly Payments</h5>
-                                <p class="mb-0">Fast and reliable weekly payments via PayPal, bank transfer, or check
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat-item">
+              <div class="stat-number">$150</div>
+              <h5>Average Order Value</h5>
+              <p>High-value luxury products</p>
             </div>
-        </section>
-
-
-        <section class="py-5 bg-light">
-            <div class="container">
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-5 fw-bold mb-4 wow fadeInUp" data-wow-delay="100ms">
-                            How to Get Started
-                        </h2>
-                        <p class="lead wow fadeInUp" data-wow-delay="200ms">
-                            Join our affiliate program in just 3 simple steps
-                        </p>
-                    </div>
-                </div>
-
-                <div class="process-steps">
-                    <div class="process-step wow fadeInUp" data-wow-delay="100ms">
-                        <div class="step-number">1</div>
-                        <h4 class="mb-3">Apply to Join</h4>
-                        <p>Click the "Join Now" button and fill out our simple application form through our Impact
-                            platform</p>
-                    </div>
-
-                    <div class="process-step wow fadeInUp" data-wow-delay="200ms">
-                        <div class="step-number">2</div>
-                        <h4 class="mb-3">Get Approved</h4>
-                        <p>Our team will review your application and approve qualified affiliates within 24-48 hours</p>
-                    </div>
-
-                    <div class="process-step wow fadeInUp" data-wow-delay="300ms">
-                        <div class="step-number">3</div>
-                        <h4 class="mb-3">Start Earning</h4>
-                        <p>Access your affiliate dashboard, get your unique links, and start promoting our products to
-                            earn commissions</p>
-                    </div>
-                </div>
+            <div class="stat-item">
+              <div class="stat-number">90</div>
+              <h5>Cookie Duration</h5>
+              <p>Days to earn commission</p>
             </div>
-        </section>
-
-        <section class="py-5">
-            <div class="container">
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-5 fw-bold mb-4 wow fadeInUp" data-wow-delay="100ms">
-                            Frequently Asked Questions
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="faq-item wow fadeInUp" data-wow-delay="100ms">
-                            <div class="faq-question">How much can I earn as an affiliate?</div>
-                            <div class="faq-answer">
-                                Your earnings depend on your marketing efforts and audience. With our <span
-                                    class="highlight-text">25-35% commission rates</span> and an average order value of
-                                $150, top affiliates earn $5,000+ monthly.
-                            </div>
-                        </div>
-
-                        <div class="faq-item wow fadeInUp" data-wow-delay="200ms">
-                            <div class="faq-question">When and how do I get paid?</div>
-                            <div class="faq-answer">
-                                We pay weekly via PayPal, direct bank transfer, or check. There's a minimum payout
-                                threshold of $100, and payments are processed every Friday for the previous week's
-                                confirmed sales.
-                            </div>
-                        </div>
-
-                        <div class="faq-item wow fadeInUp" data-wow-delay="300ms">
-                            <div class="faq-question">Do I need a website to join?</div>
-                            <div class="faq-answer">
-                                While having a website helps, it's not required. You can promote our products through
-                                social media, email marketing, YouTube, or any other marketing channel that complies
-                                with our terms.
-                            </div>
-                        </div>
-
-                        <div class="faq-item wow fadeInUp" data-wow-delay="400ms">
-                            <div class="faq-question">What marketing materials do you provide?</div>
-                            <div class="faq-answer">
-                                We provide high-quality banners, product images, email templates, social media content,
-                                and detailed product information. All materials are professionally designed to maximize
-                                your conversion rates.
-                            </div>
-                        </div>
-
-                        <div class="faq-item wow fadeInUp" data-wow-delay="500ms">
-                            <div class="faq-question">Is there a fee to join the program?</div>
-                            <div class="faq-answer">
-                                No, joining our affiliate program is completely free. There are no setup fees, monthly
-                                fees, or any other charges. You only earn money when you generate sales.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <h5>Support</h5>
+              <p>Dedicated affiliate support</p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="join-now" class="cta-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-5 fw-bold mb-4 wow fadeInUp" data-wow-delay="100ms">
-                            Ready to Start Earning?
-                        </h2>
-                        <p class="lead mb-5 wow fadeInUp" data-wow-delay="200ms">
-                            Join thousands of successful affiliates who are already earning generous commissions
-                            promoting premium skincare products.
-                        </p>
-                        <div class="wow fadeInUp" data-wow-delay="300ms">
-                            <a href="https://impact.com/advertiser/dermaveritas" target="_blank"
-                                class="cta-button me-3">
-                                <i class="fas fa-external-link-alt me-2"></i>Join via Impact Platform
-                            </a>
-                            <a href="#commission-details" class="cta-button">
-                                <i class="fas fa-info-circle me-2"></i>Learn More
-                            </a>
-                        </div>
-                        <p class="mt-4 mb-0 opacity-75">
-                            <small>Managed through Impact.com - Industry's leading affiliate platform</small>
-                        </p>
-                    </div>
+      <section id="commission-details" class="py-5 bg-light">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2
+                class="display-5 fw-bold mb-4 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                Commission Structure
+              </h2>
+              <p class="lead wow fadeInUp" data-wow-delay="200ms">
+                We offer competitive commission rates that reward your marketing
+                efforts
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="commission-card wow fadeInUp" data-wow-delay="100ms">
+                <div class="commission-percentage">25%</div>
+                <div class="commission-type">Standard Products</div>
+                <p>
+                  Earn 25% commission on all regular skincare products including
+                  cleansers, moisturizers, and serums.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>All facial
+                    products
+                  </li>
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>Body care
+                    items
+                  </li>
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>Gift sets
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="commission-card wow fadeInUp" data-wow-delay="200ms">
+                <div class="commission-percentage">30%</div>
+                <div class="commission-type">Premium Collections</div>
+                <p>
+                  Higher commission rate for our luxury premium collections and
+                  limited edition products.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>Anti-aging
+                    collections
+                  </li>
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>Limited
+                    editions
+                  </li>
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>Professional
+                    treatments
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="commission-card wow fadeInUp" data-wow-delay="300ms">
+                <div class="commission-percentage">35%</div>
+                <div class="commission-type">VIP Tier</div>
+                <p>
+                  Exclusive commission rate for top-performing affiliates with
+                  consistent high sales volume.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>$5,000+
+                    monthly sales
+                  </li>
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>All product
+                    categories
+                  </li>
+                  <li>
+                    <i class="fas fa-check text-success me-2"></i>Priority
+                    support
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2
+                class="display-5 fw-bold mb-4 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                Why Choose Our Affiliate Program?
+              </h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <div class="benefit-item wow fadeInUp" data-wow-delay="100ms">
+                <div class="benefit-icon">
+                  <i class="fas fa-dollar-sign"></i>
                 </div>
-            </div>
-        </section>
-
-        <!--Site Footer Start-->
-        <footer class="site-footer">
-            <div class="site-footer__shape-1 float-bob-x">
-                <img src="assets/images/shapes/site-footer-shape-1.png" alt="">
-            </div>
-            <div class="site-footer__shape-2 float-bob-y">
-                <img src="assets/images/shapes/site-footer-shape-2.png" alt="">
-            </div>
-            <div class="container">
-                <div class="site-footer__top">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                            <div class="footer-widget__column footer-widget__contact-box">
-                                <div class="footer-widget__contact">
-                                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
-                                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
-                                </div>
-                                <div class="footer-widget__contact-form-box">
-                                    <form class="footer-widget__contact-form mc-form" data-url="MC_FORM_URL"
-                                        novalidate="novalidate">
-                                        <div class="footer-widget__contact-form-input-box">
-                                            <input type="email" placeholder="Email address" name="EMAIL">
-                                            <button type="submit" class="footer-widget__newsletter-btn"><img
-                                                    src="assets/images/icon/paper-plan-icon.png" alt=""></button>
-                                        </div>
-                                    </form>
-                                    <div class="mc-form__response"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                            <div class="footer-widget__column footer-widget__links">
-                                <div class="footer-widget__title-box">
-                                    <h4 class="footer-widget__title">Links</h4>
-                                </div>
-                                <ul class="footer-widget__links-list list-unstyled">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                    <li><a href="membership.html">Membership</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="footer-widget__column footer-widget__timing">
-                                <div class="footer-widget__title-box">
-                                    <h4 class="footer-widget__title">Timing</h4>
-                                </div>
-                                <ul class="footer-widget__timing-list list-unstyled">
-                                    <li>Monday to Friday: 8:00 to 19:00</li>
-                                    <li>Saturday: 8:00 to 3:30</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                            <div class="footer-widget__column footer-widget__social-box">
-                                <div class="site-footer__social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                                <p>Unit 2
-                                    Oak tree rise,
-                                    Codsall,
-                                    WV8 1DT
-                                    <br> United Kingdom
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <h5 class="mb-2">High Commission Rates</h5>
+                  <p class="mb-0">
+                    Industry-leading commission rates starting at 25% with
+                    opportunities to earn up to 35%
+                  </p>
                 </div>
-                <div class="site-footer__bottom">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="site-footer__bottom-inner">
-                                <p class="site-footer__bottom-text">© Copyright 2025 by <a href="#">dermaveritas.com</a>
-                                </p>
-                                <ul class="list-unstyled site-footer__bottom-menu">
-                                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </footer>
-        <!--Site Footer End-->
 
-    </div><!-- /.page-wrapper -->
+            <div class="col-lg-6 mb-4">
+              <div class="benefit-item wow fadeInUp" data-wow-delay="200ms">
+                <div class="benefit-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h5 class="mb-2">90-Day Cookie Duration</h5>
+                  <p class="mb-0">
+                    Long cookie duration ensures you get credited for sales even
+                    if customers purchase weeks later
+                  </p>
+                </div>
+              </div>
+            </div>
 
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
-        <!-- /.mobile-nav__overlay -->
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close mobile-nav__toggler">
-                <i class="fa fa-times"></i>
-            </span>
+            <div class="col-lg-6 mb-4">
+              <div class="benefit-item wow fadeInUp" data-wow-delay="300ms">
+                <div class="benefit-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div>
+                  <h5 class="mb-2">Real-Time Analytics</h5>
+                  <p class="mb-0">
+                    Track your performance with detailed analytics and reporting
+                    through our affiliate dashboard
+                  </p>
+                </div>
+              </div>
+            </div>
 
-            <div class="logo-box">
-                <a href="index.html" aria-label="Derma Veritas logo">
-                    <img src="assets/images/resources/logo-3.svg" width="90" alt="Derma Veritas Logo" />
+            <div class="col-lg-6 mb-4">
+              <div class="benefit-item wow fadeInUp" data-wow-delay="400ms">
+                <div class="benefit-icon">
+                  <i class="fas fa-images"></i>
+                </div>
+                <div>
+                  <h5 class="mb-2">Marketing Materials</h5>
+                  <p class="mb-0">
+                    Access to high-quality banners, product images, and
+                    promotional content to boost your conversions
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+              <div class="benefit-item wow fadeInUp" data-wow-delay="500ms">
+                <div class="benefit-icon">
+                  <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                  <h5 class="mb-2">Dedicated Support</h5>
+                  <p class="mb-0">
+                    Personal affiliate manager and 24/7 support to help you
+                    maximize your earnings
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+              <div class="benefit-item wow fadeInUp" data-wow-delay="600ms">
+                <div class="benefit-icon">
+                  <i class="fas fa-money-check"></i>
+                </div>
+                <div>
+                  <h5 class="mb-2">Weekly Payments</h5>
+                  <p class="mb-0">
+                    Fast and reliable weekly payments via PayPal, bank transfer,
+                    or check
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5 bg-light">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2
+                class="display-5 fw-bold mb-4 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                How to Get Started
+              </h2>
+              <p class="lead wow fadeInUp" data-wow-delay="200ms">
+                Join our affiliate program in just 3 simple steps
+              </p>
+            </div>
+          </div>
+
+          <div class="process-steps">
+            <div class="process-step wow fadeInUp" data-wow-delay="100ms">
+              <div class="step-number">1</div>
+              <h4 class="mb-3">Apply to Join</h4>
+              <p>
+                Click the "Join Now" button and fill out our simple application
+                form through our Impact platform
+              </p>
+            </div>
+
+            <div class="process-step wow fadeInUp" data-wow-delay="200ms">
+              <div class="step-number">2</div>
+              <h4 class="mb-3">Get Approved</h4>
+              <p>
+                Our team will review your application and approve qualified
+                affiliates within 24-48 hours
+              </p>
+            </div>
+
+            <div class="process-step wow fadeInUp" data-wow-delay="300ms">
+              <div class="step-number">3</div>
+              <h4 class="mb-3">Start Earning</h4>
+              <p>
+                Access your affiliate dashboard, get your unique links, and
+                start promoting our products to earn commissions
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5">
+        <div class="container">
+          <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+              <h2
+                class="display-5 fw-bold mb-4 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                Frequently Asked Questions
+              </h2>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="faq-item wow fadeInUp" data-wow-delay="100ms">
+                <div class="faq-question">
+                  How much can I earn as an affiliate?
+                </div>
+                <div class="faq-answer">
+                  Your earnings depend on your marketing efforts and audience.
+                  With our
+                  <span class="highlight-text">25-35% commission rates</span>
+                  and an average order value of $150, top affiliates earn
+                  $5,000+ monthly.
+                </div>
+              </div>
+
+              <div class="faq-item wow fadeInUp" data-wow-delay="200ms">
+                <div class="faq-question">When and how do I get paid?</div>
+                <div class="faq-answer">
+                  We pay weekly via PayPal, direct bank transfer, or check.
+                  There's a minimum payout threshold of $100, and payments are
+                  processed every Friday for the previous week's confirmed
+                  sales.
+                </div>
+              </div>
+
+              <div class="faq-item wow fadeInUp" data-wow-delay="300ms">
+                <div class="faq-question">Do I need a website to join?</div>
+                <div class="faq-answer">
+                  While having a website helps, it's not required. You can
+                  promote our products through social media, email marketing,
+                  YouTube, or any other marketing channel that complies with our
+                  terms.
+                </div>
+              </div>
+
+              <div class="faq-item wow fadeInUp" data-wow-delay="400ms">
+                <div class="faq-question">
+                  What marketing materials do you provide?
+                </div>
+                <div class="faq-answer">
+                  We provide high-quality banners, product images, email
+                  templates, social media content, and detailed product
+                  information. All materials are professionally designed to
+                  maximize your conversion rates.
+                </div>
+              </div>
+
+              <div class="faq-item wow fadeInUp" data-wow-delay="500ms">
+                <div class="faq-question">
+                  Is there a fee to join the program?
+                </div>
+                <div class="faq-answer">
+                  No, joining our affiliate program is completely free. There
+                  are no setup fees, monthly fees, or any other charges. You
+                  only earn money when you generate sales.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="join-now" class="cta-section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+              <h2
+                class="display-5 fw-bold mb-4 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                Ready to Start Earning?
+              </h2>
+              <p class="lead mb-5 wow fadeInUp" data-wow-delay="200ms">
+                Join thousands of successful affiliates who are already earning
+                generous commissions promoting premium skincare products.
+              </p>
+              <div class="wow fadeInUp" data-wow-delay="300ms">
+                <a
+                  href="https://impact.com/advertiser/dermaveritas"
+                  target="_blank"
+                  class="cta-button me-3"
+                >
+                  <i class="fas fa-external-link-alt me-2"></i>Join via Impact
+                  Platform
                 </a>
+                <a href="#commission-details" class="cta-button">
+                  <i class="fas fa-info-circle me-2"></i>Learn More
+                </a>
+              </div>
+              <p class="mt-4 mb-0 opacity-75">
+                <small
+                  >Managed through Impact.com - Industry's leading affiliate
+                  platform</small
+                >
+              </p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <!-- Dynamic Menu Items -->
-            <div class="mobile-nav__container"></div>
-
-            <!-- Contact Info -->
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
-                </li>
-                <li>
-                    <i class="fa fa-phone-alt"></i>
-                    <a href="#">+92-7741-340615</a>
-                </li>
-            </ul>
-
-            <!-- Social Icons -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
+      <!--Site Footer Start-->
+      <footer class="site-footer">
+        <div class="site-footer__shape-1 float-bob-x">
+          <img src="assets/images/shapes/site-footer-shape-1.png" alt="" />
+        </div>
+        <div class="site-footer__shape-2 float-bob-y">
+          <img src="assets/images/shapes/site-footer-shape-2.png" alt="" />
+        </div>
+        <div class="container">
+          <div class="site-footer__top">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="100ms"
+              >
+                <div class="footer-widget__column footer-widget__contact-box">
+                  <div class="footer-widget__contact">
+                    <a href="mailto:info@dermaveritas.com"
+                      >info@dermaveritas.com</a
+                    >
+                    <a href="tel:+92-7741-340615">+92-7741-340615</a>
+                  </div>
+                  <div class="footer-widget__contact-form-box">
+                    <form
+                      class="footer-widget__contact-form mc-form"
+                      data-url="MC_FORM_URL"
+                      novalidate="novalidate"
+                    >
+                      <div class="footer-widget__contact-form-input-box">
+                        <input
+                          type="email"
+                          placeholder="Email address"
+                          name="EMAIL"
+                        />
+                        <button
+                          type="submit"
+                          class="footer-widget__newsletter-btn"
+                        >
+                          <img
+                            src="assets/images/icon/paper-plan-icon.png"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                    </form>
+                    <div class="mc-form__response"></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="200ms"
+              >
+                <div class="footer-widget__column footer-widget__links">
+                  <div class="footer-widget__title-box">
+                    <h4 class="footer-widget__title">Links</h4>
+                  </div>
+                  <ul class="footer-widget__links-list list-unstyled">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="300ms"
+              >
+                <div class="footer-widget__column footer-widget__timing">
+                  <div class="footer-widget__title-box">
+                    <h4 class="footer-widget__title">Timing</h4>
+                  </div>
+                  <ul class="footer-widget__timing-list list-unstyled">
+                    <li>Monday to Friday: 8:00 to 19:00</li>
+                    <li>Saturday: 8:00 to 3:30</li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="400ms"
+              >
+                <div class="footer-widget__column footer-widget__social-box">
+                  <div class="site-footer__social">
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <p>
+                    Unit 2 Oak tree rise, Codsall, WV8 1DT <br />
+                    United Kingdom
+                  </p>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="site-footer__bottom">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="site-footer__bottom-inner">
+                  <p class="site-footer__bottom-text">
+                    © Copyright 2025 by <a href="#">dermaveritas.com</a>
+                  </p>
+                  <ul class="list-unstyled site-footer__bottom-menu">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /.mobile-nav__content -->
+      </footer>
+      <!--Site Footer End-->
+    </div>
+    <!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+      <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+      <!-- /.mobile-nav__overlay -->
+      <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler">
+          <i class="fa fa-times"></i>
+        </span>
+
+        <div class="logo-box">
+          <a href="index.html" aria-label="Derma Veritas logo">
+            <img
+              src="assets/images/resources/logo-3.svg"
+              width="90"
+              alt="Derma Veritas Logo"
+            />
+          </a>
+        </div>
+
+        <!-- Dynamic Menu Items -->
+        <div class="mobile-nav__container"></div>
+
+        <!-- Contact Info -->
+        <ul class="mobile-nav__contact list-unstyled">
+          <li>
+            <i class="fa fa-envelope"></i>
+            <a href="mailto:info@dermaveritas.com">info@dermaveritas.com</a>
+          </li>
+          <li>
+            <i class="fa fa-phone-alt"></i>
+            <a href="#">+92-7741-340615</a>
+          </li>
+        </ul>
+
+        <!-- Social Icons -->
+        <div class="mobile-nav__top">
+          <div class="mobile-nav__social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /.mobile-nav__content -->
     </div>
     <!-- /.mobile-nav__wrapper -->
 
     <!-- Search Popup -->
     <div class="search-popup">
-        <div class="search-popup__overlay search-toggler"></div>
-        <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">Search here</label>
-                <input type="text" id="search" placeholder="Search Here..." />
-                <button type="submit" aria-label="search submit" class="thm-btn">
-                    <i class="icon-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
+      <div class="search-popup__overlay search-toggler"></div>
+      <div class="search-popup__content">
+        <form action="#">
+          <label for="search" class="sr-only">Search here</label>
+          <input type="text" id="search" placeholder="Search Here..." />
+          <button type="submit" aria-label="search submit" class="thm-btn">
+            <i class="icon-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
     </div>
     <!-- /.search-popup -->
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"
+      ><i class="fa fa-angle-up"></i
+    ></a>
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -629,69 +819,67 @@
     <script src="assets/js/mellis.js"></script>
 
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
 
-        // Add animation to stats on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      // Add animation to stats on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumbers = entry.target.querySelectorAll('.stat-number');
-                    statNumbers.forEach(stat => {
-                        const finalValue = stat.textContent.trim();
-                        const isPercentage = finalValue.includes('%');
-                        const isDollar = finalValue.includes('$');
-                        const isSpecial = finalValue === '24/7';
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll(".stat-number");
+            statNumbers.forEach((stat) => {
+              const finalValue = stat.textContent.trim();
+              const isPercentage = finalValue.includes("%");
+              const isDollar = finalValue.includes("$");
+              const isSpecial = finalValue === "24/7";
 
-                        if (isSpecial) {
-                            stat.textContent = '24/7';
-                            return;
-                        }
+              if (isSpecial) {
+                stat.textContent = "24/7";
+                return;
+              }
 
-                        const numValue = parseInt(finalValue.replace(/[^\d]/g, ''), 10);
-                        let currentValue = 0;
-                        const increment = numValue / 50;
+              const numValue = parseInt(finalValue.replace(/[^\d]/g, ""), 10);
+              let currentValue = 0;
+              const increment = numValue / 50;
 
-                        const counter = setInterval(() => {
-                            currentValue += increment;
-                            if (currentValue >= numValue) {
-                                currentValue = numValue;
-                                clearInterval(counter);
-                            }
-
-                            let displayValue = Math.floor(currentValue);
-                            if (isDollar) displayValue = `$${displayValue}`;
-                            if (isPercentage) displayValue = `${displayValue}%`;
-
-                            stat.textContent = displayValue;
-                        }, 50);
-                    });
-                    observer.unobserve(entry.target);
+              const counter = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= numValue) {
+                  currentValue = numValue;
+                  clearInterval(counter);
                 }
-            });
-        }, observerOptions);
 
-        document.querySelectorAll('.stats-grid').forEach(section => {
-            observer.observe(section);
+                let displayValue = Math.floor(currentValue);
+                if (isDollar) displayValue = `$${displayValue}`;
+                if (isPercentage) displayValue = `${displayValue}%`;
+
+                stat.textContent = displayValue;
+              }, 50);
+            });
+            observer.unobserve(entry.target);
+          }
         });
+      }, observerOptions);
+
+      document.querySelectorAll(".stats-grid").forEach((section) => {
+        observer.observe(section);
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
