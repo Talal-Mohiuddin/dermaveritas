@@ -12,6 +12,8 @@ import Productrouter from "./routes/product-route.js";
 import Blogrouter from "./routes/blog-route.js";
 import VerifyTokenRouter from "./routes/verifyToken-route.js";
 import cookieParser from "cookie-parser";
+import { handleStripeWebhook } from "./controllers/stripe.js";
+
 
 dotenv.config();
 
@@ -43,6 +45,11 @@ app.use("/api/cart", Cartrouter);
 app.use("/api/products", Productrouter);
 app.use("/api/blog", Blogrouter);
 app.use("/api", VerifyTokenRouter);
+app.post(
+  "/stripe/webhook",
+  express.raw({ type: "application/json" }),
+  handleStripeWebhook
+);
 
 // Serve index.html for non-API routes
 app.get(/^\/(?!api).*/, (req, res) => {

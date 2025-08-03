@@ -23,23 +23,19 @@
       href="assets/images/favicons/favicon-16x16.png"
     />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="mellis HTML 5 Template " />
+    <meta name="description" content="DermaVeritas Shopping Cart" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
       rel="stylesheet"
@@ -451,7 +447,6 @@
                       <li><a href="membership.html">Membership</a></li>
                     </ul>
                   </li>
-
                   <li class="dropdown">
                     <a href="products.html">Shop</a>
                   </li>
@@ -494,7 +489,7 @@
         <div
           class="page-header__bg"
           style="
-            background-image: url(assets/images/backgrounds/page-header-bg.jpg);
+            background-image: url(assets/images/backgrounds/page-header-bg.webp);
           "
         ></div>
         <div class="container">
@@ -517,6 +512,12 @@
             <h3>Your cart is empty</h3>
             <p>Add some products or memberships to get started</p>
           </div>
+          <div id="loading-message" class="text-center" style="display: none;">
+            <p>Loading cart...</p>
+          </div>
+          <div id="error-message" class="text-center text-danger" style="display: none;">
+            <p>Failed to load cart. Please try again later.</p>
+          </div>
         </div>
 
         <div class="cart-summary" id="cart-summary">
@@ -533,7 +534,7 @@
             <span class="summary-value" id="total">$0.00</span>
           </div>
 
-          <button class="checkout-btn" id="checkout-btn" href="checkout.html">
+          <button class="checkout-btn" id="checkout-btn" disabled>
             Proceed to Checkout
           </button>
         </div>
@@ -543,151 +544,6 @@
         </div>
       </div>
 
-      <script>
-        // Sample cart data - mix of products and memberships
-        let cartData = [
-          {
-            id: 1,
-            name: "Vitamin C Brightening Serum",
-            type: "product",
-            price: 89.99,
-            quantity: 2,
-          },
-          {
-            id: 2,
-            name: "Premium Dermatology Membership",
-            type: "membership",
-            price: 199.99,
-            quantity: 1,
-          },
-          {
-            id: 3,
-            name: "Retinol Night Treatment",
-            type: "product",
-            price: 129.99,
-            quantity: 1,
-          },
-          {
-            id: 4,
-            name: "Hyaluronic Acid Moisturizer",
-            type: "product",
-            price: 67.99,
-            quantity: 3,
-          },
-          {
-            id: 5,
-            name: "Monthly Consultation Package",
-            type: "membership",
-            price: 99.99,
-            quantity: 1,
-          },
-        ];
-
-        function renderCart() {
-          const cartItemsContainer = document.getElementById("cart-items");
-          const cartEmpty = document.getElementById("cart-empty");
-          const cartSummary = document.getElementById("cart-summary");
-
-          if (cartData.length === 0) {
-            cartEmpty.style.display = "block";
-            cartSummary.style.display = "none";
-            return;
-          }
-
-          cartEmpty.style.display = "none";
-          cartSummary.style.display = "block";
-
-          cartItemsContainer.innerHTML = cartData
-            .map(
-              (item) => `
-                <div class="cart-item">
-                    <div class="item-info">
-                        <div class="item-name">${item.name}</div>
-                        <div class="item-type">${item.type}</div>
-                        <div class="item-price">$${item.price.toFixed(
-                          2
-                        )} each</div>
-                    </div>
-                    <div class="item-controls">
-                        ${
-                          item.type === "product"
-                            ? `
-                            <div class="quantity-control">
-                                <button class="quantity-btn" onclick="updateQuantity(${
-                                  item.id
-                                }, -1)" ${
-                                item.quantity <= 1 ? "disabled" : ""
-                              }>-</button>
-                                <span class="quantity-display">${
-                                  item.quantity
-                                }</span>
-                                <button class="quantity-btn" onclick="updateQuantity(${
-                                  item.id
-                                }, 1)">+</button>
-                            </div>
-                        `
-                            : '<div class="quantity-control"><span class="quantity-display">1 license</span></div>'
-                        }
-                        <div class="item-subtotal">$${(
-                          item.price * item.quantity
-                        ).toFixed(2)}</div>
-                        <button class="remove-btn" onclick="removeItem(${
-                          item.id
-                        })" title="Remove item">×</button>
-                    </div>
-                </div>
-            `
-            )
-            .join("");
-
-          updateSummary();
-        }
-
-        function updateQuantity(itemId, change) {
-          const item = cartData.find((i) => i.id === itemId);
-          if (item && item.type === "product") {
-            item.quantity = Math.max(1, item.quantity + change);
-            renderCart();
-          }
-        }
-
-        function removeItem(itemId) {
-          cartData = cartData.filter((item) => item.id !== itemId);
-          renderCart();
-        }
-
-        function updateSummary() {
-          const subtotal = cartData.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          );
-          const tax = subtotal * 0.08; // 8% tax
-          const total = subtotal + tax;
-
-          document.getElementById(
-            "subtotal"
-          ).textContent = `$${subtotal.toFixed(2)}`;
-          document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
-          document.getElementById("total").textContent = `$${total.toFixed(2)}`;
-
-          const checkoutBtn = document.getElementById("checkout-btn");
-          checkoutBtn.disabled = cartData.length === 0;
-        }
-
-        document
-          .getElementById("checkout-btn")
-          .addEventListener("click", function () {
-            if (cartData.length > 0) {
-              alert("Proceeding to checkout...");
-              window.location.href = "checkout.html"; // Redirect to checkout page
-            } else {
-              alert("Your cart is empty.");
-            }
-          });
-
-        // Initialize cart on page load
-        renderCart();
-      </script>
       <!--Site Footer Start-->
       <footer class="site-footer">
         <div class="site-footer__shape-1 float-bob-x">
@@ -901,6 +757,222 @@
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
 
     <!-- template js -->
-    <script src="assets/js//mellis.js"></script>
+    <script src="assets/js/mellis.js"></script>
+
+    <script>
+      // Cache for cart data
+      let cachedCart = [];
+
+      async function fetchCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartEmpty = document.getElementById('cart-empty');
+        const cartSummary = document.getElementById('cart-summary');
+        const loadingMessage = document.getElementById('loading-message');
+        const errorMessage = document.getElementById('error-message');
+
+        try {
+          loadingMessage.style.display = 'block';
+          errorMessage.style.display = 'none';
+          cartEmpty.style.display = 'none';
+          cartSummary.style.display = 'none';
+
+          const response = await fetch('http://localhost:3000/api/cart/getcart', {
+            method: 'GET',
+            credentials: 'include',
+          });
+
+          const data = await response.json();
+          loadingMessage.style.display = 'none';
+
+          if (response.ok && data.success) {
+            cachedCart = data.cart.Products || [];
+            renderCart();
+          } else {
+            cartEmpty.style.display = 'block';
+            document.getElementById('checkout-btn').disabled = true;
+          }
+        } catch (error) {
+          console.error('Error fetching cart:', error);
+          loadingMessage.style.display = 'none';
+          errorMessage.style.display = 'block';
+          if (error.status === 401) {
+            window.location.href = 'login.html';
+          }
+        }
+      }
+
+      function renderCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartEmpty = document.getElementById('cart-empty');
+        const cartSummary = document.getElementById('cart-summary');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        if (cachedCart.length === 0) {
+          cartEmpty.style.display = 'block';
+          cartSummary.style.display = 'none';
+          checkoutBtn.disabled = true;
+          cartItemsContainer.innerHTML = '';
+          return;
+        }
+
+        cartEmpty.style.display = 'none';
+        cartSummary.style.display = 'block';
+        checkoutBtn.disabled = false;
+
+        cartItemsContainer.innerHTML = cachedCart
+          .map(
+            (item) => `
+              <div class="cart-item" id="cart-item-${item.productId._id}">
+                <div class="item-info">
+                  <div class="item-name">${item.productId.name}</div>
+                  <div class="item-type">${item.productId.type || 'product'}</div>
+                  <div class="item-price">$${item.productId.price.toFixed(2)} each</div>
+                </div>
+                <div class="item-controls">
+                  ${
+                    item.productId.type === 'product'
+                      ? `
+                      <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity('${item.productId._id}', ${item.quantity - 1})" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                        <span class="quantity-display">${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity('${item.productId._id}', ${item.quantity + 1})">+</button>
+                      </div>
+                    `
+                      : '<div class="quantity-control"><span class="quantity-display">1 license</span></div>'
+                  }
+                  <div class="item-subtotal">$${(item.productId.price * item.quantity).toFixed(2)}</div>
+                  <button class="remove-btn" onclick="removeItem('${item.productId._id}')" title="Remove item">×</button>
+                </div>
+              </div>
+            `
+          )
+          .join('');
+
+        updateSummary();
+      }
+
+      async function updateQuantity(productId, newQuantity) {
+        try {
+          const itemContainer = document.getElementById(`cart-item-${productId}`);
+          if (itemContainer) {
+            itemContainer.querySelector('.item-controls').innerHTML = '<p>Updating...</p>';
+          }
+
+          const endpoint = newQuantity === 0 || newQuantity < (cachedCart.find(item => item.productId._id === productId)?.quantity || 0) ? 'removefromcart' : 'addtocart';
+          const response = await fetch(`http://localhost:3000/api/cart/${endpoint}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              productId,
+              quantity: 1,
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          if (data.success) {
+            cachedCart = data.cart.Products || [];
+            renderCart();
+          }
+        } catch (error) {
+          console.error('Error updating quantity:', error);
+          if (error.status === 401) {
+            window.location.href = 'login.html';
+          }
+          renderCart(); // Re-render to restore previous state
+        }
+      }
+
+      async function removeItem(productId) {
+        try {
+          const itemContainer = document.getElementById(`cart-item-${productId}`);
+          if (itemContainer) {
+            itemContainer.querySelector('.item-controls').innerHTML = '<p>Removing...</p>';
+          }
+
+          const response = await fetch('http://localhost:3000/api/cart/removefromcart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              productId,
+              quantity: Number.MAX_SAFE_INTEGER, // Remove all instances
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          if (data.success) {
+            cachedCart = data.cart.Products || [];
+            renderCart();
+          }
+        } catch (error) {
+          console.error('Error removing item:', error);
+          if (error.status === 401) {
+            window.location.href = 'login.html';
+          }
+          renderCart(); // Re-render to restore previous state
+        }
+      }
+
+      function updateSummary() {
+        const subtotal = cachedCart.reduce(
+          (sum, item) => sum + item.productId.price * item.quantity,
+          0
+        );
+        const tax = subtotal * 0.08; // 8% tax
+        const total = subtotal + tax;
+
+        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+      }
+
+      async function proceedToCheckout() {
+        try {
+          const checkoutBtn = document.getElementById('checkout-btn');
+          checkoutBtn.disabled = true;
+          checkoutBtn.textContent = 'Processing...';
+
+          const response = await fetch('http://localhost:3000/api/cart/buycart', {
+            method: 'POST',
+            credentials: 'include',
+          });
+
+          const data = await response.json();
+          if (data.success && data.session.url) {
+            window.location.href = data.session.url; // Redirect to Stripe checkout
+          } else {
+            throw new Error('Failed to create checkout session');
+          }
+        } catch (error) {
+          console.error('Error during checkout:', error);
+          if (error.status === 401) {
+            window.location.href = 'login.html';
+          } else {
+            alert('Failed to proceed to checkout. Please try again.');
+          }
+          document.getElementById('checkout-btn').disabled = cachedCart.length === 0;
+          document.getElementById('checkout-btn').textContent = 'Proceed to Checkout';
+        }
+      }
+
+      // Initialize cart on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        fetchCart();
+        document.getElementById('checkout-btn').addEventListener('click', proceedToCheckout);
+      });
+    </script>
   </body>
 </html>

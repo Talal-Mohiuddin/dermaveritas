@@ -46,6 +46,10 @@ const userSchema = new Schema(
       enum: ["Veritas Glow", "Veritas Sculpt", "Veritas Prestige"],
       default: null,
     },
+    isBanned: {
+      type: Boolean,
+      default: false,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
