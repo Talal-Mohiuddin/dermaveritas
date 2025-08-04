@@ -9,7 +9,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2022-11-15",
   typescript: true,
@@ -287,6 +286,176 @@ const upgradePlan = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
+const getDashboardStats = catchAsyncErrors(async (req, res, next) => {
+  try {
+    // Get total users count
+    const totalUsers = await User.countDocuments({ role: "user" });
+
+    // Get new users in last 30 days
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const newUsers = await User.countDocuments({
+      role: "user",
+      createdAt: { $gte: thirtyDaysAgo },
+    });
+
+    // Get users by plan
+    const usersByPlan = await User.aggregate([
+      { $match: { role: "user", plan: { $ne: null } } },
+      { $group: { _id: "$plan", count: { $sum: 1 } } },
+    ]);
+
+    // Get banned users count
+    const bannedUsers = await User.countDocuments({ isBanned: true });
+
+    // Get recent users (last 5)
+    const recentUsers = await User.find({ role: "user" })
+      .select("name email createdAt plan")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.status(200).json({
+      success: true,
+      data: {
+        totalUsers,
+        newUsers,
+        usersByPlan,
+        bannedUsers,
+        recentUsers,
+      },
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Error fetching dashboard stats", 500));
+  }
+});
+
+const getProductStats = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const { Product } = await import("../models/product.model.js");
+
+    // Get total products count
+    const totalProducts = await Product.countDocuments();
+
+    // Get new products in last 30 days
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const newProducts = await Product.countDocuments({
+      createdAt: { $gte: thirtyDaysAgo },
+    });
+
+    // Get products by category
+    const productsByCategory = await Product.aggregate([
+      { $group: { _id: "$category", count: { $sum: 1 } } },
+    ]);
+
+    // Get low stock products (less than 10)
+    const lowStockProducts = await Product.countDocuments({
+      stockQuantity: { $lt: 10 },
+    });
+
+    // Get recent products (last 5)
+    const recentProducts = await Product.find()
+      .select("name category stockQuantity createdAt")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.status(200).json({
+      success: true,
+      data: {
+        totalProducts,
+        newProducts,
+        productsByCategory,
+        lowStockProducts,
+        recentProducts,
+      },
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Error fetching product stats", 500));
+  }
+});
+
+const getOrderStats = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const { Order } = await import("../models/order-model.js");
+
+    // Get total orders count
+    const totalOrders = await Order.countDocuments();
+
+    // Get orders in last 30 days
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const recentOrders = await Order.countDocuments({
+      createdAt: { $gte: thirtyDaysAgo },
+    });
+
+    // Get total revenue
+    const revenueData = await Order.aggregate([
+      { $group: { _id: null, totalRevenue: { $sum: "$totalAmount" } } },
+    ]);
+    const totalRevenue =
+      revenueData.length > 0 ? revenueData[0].totalRevenue : 0;
+
+    // Get recent orders (last 5)
+    const recentOrderDetails = await Order.find()
+      .populate("userId", "name email")
+      .populate("products.productId", "name price")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.status(200).json({
+      success: true,
+      data: {
+        totalOrders,
+        recentOrders,
+        totalRevenue,
+        recentOrderDetails,
+      },
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Error fetching order stats", 500));
+  }
+});
+
+const getBlogStats = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const { Blog } = await import("../models/blog-model.js");
+
+    // Get total blogs count
+    const totalBlogs = await Blog.countDocuments();
+
+    // Get published blogs count
+    const publishedBlogs = await Blog.countDocuments({ status: "published" });
+
+    // Get draft blogs count
+    const draftBlogs = await Blog.countDocuments({ status: "draft" });
+
+    // Get blogs by category
+    const blogsByCategory = await Blog.aggregate([
+      { $group: { _id: "$category", count: { $sum: 1 } } },
+    ]);
+
+    // Get recent blogs (last 5)
+    const recentBlogs = await Blog.find()
+      .populate("author", "name")
+      .select("title category status createdAt")
+      .sort({ createdAt: -1 })
+      .limit(5);
+
+    res.status(200).json({
+      success: true,
+      data: {
+        totalBlogs,
+        publishedBlogs,
+        draftBlogs,
+        blogsByCategory,
+        recentBlogs,
+      },
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Error fetching blog stats", 500));
+  }
+});
+
 export {
   registerUser,
   loginUser,
@@ -300,4 +469,8 @@ export {
   banUser,
   unbanUser,
   upgradePlan,
+  getDashboardStats,
+  getProductStats,
+  getOrderStats,
+  getBlogStats,
 };

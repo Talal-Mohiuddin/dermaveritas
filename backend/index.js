@@ -10,6 +10,7 @@ import Userrouter from "./routes/user-route.js";
 import Cartrouter from "./routes/cart-route.js";
 import Productrouter from "./routes/product-route.js";
 import Blogrouter from "./routes/blog-route.js";
+import Orderrouter from "./routes/order-route.js";
 import VerifyTokenRouter from "./routes/verifyToken-route.js";
 import cookieParser from "cookie-parser";
 import { handleStripeWebhook } from "./controllers/stripe.js";
@@ -87,6 +88,7 @@ app.use("/api/users", Userrouter);
 app.use("/api/cart", Cartrouter);
 app.use("/api/products", Productrouter);
 app.use("/api/blog", Blogrouter);
+app.use("/api/orders", Orderrouter);
 app.use("/api", VerifyTokenRouter);
 app.post(
   "/stripe/webhook",

@@ -1,6 +1,7 @@
 import express from "stripe";
 import { User } from "../models/user-model.js";
 import { Cart } from "../models/cart-model.js";
+import { createOrderFromStripe } from "./order-controller.js";
 import dotenv from "dotenv";
 import { ErrorHandler } from "../middlewares/error.middleware.js";
 import { catchAsyncErrors } from "../middlewares/catchAysncErrors.js";
@@ -40,7 +41,7 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
       // If metadata contains cartId, process cart purchase
       if (cartId) {
         const user = await User.findById(userId);
-        const cart = await Cart.findById(cartId);
+        const cart = await Cart.findById(cartId).populate("Products.productId");
 
         if (!user || !cart) {
           console.error("User or cart not found");
@@ -50,26 +51,30 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
           });
         }
 
-        // Add cart items to user's buying history
-        const purchaseDate = new Date();
-        cart.Products.forEach((item) => {
-          user.Buyinghistory.push({
-            productId: item.productId,
-            date: purchaseDate,
-          });
+        // Create order from cart
+        const orderProducts = cart.Products.map((item) => ({
+          productId: item.productId._id,
+          name: item.productId.name,
+          price: item.productId.price,
+          quantity: item.quantity,
+        }));
+
+        // Create order
+        await createOrderFromStripe(session, {
+          userId,
+          products: JSON.stringify(orderProducts),
+          shippingAddress: JSON.stringify({}), // Add shipping address if available
         });
 
         // Empty the cart
         cart.Products = [];
         cart.totalPrice = 0;
+        await cart.save();
 
-        // Save both user and cart
-        await Promise.all([user.save(), cart.save()]);
-
-        console.log(`Updated purchase history for user: ${userId}`);
+        console.log(`Order created and cart cleared for user: ${userId}`);
         return res.status(200).json({
           success: true,
-          message: "Cart purchase processed successfully",
+          message: "Order created successfully",
         });
       }
 
