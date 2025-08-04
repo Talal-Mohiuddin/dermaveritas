@@ -57,14 +57,8 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
     const session = event.data.object;
 
     try {
-      const sessionWithMetadata = await stripe.checkout.sessions.retrieve(
-        session.id,
-        {
-          expand: ["metadata"],
-        }
-      );
-
-      const metadata = sessionWithMetadata.metadata || {};
+      // Metadata is already available in the webhook event
+      const metadata = session.metadata || {};
       const { userId, cartId, planName } = metadata;
 
       console.log("Webhook metadata:", metadata);
