@@ -101,7 +101,7 @@ app.use("/api/blog", Blogrouter);
 app.use("/api/orders", Orderrouter);
 app.use("/api", VerifyTokenRouter);
 app.post(
-  "/stripe/webhook",
+  "/api/stripe/webhook",
   express.raw({ type: "application/json" }),
   handleStripeWebhook
 );
