@@ -33,40 +33,43 @@ app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 const frontendPath = path.join(__dirname, "../frontend");
 
-// Middleware to inject GTM code (place before static middleware)
+// GTM Container ID
+const gtmId = "GTM-PMLS38CB";
+
+// GTM snippets
+const headSnippet = `
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','${gtmId}');</script>
+  <!-- End Google Tag Manager -->
+`;
+
+const bodySnippet = `
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+`;
+
+// Middleware to inject GTM code
 app.use((req, res, next) => {
-  if (req.path.endsWith(".html")) {
+  const isHtmlRequest = req.path.endsWith(".html") || req.path === "/";
+  if (isHtmlRequest) {
     console.log(`Processing HTML file: ${req.path}`);
-    const filePath = path.join(__dirname, "../frontend", req.path);
+    const filePath = path.join(
+      frontendPath,
+      req.path === "/" ? "index.html" : req.path
+    );
     if (fs.existsSync(filePath)) {
       fs.readFile(filePath, "utf8", (err, data) => {
         if (err) {
           return next(err); // Propagate error to error middleware
         }
 
-        // GTM Container ID (replace with your actual ID)
-        const gtmId = "GTM-PMLS38CB";
-
-        // Inject GTM code into head
-        const headSnippet = `
-          <!-- Google Tag Manager -->
-          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${gtmId}');</script>
-          <!-- End Google Tag Manager -->
-        `;
-
-        // Inject GTM noscript into body
-        const bodySnippet = `
-          <!-- Google Tag Manager (noscript) -->
-          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-          <!-- End Google Tag Manager (noscript) -->
-        `;
-
-        // Inject snippets into the HTML
+        // Inject GTM snippets into the HTML
         let modifiedData = data.replace("</head>", `${headSnippet}</head>`);
         modifiedData = modifiedData.replace("<body>", `<body>${bodySnippet}`);
 
@@ -98,6 +101,7 @@ app.post(
 
 // Single route for index.html fallback
 app.get(/^\/(?!api).*/, (req, res) => {
+  // The GTM injection is now handled by the middleware for "/"
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
