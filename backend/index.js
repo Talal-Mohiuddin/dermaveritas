@@ -13,9 +13,7 @@ import Blogrouter from "./routes/blog-route.js";
 import Orderrouter from "./routes/order-route.js";
 import VerifyTokenRouter from "./routes/verifyToken-route.js";
 import cookieParser from "cookie-parser";
-import {
-  handleStripeWebhook,
-} from "./controllers/stripe.js";
+import { handleStripeWebhook } from "./controllers/stripe.js";
 import fs from "fs";
 
 dotenv.config();
@@ -33,6 +31,14 @@ app.use(
   })
 );
 
+// Stripe webhook route MUST come before body parsing middleware
+app.post(
+  "/api/stripe/webhook",
+  express.raw({ type: "application/json" }),
+  handleStripeWebhook
+);
+
+// Body parsing middleware (after webhook route)
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -99,12 +105,6 @@ app.use("/api/products", Productrouter);
 app.use("/api/blog", Blogrouter);
 app.use("/api/orders", Orderrouter);
 app.use("/api", VerifyTokenRouter);
-
-app.post(
-  "/api/stripe/webhook",
-  express.raw({ type: "application/json" }),
-  handleStripeWebhook
-);
 
 // Serve static files (after API routes)
 app.use(express.static(frontendPath));
