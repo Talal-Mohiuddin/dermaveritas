@@ -15,15 +15,40 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
   const sig = req.headers["stripe-signature"];
   const webhookSecret = process.env.STRIPE_SECRET_WEBHOOK_SECRET;
 
+  // Debug logging
+  console.log("Webhook received:");
+  console.log("Signature header:", sig ? "Present" : "Missing");
+  console.log("Webhook secret configured:", webhookSecret ? "Yes" : "No");
+  console.log("Request body length:", req.body ? req.body.length : "No body");
+
+  if (!webhookSecret) {
+    console.error("STRIPE_SECRET_WEBHOOK_SECRET is not configured");
+    return res.status(500).json({
+      success: false,
+      message: "Webhook secret not configured",
+    });
+  }
+
+  if (!sig) {
+    console.error("Stripe signature header is missing");
+    return res.status(400).json({
+      success: false,
+      message: "Stripe signature header is missing",
+    });
+  }
+
   let event;
 
   try {
     event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    console.log("Webhook signature verified successfully");
   } catch (err) {
     console.error(`Webhook signature verification failed: ${err.message}`);
+    console.error("Error details:", err);
     return res.status(400).json({
       success: false,
       message: "Webhook signature verification failed",
+      error: err.message,
     });
   }
 
