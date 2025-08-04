@@ -90,21 +90,22 @@ app.use((req, res, next) => {
   }
 });
 
-// Serve static files (after GTM middleware)
-app.use(express.static(frontendPath));
-
-// API routes
+// API routes (before static files)
 app.use("/api/users", Userrouter);
 app.use("/api/cart", Cartrouter);
 app.use("/api/products", Productrouter);
 app.use("/api/blog", Blogrouter);
 app.use("/api/orders", Orderrouter);
 app.use("/api", VerifyTokenRouter);
+
 app.post(
   "/api/stripe/webhook",
   express.raw({ type: "application/json" }),
   handleStripeWebhook
 );
+
+// Serve static files (after API routes)
+app.use(express.static(frontendPath));
 
 // Single route for index.html fallback
 app.get(/^\/(?!api).*/, (req, res) => {
