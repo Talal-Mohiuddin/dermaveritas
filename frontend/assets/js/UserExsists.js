@@ -2,13 +2,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Function to get token from server
   async function getTokenFromServer() {
     try {
-      const response = await fetch("http://localhost:3000/api/get-session", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://dermaveritas.onrender.com/api/get-session",
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         return data.token || null;
@@ -23,14 +26,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Function to verify JWT with the backend
   async function verifyToken(token) {
     try {
-      const response = await fetch("http://localhost:3000/api/verify-token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://dermaveritas.onrender.com/api/verify-token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          credentials: "include",
+        }
+      );
 
       if (!response.ok) {
         console.error(
@@ -263,14 +269,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Logout handler
     async function handleLogout() {
       try {
-        const response = await fetch("http://localhost:3000/api/users/logout", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://dermaveritas.onrender.com/api/users/logout",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          }
+        );
         if (response.ok) {
           localStorage.removeItem("jwt");
           window.location.href = "login.html";

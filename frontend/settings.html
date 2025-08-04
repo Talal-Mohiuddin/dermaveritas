@@ -633,7 +633,7 @@
         async function fetchUserData() {
           try {
             const response = await fetch(
-              "http://localhost:3000/api/users/getuser",
+              "https://dermaveritas.onrender.com/api/users/getuser",
               {
                 method: "GET",
                 headers: {
@@ -689,7 +689,7 @@
             // Update name if changed
             if (name !== nameInput.defaultValue) {
               const nameResponse = await fetch(
-                "http://localhost:3000/api/users/change-name",
+                "https://dermaveritas.onrender.com/api/users/change-name",
                 {
                   method: "PUT",
                   headers: {
@@ -707,7 +707,7 @@
             // Update password if provided
             if (newPassword && currentPassword) {
               const passwordResponse = await fetch(
-                "http://localhost:3000/api/users/change-password",
+                "https://dermaveritas.onrender.com/api/users/change-password",
                 {
                   method: "PUT",
                   headers: {

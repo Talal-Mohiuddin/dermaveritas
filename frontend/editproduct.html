@@ -540,7 +540,9 @@
           return;
         }
         try {
-          const res = await fetch(`http://localhost:3000/api/products/${id}`);
+          const res = await fetch(
+            `https://dermaveritas.onrender.com/api/products/${id}`
+          );
           const data = await res.json();
           console.log(data);
           if (!data.success || !data.product)
@@ -717,7 +719,7 @@
 
           try {
             const response = await fetch(
-              `http://localhost:3000/api/products/${id}`,
+              `https://dermaveritas.onrender.com/api/products/${id}`,
               {
                 method: "PUT",
                 body: formData,
@@ -744,7 +746,7 @@
 
             try {
               const response = await fetch(
-                "http://localhost:3000/api/users/admin-logout",
+                "https://dermaveritas.onrender.com/api/users/admin-logout",
                 {
                   method: "GET",
                   credentials: "include",

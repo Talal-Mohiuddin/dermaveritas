@@ -378,7 +378,9 @@
         const tableBody = document.querySelector("#productsTable tbody");
         tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#89868d;">Loading...</td></tr>`;
         try {
-          const res = await fetch("http://localhost:3000/api/products");
+          const res = await fetch(
+            "https://dermaveritas.onrender.com/api/products"
+          );
           const data = await res.json();
           if (!data.success || !Array.isArray(data.products)) {
             throw new Error("Failed to fetch products");
@@ -434,7 +436,7 @@
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting';
         try {
           const res = await fetch(
-            `http://localhost:3000/api/products/${productId}`,
+            `https://dermaveritas.onrender.com/api/products/${productId}`,
             {
               method: "DELETE",
               credentials: "include",
@@ -463,7 +465,7 @@
 
             try {
               const response = await fetch(
-                "http://localhost:3000/api/users/admin-logout",
+                "https://dermaveritas.onrender.com/api/users/admin-logout",
                 {
                   method: "GET",
                   credentials: "include",

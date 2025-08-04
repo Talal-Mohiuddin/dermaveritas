@@ -886,7 +886,7 @@
         }
         try {
           const response = await fetch(
-            `http://localhost:3000/api/blog/${blogId}`,
+            `https://dermaveritas.onrender.com/api/blog/${blogId}`,
             {
               method: "GET",
               credentials: "include",
@@ -909,10 +909,13 @@
       // Fetch all blogs for navigation
       async function fetchAllBlogs() {
         try {
-          const response = await fetch("http://localhost:3000/api/blog/all", {
-            method: "GET",
-            credentials: "include",
-          });
+          const response = await fetch(
+            "https://dermaveritas.onrender.com/api/blog/all",
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
           if (!response.ok) {
             throw new Error(
               `Server returned ${response.status}: ${response.statusText}`
@@ -1047,7 +1050,7 @@
           if (name && email && content && blogId) {
             try {
               const response = await fetch(
-                `http://localhost:3000/api/blog/${blogId}/comment`,
+                `https://dermaveritas.onrender.com/api/blog/${blogId}/comment`,
                 {
                   method: "POST",
                   headers: {

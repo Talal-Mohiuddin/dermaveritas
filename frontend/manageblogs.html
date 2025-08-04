@@ -429,7 +429,9 @@
         const tableBody = document.querySelector("#blogsTable tbody");
         tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:#89868d;">Loading...</td></tr>`;
         try {
-          const res = await fetch("http://localhost:3000/api/blog/all");
+          const res = await fetch(
+            "https://dermaveritas.onrender.com/api/blog/all"
+          );
 
           // Check if response is OK before trying to parse JSON
           if (!res.ok) {
@@ -549,10 +551,13 @@
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting';
         try {
-          const res = await fetch(`http://localhost:3000/api/blog/${blogId}`, {
-            method: "DELETE",
-            credentials: "include",
-          });
+          const res = await fetch(
+            `https://dermaveritas.onrender.com/api/blog/${blogId}`,
+            {
+              method: "DELETE",
+              credentials: "include",
+            }
+          );
 
           if (!res.ok) {
             const text = await res.text();
@@ -582,7 +587,7 @@
 
             try {
               const response = await fetch(
-                "http://localhost:3000/api/users/admin-logout",
+                "https://dermaveritas.onrender.com/api/users/admin-logout",
                 {
                   method: "GET",
                   credentials: "include",

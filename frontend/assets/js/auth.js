@@ -2,13 +2,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Function to get cookie by name
   async function getTokenFromServer() {
     try {
-      const response = await fetch("http://localhost:3000/api/get-session", {
-        method: "GET",
-        credentials: "include", // Send cookies with the request
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://dermaveritas.onrender.com/api/get-session",
+        {
+          method: "GET",
+          credentials: "include", // Send cookies with the request
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         const data = await response.json();
         return data.token || null;
@@ -23,14 +26,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Function to verify JWT with the backend
   async function verifyToken(token) {
     try {
-      const response = await fetch("http://localhost:3000/api/verify-token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://dermaveritas.onrender.com/api/verify-token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          credentials: "include",
+        }
+      );
 
       if (!response.ok) {
         console.error(

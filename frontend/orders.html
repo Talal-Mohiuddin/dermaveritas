@@ -480,7 +480,7 @@
       // Orders management functionality
       class OrdersManager {
         constructor() {
-          this.baseUrl = "http://localhost:3000/api/orders";
+          this.baseUrl = "https://dermaveritas.onrender.com/api/orders";
           this.init();
         }
 
@@ -720,7 +720,7 @@
 
               try {
                 const response = await fetch(
-                  "http://localhost:3000/api/users/admin-logout",
+                  "https://dermaveritas.onrender.com/api/users/admin-logout",
                   {
                     method: "GET",
                     credentials: "include",

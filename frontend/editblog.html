@@ -681,7 +681,7 @@
 
         try {
           const response = await fetch(
-            `http://localhost:3000/api/blog/${blogId}`,
+            `https://dermaveritas.onrender.com/api/blog/${blogId}`,
             {
               method: "GET",
               credentials: "include",
@@ -760,7 +760,7 @@
 
           try {
             const response = await fetch(
-              `http://localhost:3000/api/blog/${blogId}`,
+              `https://dermaveritas.onrender.com/api/blog/${blogId}`,
               {
                 method: "PUT",
                 body: formData,
@@ -789,7 +789,7 @@
 
             try {
               const response = await fetch(
-                "http://localhost:3000/api/users/admin-logout",
+                "https://dermaveritas.onrender.com/api/users/admin-logout",
                 {
                   method: "GET",
                   credentials: "include",

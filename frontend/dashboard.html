@@ -634,7 +634,7 @@
       // Dashboard functionality
       class Dashboard {
         constructor() {
-          this.baseUrl = "http://localhost:3000/api/users";
+          this.baseUrl = "https://dermaveritas.onrender.com/api/users";
           this.init();
         }
 
@@ -911,7 +911,7 @@
 
               try {
                 const response = await fetch(
-                  "http://localhost:3000/api/users/admin-logout",
+                  "https://dermaveritas.onrender.com/api/users/admin-logout",
                   {
                     method: "GET",
                     credentials: "include",
