@@ -13,7 +13,9 @@ import Blogrouter from "./routes/blog-route.js";
 import Orderrouter from "./routes/order-route.js";
 import VerifyTokenRouter from "./routes/verifyToken-route.js";
 import cookieParser from "cookie-parser";
-import { handleStripeWebhook } from "./controllers/stripe.js";
+import {
+  handleStripeWebhook,
+} from "./controllers/stripe.js";
 import fs from "fs";
 
 dotenv.config();

@@ -272,6 +272,10 @@ const upgradePlan = catchAsyncErrors(async (req, res, next) => {
       mode: "payment",
       success_url: `${process.env.FRONTEND_URL}/success`,
       cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+      metadata: {
+        userId: user._id.toString(),
+        planName: plan.name,
+      },
     });
 
     // Return the session URL to frontend

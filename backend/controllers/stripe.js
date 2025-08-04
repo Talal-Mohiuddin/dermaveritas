@@ -1,4 +1,4 @@
-import express from "stripe";
+import Stripe from "stripe";
 import { User } from "../models/user-model.js";
 import { Cart } from "../models/cart-model.js";
 import { createOrderFromStripe } from "./order-controller.js";
@@ -8,7 +8,7 @@ import { catchAsyncErrors } from "../middlewares/catchAysncErrors.js";
 
 dotenv.config();
 
-const stripe = new express(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Webhook handler for Stripe events
 export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
@@ -23,7 +23,7 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
     console.error(`Webhook signature verification failed: ${err.message}`);
     return res.status(400).json({
       success: false,
-      message: "Webhook signature verification failed"
+      message: "Webhook signature verification failed",
     });
   }
 
@@ -39,10 +39,13 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
         }
       );
 
-      const { userId, cartId } = sessionWithMetadata.metadata;
+      const metadata = sessionWithMetadata.metadata || {};
+      const { userId, cartId, planName } = metadata;
+
+      console.log("Webhook metadata:", metadata);
 
       // If metadata contains cartId, process cart purchase
-      if (cartId) {
+      if (cartId && userId) {
         const user = await User.findById(userId);
         const cart = await Cart.findById(cartId).populate("Products.productId");
 
@@ -81,8 +84,7 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
         });
       }
 
-      // Handle plan upgrade (existing logic)
-      const planName = sessionWithMetadata?.planName;
+      // Handle plan upgrade
       if (userId && planName) {
         // Validate planName
         const validPlans = [
@@ -112,11 +114,18 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
         await user.save();
 
         console.log(`Updated plan to ${planName} for user: ${userId}`);
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
-          message: "Webhook processed successfully",
+          message: "Plan upgrade processed successfully",
         });
       }
+
+      // If no valid metadata found, log and acknowledge
+      console.log("No valid metadata found in webhook, acknowledging event");
+      return res.status(200).json({
+        success: true,
+        message: "Event acknowledged (no action required)",
+      });
     } catch (error) {
       console.error(`Error processing webhook: ${error.message}`);
       return next(
