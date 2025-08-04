@@ -15,31 +15,15 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
   const sig = req.headers["stripe-signature"];
   const webhookSecret = process.env.STRIPE_SECRET_WEBHOOK_SECRET;
 
-  console.log("Webhook received:", {
-    method: req.method,
-    url: req.url,
-    headers: req.headers,
-    bodyLength: req.body?.length,
-  });
-
-  if (!webhookSecret) {
-    console.error("Webhook secret not configured");
-    return res.status(500).json({
-      success: false,
-      message: "Webhook secret not configured",
-    });
-  }
-
   let event;
 
   try {
     event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
-    console.log("Webhook event verified:", event.type);
   } catch (err) {
     console.error(`Webhook signature verification failed: ${err.message}`);
     return res.status(400).json({
       success: false,
-      message: "Webhook signature verification failed",
+      message: "Webhook signature verification failed"
     });
   }
 
@@ -128,32 +112,20 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
         await user.save();
 
         console.log(`Updated plan to ${planName} for user: ${userId}`);
-        return res.status(200).json({
+        res.status(200).json({
           success: true,
           message: "Webhook processed successfully",
         });
       }
-
-      // If no cartId or planName, log the event but don't process
-      console.log(
-        "Webhook received but no cartId or planName in metadata:",
-        sessionWithMetadata.metadata
-      );
-      return res.status(200).json({
-        success: true,
-        message: "Event received but no action taken",
-      });
     } catch (error) {
       console.error(`Error processing webhook: ${error.message}`);
-      return res.status(500).json({
-        success: false,
-        message: `Webhook processing failed: ${error.message}`,
-      });
+      return next(
+        new ErrorHandler(`Webhook processing failed: ${error.message}`, 500)
+      );
     }
   } else {
     // Acknowledge other events
-    console.log("Unhandled webhook event type:", event.type);
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       message: "Event received",
     });
