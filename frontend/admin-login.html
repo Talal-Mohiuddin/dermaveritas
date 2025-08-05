@@ -220,9 +220,7 @@
         <span>Derma Veritas</span>
       </div>
       <div class="login-title">Admin Login</div>
-      <div class="login-subtitle">
-        Please sign in to your admin account.
-      </div>
+      <div class="login-subtitle">Please sign in to your admin account.</div>
       <form class="login-form" autocomplete="off">
         <div>
           <label for="admin-email">Admin Email</label>
@@ -265,12 +263,15 @@
           const email = document.getElementById("admin-email").value;
           const password = document.getElementById("admin-password").value;
           try {
-            const res = await fetch("http://localhost:3000/api/admin/login", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, password }),
-              credentials: "include",
-            });
+            const res = await fetch(
+              "https://dermaveritas.onrender.com/api/admin/login",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+                credentials: "include",
+              }
+            );
             const data = await res.json();
             if (res.ok) {
               alert("Admin login successful!");

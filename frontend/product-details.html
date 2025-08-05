@@ -720,7 +720,7 @@
 
         try {
           const response = await fetch(
-            `http://localhost:3000/api/products/${productId}`,
+            `https://dermaveritas.onrender.com/api/products/${productId}`,
             {
               method: "GET",
               credentials: "include",
@@ -876,7 +876,7 @@
         );
         try {
           const response = await fetch(
-            "http://localhost:3000/api/cart/addtocart",
+            "https://dermaveritas.onrender.com/api/cart/addtocart",
             {
               method: "POST",
               headers: {

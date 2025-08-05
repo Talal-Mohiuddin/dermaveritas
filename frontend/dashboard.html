@@ -5,12 +5,104 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | TeamAlpha</title>
-    <!-- ...existing code for favicons, fonts, and CSS links from addproduct.html... -->
+    <title>Admin Dashboard | TeamAlpha</title>
+
+    <!-- favicons Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Admin Dashboard - TeamAlpha" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
+
+    <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
-      /* Header/navbar styles copied from addproduct.html */
+      /* Header/navbar styles */
       .main-menu__logo img {
         max-height: 48px;
         width: auto;
@@ -60,12 +152,6 @@
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
         margin-bottom: 32px;
       }
-      @media (max-width: 600px) {
-        .main-header-two,
-        .stricky-header.stricked-menu.main-menu.main-menu-two {
-          margin-bottom: 20px;
-        }
-      }
       .main-menu-two__logout-box {
         display: flex;
         align-items: center;
@@ -108,51 +194,6 @@
       .main-menu-two__logout:focus i {
         color: #ffb347;
       }
-      /* Under Construction styles */
-      .dashboard-section {
-        padding: 100px 0;
-        background: linear-gradient(135deg, #fcf5f5 0%, #fff 100%);
-        min-height: 70vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .dashboard-container {
-        background: #fff;
-        border-radius: 24px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        padding: 60px 40px;
-        max-width: 600px;
-        width: 100%;
-        text-align: center;
-      }
-      .dashboard-title {
-        font-family: "Poppins", sans-serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #0f0f10;
-        margin-bottom: 16px;
-      }
-      .dashboard-subtitle {
-        color: #89868d;
-        font-size: 1.2rem;
-        margin-bottom: 24px;
-        font-family: "Inter", sans-serif;
-      }
-      .under-construction-icon {
-        font-size: 4rem;
-        color: #ffb347;
-        margin-bottom: 18px;
-      }
-      @media (max-width: 600px) {
-        .dashboard-container {
-          padding: 30px 10px;
-        }
-        .dashboard-title {
-          font-size: 2rem;
-        }
-      }
-
       .main-menu__list > li.dropdown ul {
         background-color: #23232a !important;
       }
@@ -162,6 +203,216 @@
       }
       .main-menu__list > li.dropdown ul li a:hover {
         color: #ffb347 !important;
+      }
+
+      /* Dashboard Styles */
+      .dashboard-section {
+        padding: 200px 0 40px; /* Increased top padding to prevent navbar overlap */
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: calc(100vh - 100px);
+      }
+
+      .stats-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-left: 4px solid #ffb347;
+        margin-bottom: 24px;
+      }
+
+      .stats-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .stats-card.users {
+        border-left-color: #28a745;
+      }
+
+      .stats-card.products {
+        border-left-color: #007bff;
+      }
+
+      .stats-card.orders {
+        border-left-color: #ffc107;
+      }
+
+      .stats-card.blogs {
+        border-left-color: #dc3545;
+      }
+
+      .stats-card.revenue {
+        border-left-color: #6f42c1;
+      }
+
+      .stats-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f0f10;
+        margin-bottom: 8px;
+      }
+
+      .stats-label {
+        font-size: 1rem;
+        color: #6c757d;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+
+      .stats-change {
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .stats-change.positive {
+        color: #28a745;
+      }
+
+      .stats-change.negative {
+        color: #dc3545;
+      }
+
+      .stats-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        opacity: 0.1;
+      }
+
+      .chart-container {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+        height: 400px; /* Added fixed height */
+      }
+
+      .recent-activity {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+      }
+
+      .activity-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .activity-item:last-child {
+        border-bottom: none;
+      }
+
+      .activity-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .activity-icon.users {
+        background: #28a745;
+      }
+
+      .activity-icon.products {
+        background: #007bff;
+      }
+
+      .activity-icon.orders {
+        background: #ffc107;
+      }
+
+      .activity-icon.blogs {
+        background: #dc3545;
+      }
+
+      .activity-content {
+        flex: 1;
+      }
+
+      .activity-title {
+        font-weight: 600;
+        color: #0f0f10;
+        margin-bottom: 4px;
+      }
+
+      .activity-subtitle {
+        font-size: 0.875rem;
+        color: #6c757d;
+      }
+
+      .activity-time {
+        font-size: 0.75rem;
+        color: #adb5bd;
+      }
+
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #ffb347;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #f5c6cb;
+      }
+
+      @media (max-width: 768px) {
+        .dashboard-section {
+          padding: 60px 0 20px; /* Adjusted padding for mobile */
+        }
+
+        .stats-card {
+          padding: 20px;
+        }
+
+        .stats-number {
+          font-size: 2rem;
+        }
+
+        .chart-container {
+          height: 300px; /* Smaller height for mobile */
+        }
+
+        .chart-container,
+        .recent-activity {
+          padding: 20px;
+        }
       }
     </style>
   </head>
@@ -203,6 +454,9 @@
                     <li><a href="manageblogs.html">Manage Blogs</a></li>
                   </ul>
                 </li>
+                <li>
+                  <a href="users.html">Users</a>
+                </li>
               </ul>
             </div>
             <div class="main-menu-two__right">
@@ -226,51 +480,463 @@
     </div>
     <!-- ======= Site Header/Navbar End ======= -->
 
+    <!-- Dashboard Section -->
     <div class="dashboard-section">
-      <div class="dashboard-container">
-        <div class="under-construction-icon">
-          <i class="fas fa-tools"></i>
+      <div class="container">
+        <!-- Error Message Container -->
+        <div
+          id="errorContainer"
+          class="error-message"
+          style="display: none"
+        ></div>
+
+        <!-- Stats Cards Row -->
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card users position-relative">
+              <div class="stats-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stats-number" id="totalUsers">-</div>
+              <div class="stats-label">Total Users</div>
+              <div class="stats-change positive" id="newUsers">
+                +0 new this month
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card products position-relative">
+              <div class="stats-icon">
+                <i class="fas fa-box"></i>
+              </div>
+              <div class="stats-number" id="totalProducts">-</div>
+              <div class="stats-label">Total Products</div>
+              <div class="stats-change positive" id="newProducts">
+                +0 new this month
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card orders position-relative">
+              <div class="stats-icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <div class="stats-number" id="totalOrders">-</div>
+              <div class="stats-label">Total Orders</div>
+              <div class="stats-change positive" id="recentOrders">
+                +0 this month
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-card revenue position-relative">
+              <div class="stats-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div class="stats-number" id="totalRevenue">$0</div>
+              <div class="stats-label">Total Revenue</div>
+              <div class="stats-change positive">All time</div>
+            </div>
+          </div>
         </div>
-        <div class="dashboard-title">Dashboard</div>
-        <div class="dashboard-subtitle">
-          This page is under construction.<br />
-          Please check back soon!
+
+        <!-- Charts Row -->
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="chart-container">
+              <div class="chart-title">Users by Plan</div>
+              <canvas id="usersByPlanChart"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="chart-container">
+              <div class="chart-title">Products by Category</div>
+              <canvas id="productsByCategoryChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity Row -->
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="recent-activity">
+              <div class="chart-title">Recent Users</div>
+              <div id="recentUsersContainer">
+                <div class="loading">
+                  <div class="spinner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="recent-activity">
+              <div class="chart-title">Recent Products</div>
+              <div id="recentProductsContainer">
+                <div class="loading">
+                  <div class="spinner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Stats Row -->
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="stats-card blogs position-relative">
+              <div class="stats-icon">
+                <i class="fas fa-blog"></i>
+              </div>
+              <div class="stats-number" id="totalBlogs">-</div>
+              <div class="stats-label">Total Blogs</div>
+              <div class="stats-change positive" id="publishedBlogs">
+                0 published
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div
+              class="stats-card position-relative"
+              style="border-left-color: #17a2b8"
+            >
+              <div class="stats-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="stats-number" id="lowStockProducts">-</div>
+              <div class="stats-label">Low Stock Products</div>
+              <div class="stats-change negative">Need attention</div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div
+              class="stats-card position-relative"
+              style="border-left-color: #fd7e14"
+            >
+              <div class="stats-icon">
+                <i class="fas fa-ban"></i>
+              </div>
+              <div class="stats-number" id="bannedUsers">-</div>
+              <div class="stats-label">Banned Users</div>
+              <div class="stats-change negative">Restricted access</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- ...optional JS includes as in addproduct.html... -->
+
+    <!-- Scripts -->
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/fontawesome/js/all.min.js"></script>
+    <script src="assets/js/mellis.js"></script>
+
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const logoutBtn = document.querySelector(".main-menu-two__logout");
-        if (logoutBtn) {
-          logoutBtn.addEventListener("click", async function (e) {
-            e.preventDefault();
+      // Dashboard functionality
+      class Dashboard {
+        constructor() {
+          this.baseUrl = "https://dermaveritas.onrender.com/api/users";
+          this.init();
+        }
 
-            try {
-              const response = await fetch(
-                "http://localhost:3000/api/users/admin-logout",
+        async init() {
+          try {
+            await this.loadAllStats();
+            this.setupLogout();
+          } catch (error) {
+            this.showError("Failed to load dashboard data");
+            console.error("Dashboard init error:", error);
+          }
+        }
+
+        async loadAllStats() {
+          await Promise.all([
+            this.loadUserStats(),
+            this.loadProductStats(),
+            this.loadOrderStats(),
+            this.loadBlogStats(),
+          ]);
+        }
+
+        async loadUserStats() {
+          try {
+            const response = await fetch(`${this.baseUrl}/dashboard-stats`, {
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch user stats");
+
+            const data = await response.json();
+            this.updateUserStats(data.data);
+            this.updateRecentUsers(data.data.recentUsers);
+          } catch (error) {
+            console.error("Error loading user stats:", error);
+            this.showError("Failed to load user statistics");
+          }
+        }
+
+        async loadProductStats() {
+          try {
+            const response = await fetch(`${this.baseUrl}/product-stats`, {
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch product stats");
+
+            const data = await response.json();
+            this.updateProductStats(data.data);
+            this.updateRecentProducts(data.data.recentProducts);
+          } catch (error) {
+            console.error("Error loading product stats:", error);
+            this.showError("Failed to load product statistics");
+          }
+        }
+
+        async loadOrderStats() {
+          try {
+            const response = await fetch(`${this.baseUrl}/order-stats`, {
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch order stats");
+
+            const data = await response.json();
+            this.updateOrderStats(data.data);
+          } catch (error) {
+            console.error("Error loading order stats:", error);
+            this.showError("Failed to load order statistics");
+          }
+        }
+
+        async loadBlogStats() {
+          try {
+            const response = await fetch(`${this.baseUrl}/blog-stats`, {
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch blog stats");
+
+            const data = await response.json();
+            this.updateBlogStats(data.data);
+          } catch (error) {
+            console.error("Error loading blog stats:", error);
+            this.showError("Failed to load blog statistics");
+          }
+        }
+
+        updateUserStats(data) {
+          document.getElementById("totalUsers").textContent = data.totalUsers;
+          document.getElementById(
+            "newUsers"
+          ).textContent = `+${data.newUsers} new this month`;
+          document.getElementById("bannedUsers").textContent = data.bannedUsers;
+
+          // Update users by plan chart
+          this.createUsersByPlanChart(data.usersByPlan);
+        }
+
+        updateProductStats(data) {
+          document.getElementById("totalProducts").textContent =
+            data.totalProducts;
+          document.getElementById(
+            "newProducts"
+          ).textContent = `+${data.newProducts} new this month`;
+          document.getElementById("lowStockProducts").textContent =
+            data.lowStockProducts;
+
+          // Update products by category chart
+          this.createProductsByCategoryChart(data.productsByCategory);
+        }
+
+        updateOrderStats(data) {
+          document.getElementById("totalOrders").textContent = data.totalOrders;
+          document.getElementById(
+            "recentOrders"
+          ).textContent = `+${data.recentOrders} this month`;
+          document.getElementById(
+            "totalRevenue"
+          ).textContent = `$${data.totalRevenue.toLocaleString()}`;
+        }
+
+        updateBlogStats(data) {
+          document.getElementById("totalBlogs").textContent = data.totalBlogs;
+          document.getElementById(
+            "publishedBlogs"
+          ).textContent = `${data.publishedBlogs} published`;
+        }
+
+        updateRecentUsers(users) {
+          const container = document.getElementById("recentUsersContainer");
+          if (!users || users.length === 0) {
+            container.innerHTML = '<p class="text-muted">No recent users</p>';
+            return;
+          }
+
+          container.innerHTML = users
+            .map(
+              (user) => `
+            <div class="activity-item">
+              <div class="activity-icon users">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-title">${user.name}</div>
+                <div class="activity-subtitle">${user.email}</div>
+                <div class="activity-time">${this.formatDate(
+                  user.createdAt
+                )}</div>
+              </div>
+            </div>
+          `
+            )
+            .join("");
+        }
+
+        updateRecentProducts(products) {
+          const container = document.getElementById("recentProductsContainer");
+          if (!products || products.length === 0) {
+            container.innerHTML =
+              '<p class="text-muted">No recent products</p>';
+            return;
+          }
+
+          container.innerHTML = products
+            .map(
+              (product) => `
+            <div class="activity-item">
+              <div class="activity-icon products">
+                <i class="fas fa-box"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-title">${product.name}</div>
+                <div class="activity-subtitle">${product.category} • Stock: ${
+                product.stockQuantity
+              }</div>
+                <div class="activity-time">${this.formatDate(
+                  product.createdAt
+                )}</div>
+              </div>
+            </div>
+          `
+            )
+            .join("");
+        }
+
+        createUsersByPlanChart(data) {
+          const ctx = document
+            .getElementById("usersByPlanChart")
+            .getContext("2d");
+          new Chart(ctx, {
+            type: "doughnut",
+            data: {
+              labels: data.map((item) => item._id || "No Plan"),
+              datasets: [
                 {
-                  method: "GET",
-                  credentials: "include",
-                }
-              );
-
-              if (response.ok) {
-                alert("Logged out successfully!");
-                window.location.href = "index.html";
-              } else {
-                const data = await response.json();
-                alert(data.message || "Failed to logout.");
-              }
-            } catch (error) {
-              console.error("Logout error:", error);
-              alert("Error during logout. Please try again.");
-            }
+                  data: data.map((item) => item.count),
+                  backgroundColor: ["#28a745", "#007bff", "#ffc107", "#dc3545"],
+                  borderWidth: 0,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: "bottom",
+                },
+              },
+            },
           });
         }
+
+        createProductsByCategoryChart(data) {
+          const ctx = document
+            .getElementById("productsByCategoryChart")
+            .getContext("2d");
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: data.map((item) => item._id),
+              datasets: [
+                {
+                  label: "Products",
+                  data: data.map((item) => item.count),
+                  backgroundColor: "#007bff",
+                  borderColor: "#0056b3",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+            },
+          });
+        }
+
+        formatDate(dateString) {
+          const date = new Date(dateString);
+          return date.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+        }
+
+        showError(message) {
+          const errorContainer = document.getElementById("errorContainer");
+          errorContainer.textContent = message;
+          errorContainer.style.display = "block";
+
+          setTimeout(() => {
+            errorContainer.style.display = "none";
+          }, 5000);
+        }
+
+        setupLogout() {
+          const logoutBtn = document.querySelector(".main-menu-two__logout");
+          if (logoutBtn) {
+            logoutBtn.addEventListener("click", async function (e) {
+              e.preventDefault();
+
+              try {
+                const response = await fetch(
+                  "https://dermaveritas.onrender.com/api/users/admin-logout",
+                  {
+                    method: "GET",
+                    credentials: "include",
+                  }
+                );
+
+                if (response.ok) {
+                  alert("Logged out successfully!");
+                  window.location.href = "index.html";
+                } else {
+                  const data = await response.json();
+                  alert(data.message || "Failed to logout.");
+                }
+              } catch (error) {
+                console.error("Logout error:", error);
+                alert("Error during logout. Please try again.");
+              }
+            });
+          }
+        }
+      }
+
+      // Initialize dashboard when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        new Dashboard();
       });
     </script>
   </body>

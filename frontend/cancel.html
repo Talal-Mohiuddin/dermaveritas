@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Cancelled | Derma Veritas</title>
+
+    <!-- favicons Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta
+      name="description"
+      content="Payment cancelled - We're here to help you with your Derma Veritas membership"
+    />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+
+    <style>
+      .cancel-container {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #ff9a9e 0%,
+          #fecfef 50%,
+          #fecfef 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cancel-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("assets/images/backgrounds/page-header-bg.webp")
+          center/cover;
+        opacity: 0.05;
+        z-index: 1;
+      }
+
+      .cancel-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 60px 40px;
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+        animation: slideInUp 0.8s ease-out;
+      }
+
+      .cancel-icon {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        animation: bounceIn 1s ease-out 0.3s both;
+        box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+      }
+
+      .cancel-icon i {
+        font-size: 60px;
+        color: white;
+      }
+
+      .cancel-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-family: "Libre Baskerville", serif;
+        animation: fadeInUp 0.8s ease-out 0.5s both;
+      }
+
+      .cancel-subtitle {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        margin-bottom: 40px;
+        line-height: 1.6;
+        animation: fadeInUp 0.8s ease-out 0.7s both;
+      }
+
+      .reassurance-box {
+        background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+        border-radius: 20px;
+        padding: 30px;
+        margin: 30px 0;
+        border-left: 5px solid #ff6b6b;
+        animation: fadeInUp 0.8s ease-out 0.9s both;
+      }
+
+      .reassurance-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+
+      .reassurance-text {
+        color: #5a6c7d;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .help-options {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
+      }
+
+      .help-options li {
+        padding: 10px 0;
+        color: #5a6c7d;
+        position: relative;
+        padding-left: 30px;
+        font-weight: 500;
+      }
+
+      .help-options li::before {
+        content: "💬";
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        animation: fadeInUp 0.8s ease-out 1.1s both;
+      }
+
+      .btn-primary-custom {
+        background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        color: white;
+        text-decoration: none;
+      }
+
+      .btn-secondary-custom {
+        background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+        color: #2c3e50;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(189, 195, 199, 0.3);
+        color: #2c3e50;
+        text-decoration: none;
+      }
+
+      .btn-outline-custom {
+        background: transparent;
+        color: #ff6b6b;
+        border: 2px solid #ff6b6b;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-outline-custom:hover {
+        background: #ff6b6b;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        text-decoration: none;
+      }
+
+      .floating-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        animation: float 8s linear infinite;
+      }
+
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .cancel-card {
+          padding: 40px 20px;
+          margin: 20px;
+        }
+
+        .cancel-title {
+          font-size: 2rem;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn-primary-custom,
+        .btn-secondary-custom,
+        .btn-outline-custom {
+          width: 100%;
+          max-width: 300px;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="cancel-container">
+      <!-- Floating particles -->
+      <div class="floating-particles" id="particles"></div>
+
+      <div class="cancel-card">
+        <div class="cancel-icon">
+          <i class="fas fa-times"></i>
+        </div>
+
+        <h1 class="cancel-title">Payment Cancelled</h1>
+        <p class="cancel-subtitle">
+          No worries! We understand that sometimes you need a moment to think.
+          Your journey to beautiful skin can wait.
+        </p>
+
+        <div class="reassurance-box">
+          <div class="reassurance-title">We're Here to Help! 💕</div>
+          <p class="reassurance-text">
+            If you have any questions about our membership plans or need
+            assistance, our team is ready to support you.
+          </p>
+          <ul class="help-options">
+            <li>Speak with our skincare experts</li>
+            <li>Get personalized treatment recommendations</li>
+            <li>Learn more about our membership benefits</li>
+            <li>Schedule a free consultation</li>
+          </ul>
+        </div>
+
+        <div class="action-buttons">
+          <a href="membership.html" class="btn-primary-custom pulse-animation">
+            <i class="fas fa-redo"></i>
+            Try Again
+          </a>
+          <a href="contact.html" class="btn-outline-custom">
+            <i class="fas fa-phone"></i>
+            Contact Us
+          </a>
+          <a href="index.html" class="btn-secondary-custom">
+            <i class="fas fa-home"></i>
+            Back to Home
+          </a>
+        </div>
+
+        <div
+          style="
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 15px;
+            animation: fadeInUp 0.8s ease-out 1.3s both;
+          "
+        >
+          <p style="color: #5a6c7d; margin: 0; font-size: 0.9rem">
+            <i
+              class="fas fa-info-circle"
+              style="color: #ff6b6b; margin-right: 8px"
+            ></i>
+            <strong>Remember:</strong> You can always return to complete your
+            membership purchase. Your cart will be saved for 24 hours.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+
+    <script>
+      // Create floating particles
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 12;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 8 + "s";
+          particle.style.animationDuration = Math.random() * 4 + 4 + "s";
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Add some encouraging messages
+      function showEncouragingMessage() {
+        const messages = [
+          "Your skin journey is unique - take your time! ✨",
+          "We're here when you're ready to glow! 🌟",
+          "Beautiful skin is worth the wait! 💫",
+          "Your confidence journey starts when you're ready! 💖",
+        ];
+
+        const randomMessage =
+          messages[Math.floor(Math.random() * messages.length)];
+
+        // Create a subtle notification
+        const notification = document.createElement("div");
+        notification.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 15px 20px;
+          border-radius: 15px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+          font-size: 0.9rem;
+          color: #5a6c7d;
+          max-width: 300px;
+          animation: slideInRight 0.5s ease-out;
+        `;
+        notification.textContent = randomMessage;
+
+        document.body.appendChild(notification);
+
+        // Remove after 5 seconds
+        setTimeout(() => {
+          notification.style.animation = "slideOutRight 0.5s ease-out";
+          setTimeout(() => notification.remove(), 500);
+        }, 5000);
+      }
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        createParticles();
+
+        // Show encouraging message after a delay
+        setTimeout(showEncouragingMessage, 2000);
+
+        // Add some interactive effects
+        const cancelCard = document.querySelector(".cancel-card");
+        cancelCard.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.02)";
+        });
+
+        cancelCard.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1)";
+        });
+
+        // Add click tracking for analytics (if needed)
+        const tryAgainBtn = document.querySelector(".btn-primary-custom");
+        tryAgainBtn.addEventListener("click", function () {
+          // You can add analytics tracking here
+          console.log('User clicked "Try Again"');
+        });
+      });
+
+      // Add CSS for slide animations
+      const style = document.createElement("style");
+      style.textContent = `
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideOutRight {
+          from {
+            opacity: 1;
+            transform: translateX(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>

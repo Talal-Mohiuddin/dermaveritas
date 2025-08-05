@@ -1,26 +1,55 @@
-import express from "stripe";
+import Stripe from "stripe";
 import { User } from "../models/user-model.js";
 import { Cart } from "../models/cart-model.js";
+import { createOrderFromStripe } from "./order-controller.js";
 import dotenv from "dotenv";
 import { ErrorHandler } from "../middlewares/error.middleware.js";
 import { catchAsyncErrors } from "../middlewares/catchAysncErrors.js";
 
 dotenv.config();
 
-const stripe = new express(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Webhook handler for Stripe events
 export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
   const sig = req.headers["stripe-signature"];
   const webhookSecret = process.env.STRIPE_SECRET_WEBHOOK_SECRET;
 
+  // Debug logging
+  console.log("Webhook received:");
+  console.log("Signature header:", sig ? "Present" : "Missing");
+  console.log("Webhook secret configured:", webhookSecret ? "Yes" : "No");
+  console.log("Request body length:", req.body ? req.body.length : "No body");
+
+  if (!webhookSecret) {
+    console.error("STRIPE_SECRET_WEBHOOK_SECRET is not configured");
+    return res.status(500).json({
+      success: false,
+      message: "Webhook secret not configured",
+    });
+  }
+
+  if (!sig) {
+    console.error("Stripe signature header is missing");
+    return res.status(400).json({
+      success: false,
+      message: "Stripe signature header is missing",
+    });
+  }
+
   let event;
 
   try {
     event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    console.log("Webhook signature verified successfully");
   } catch (err) {
     console.error(`Webhook signature verification failed: ${err.message}`);
-    return next(new ErrorHandler("Webhook signature verification failed", 400));
+    console.error("Error details:", err);
+    return res.status(400).json({
+      success: false,
+      message: "Webhook signature verification failed",
+      error: err.message,
+    });
   }
 
   // Handle the checkout.session.completed event
@@ -28,19 +57,16 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
     const session = event.data.object;
 
     try {
-      const sessionWithMetadata = await stripe.checkout.sessions.retrieve(
-        session.id,
-        {
-          expand: ["metadata"],
-        }
-      );
+      // Metadata is already available in the webhook event
+      const metadata = session.metadata || {};
+      const { userId, cartId, planName } = metadata;
 
-      const { userId, cartId } = sessionWithMetadata.metadata;
+      console.log("Webhook metadata:", metadata);
 
       // If metadata contains cartId, process cart purchase
-      if (cartId) {
+      if (cartId && userId) {
         const user = await User.findById(userId);
-        const cart = await Cart.findById(cartId);
+        const cart = await Cart.findById(cartId).populate("Products.productId");
 
         if (!user || !cart) {
           console.error("User or cart not found");
@@ -50,37 +76,40 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
           });
         }
 
-        // Add cart items to user's buying history
-        const purchaseDate = new Date();
-        cart.Products.forEach((item) => {
-          user.Buyinghistory.push({
-            productId: item.productId,
-            date: purchaseDate,
-          });
+        // Create order from cart
+        const orderProducts = cart.Products.map((item) => ({
+          productId: item.productId._id,
+          name: item.productId.name,
+          price: item.productId.price,
+          quantity: item.quantity,
+        }));
+
+        // Create order
+        await createOrderFromStripe(session, {
+          userId,
+          products: JSON.stringify(orderProducts),
+          shippingAddress: JSON.stringify({}), // Add shipping address if available
         });
 
         // Empty the cart
         cart.Products = [];
         cart.totalPrice = 0;
+        await cart.save();
 
-        // Save both user and cart
-        await Promise.all([user.save(), cart.save()]);
-
-        console.log(`Updated purchase history for user: ${userId}`);
+        console.log(`Order created and cart cleared for user: ${userId}`);
         return res.status(200).json({
           success: true,
-          message: "Cart purchase processed successfully",
+          message: "Order created successfully",
         });
       }
 
-      // Handle plan upgrade (existing logic)
-      const planName = sessionWithMetadata?.planName;
+      // Handle plan upgrade
       if (userId && planName) {
         // Validate planName
         const validPlans = [
-          "Glow & Hydrate",
-          "Lift & Reshape",
-          "Correct & Renew",
+          "Veritas Glow",
+          "Veritas Sculpt",
+          "Veritas Prestige",
         ];
         if (!validPlans.includes(planName)) {
           console.error(`Invalid plan name: ${planName}`);
@@ -104,11 +133,18 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
         await user.save();
 
         console.log(`Updated plan to ${planName} for user: ${userId}`);
-        res.status(200).json({
+        return res.status(200).json({
           success: true,
-          message: "Webhook processed successfully",
+          message: "Plan upgrade processed successfully",
         });
       }
+
+      // If no valid metadata found, log and acknowledge
+      console.log("No valid metadata found in webhook, acknowledging event");
+      return res.status(200).json({
+        success: true,
+        message: "Event acknowledged (no action required)",
+      });
     } catch (error) {
       console.error(`Error processing webhook: ${error.message}`);
       return next(
