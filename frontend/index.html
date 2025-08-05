@@ -2289,7 +2289,7 @@
     <!-- Dynamic Content Script -->
     <script>
       // API Base URL
-      const API_BASE_URL = "http://localhost:3000/api";
+      const API_BASE_URL = "https://dermaveritas.onrender.com/api";
 
       // Function to format date
       function formatDate(dateString) {
@@ -2361,7 +2361,7 @@
                   <div class="blog-one__img">
                     <img src="${
                       blog.coverImage
-                        ? `http://localhost:3000/uploads/blogs/${blog.coverImage}`
+                        ? `https://dermaveritas.onrender.com/uploads/blogs/${blog.coverImage}`
                         : "assets/images/blog/blog-1-1.jpg"
                     }" alt="${
               blog.title
@@ -2462,7 +2462,7 @@
                     <div class="products-one__img">
                       <img src="${
                         product.images && product.images.length > 0
-                          ? `http://localhost:3000/uploads/products/${product.images[0]}`
+                          ? `https://dermaveritas.onrender.com/uploads/products/${product.images[0]}`
                           : "assets/images/shop/product1.webp"
                       }" alt="${product.name}" />
                     </div>
