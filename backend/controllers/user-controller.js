@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import {
   generateVerificationToken,
   sendVerificationEmail,
+  sendPasswordResetEmail,
 } from "../utils/emailService.js";
 
 dotenv.config();
@@ -641,6 +642,76 @@ const resendVerificationEmail = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
+// Forgot password endpoint
+const forgotPassword = catchAsyncErrors(async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return next(new ErrorHandler("Email is required", 400));
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  // Generate password reset token
+  const resetToken = generateVerificationToken();
+  const resetExpires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+  user.passwordResetToken = resetToken;
+  user.passwordResetExpires = resetExpires;
+  await user.save();
+
+  try {
+    await sendPasswordResetEmail(user, resetToken);
+
+    res.status(200).json({
+      success: true,
+      message:
+        "Password reset email sent successfully! Please check your inbox.",
+    });
+  } catch (error) {
+    return next(
+      new ErrorHandler(
+        "Failed to send password reset email. Please try again.",
+        500
+      )
+    );
+  }
+});
+
+// Reset password endpoint
+const resetPassword = catchAsyncErrors(async (req, res, next) => {
+  const { token, password } = req.body;
+
+  if (!token || !password) {
+    return next(new ErrorHandler("Token and password are required", 400));
+  }
+
+  const user = await User.findOne({
+    passwordResetToken: token,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return next(new ErrorHandler("Invalid or expired reset token", 400));
+  }
+
+  // Update password
+  user.password = password;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message:
+      "Password reset successfully! You can now log in with your new password.",
+  });
+});
+
 export {
   registerUser,
   loginUser,
@@ -661,4 +732,6 @@ export {
   getBlogStats,
   verifyEmail,
   resendVerificationEmail,
+  forgotPassword,
+  resetPassword,
 };

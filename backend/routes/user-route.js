@@ -19,6 +19,8 @@ import {
   getBlogStats,
   verifyEmail,
   resendVerificationEmail,
+  forgotPassword,
+  resetPassword,
 } from "../controllers/user-controller.js";
 import {
   isUserAuthenticated,
@@ -44,6 +46,10 @@ router.route("/unban-user/:id").put(isadminAuthenticated, unbanUser);
 // Email verification routes
 router.route("/verify-email/:token").get(verifyEmail);
 router.route("/resend-verification").post(resendVerificationEmail);
+
+// Password reset routes
+router.route("/forgot-password").post(forgotPassword);
+router.route("/reset-password").post(resetPassword);
 
 // Dashboard statistics routes
 router.route("/dashboard-stats").get(isadminAuthenticated, getDashboardStats);
