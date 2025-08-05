@@ -16,16 +16,16 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 const plans = [
   {
-    name: "Glow & Hydrate",
-    price: 699,
+    name: "Veritas Glow",
+    price: 89,
   },
   {
-    name: "Lift & Reshape",
-    price: 1299,
+    name: "Veritas Sculpt",
+    price: 169,
   },
   {
-    name: "Correct & Renew",
-    price: 1499,
+    name: "Veritas Prestige",
+    price: 299,
   },
 ];
 
@@ -270,7 +270,9 @@ const upgradePlan = catchAsyncErrors(async (req, res, next) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.FRONTEND_URL}/success`,
+      success_url: `${
+        process.env.FRONTEND_URL
+      }/success?plan=${encodeURIComponent(plan.name)}`,
       cancel_url: `${process.env.FRONTEND_URL}/cancel`,
       metadata: {
         userId: user._id.toString(),

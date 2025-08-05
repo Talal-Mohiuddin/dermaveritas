@@ -105,15 +105,12 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
 
       // Handle plan upgrade
       if (userId && planName) {
-        // Map frontend plan names to database enum values
-        const planMapping = {
-          "Glow & Hydrate": "Veritas Glow",
-          "Lift & Reshape": "Veritas Sculpt",
-          "Correct & Renew": "Veritas Prestige",
-        };
-
         // Validate planName
-        const validPlans = Object.keys(planMapping);
+        const validPlans = [
+          "Veritas Glow",
+          "Veritas Sculpt",
+          "Veritas Prestige",
+        ];
         if (!validPlans.includes(planName)) {
           console.error(`Invalid plan name: ${planName}`);
           return res.status(400).json({
@@ -132,7 +129,7 @@ export const handleStripeWebhook = catchAsyncErrors(async (req, res, next) => {
           });
         }
 
-        user.plan = planMapping[planName];
+        user.plan = planName;
         await user.save();
 
         console.log(`Updated plan to ${planName} for user: ${userId}`);
