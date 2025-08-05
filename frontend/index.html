@@ -138,7 +138,7 @@
                     <a href="#">Pages </a>
                     <ul>
                       <li><a href="team.html">Team Members</a></li>
-              
+                      <li><a href="pricing-plans.html">Pricing Plans</a></li>
                       <li><a href="membership.html">Membership</a></li>
                     </ul>
                   </li>
@@ -208,7 +208,7 @@
                       <a href="#">Pages </a>
                       <ul>
                         <li><a href="team.html">Team Members</a></li>
-                        
+                        <li><a href="pricing-plans.html">Pricing Plans</a></li>
                         <li><a href="membership.html">Membership</a></li>
                       </ul>
                     </li>
@@ -2130,6 +2130,7 @@
                   </div>
                   <ul class="footer-widget__links-list list-unstyled">
                     <li><a href="about.html">About</a></li>
+                    <li><a href="pricing-plans.html">Pricing Plans</a></li>
                     <li><a href="membership.html">Membership</a></li>
                     <li><a href="contact.html">Contact</a></li>
                   </ul>
@@ -2284,5 +2285,231 @@
 
     <!-- template js -->
     <script src="assets/js//mellis.js"></script>
+
+    <!-- Dynamic Content Script -->
+    <script>
+      // API Base URL
+      const API_BASE_URL = "http://localhost:3000/api";
+
+      // Function to format date
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.toLocaleString("default", { month: "short" });
+        return { day, month };
+      }
+
+      // Function to create star rating HTML
+      function createStarRating(rating) {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+        let starsHTML = "";
+
+        for (let i = 0; i < fullStars; i++) {
+          starsHTML += '<span class="fa fa-star"></span>';
+        }
+
+        if (hasHalfStar) {
+          starsHTML += '<span class="fa fa-star-half-o"></span>';
+        }
+
+        const emptyStars = 5 - Math.ceil(rating);
+        for (let i = 0; i < emptyStars; i++) {
+          starsHTML += '<span class="fa fa-star-o"></span>';
+        }
+
+        return starsHTML;
+      }
+
+      // Function to load and display blogs
+      async function loadBlogs() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/blog/all`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const blogs = await response.json();
+
+          const blogContainer = document.querySelector(".blog-one .row");
+          if (!blogContainer) return;
+
+          // Clear existing static content
+          blogContainer.innerHTML = "";
+
+          // Check if blogs array exists and has items
+          if (!blogs || blogs.length === 0) {
+            blogContainer.innerHTML = `
+              <div class="col-xl-12 text-center">
+                <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
+                  <i class="far fa-newspaper" style="font-size: 3rem; color: #89868d; margin-bottom: 15px;"></i>
+                  <h3 style="color: #333; margin-bottom: 10px;">No Blog Posts Yet</h3>
+                  <p style="color: #666; font-size: 1.1rem; margin: 0;">We're working on some amazing content. Check back soon for the latest beauty tips and treatments!</p>
+                </div>
+              </div>
+            `;
+            return;
+          }
+
+          // Display up to 3 blogs
+          const blogsToShow = blogs.slice(0, 3);
+
+          blogsToShow.forEach((blog) => {
+            const date = formatDate(blog.createdAt);
+            const blogHTML = `
+              <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px">
+                <div class="blog-one__single" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
+                  <div class="blog-one__img">
+                    <img src="${
+                      blog.coverImage
+                        ? `http://localhost:3000/uploads/blogs/${blog.coverImage}`
+                        : "assets/images/blog/blog-1-1.jpg"
+                    }" alt="${
+              blog.title
+            }" style="width: 100%; display: block; height: 200px; object-fit: cover;" />
+                  </div>
+                  <div class="blog-one__content" style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="blog-one__date" style="color: #89868d; font-size: 0.9rem; margin-bottom: 10px;">
+                      <p style="margin: 0; font-size: 1.25rem; font-weight: 600">${
+                        date.day
+                      }</p>
+                      <span>${date.month}</span>
+                    </div>
+                    <ul class="blog-one__meta list-unstyled" style="padding: 0; margin: 0 0 10px; display: flex; gap: 15px; font-size: 0.85rem; color: #89868d;">
+                      <li><i class="far fa-user-circle"></i> Admin</li>
+                      <li><i class="far fa-comments"></i> ${
+                        blog.comments ? blog.comments.length : 0
+                      } Comments</li>
+                    </ul>
+                    <h3 class="blog-one__title" style="font-size: 1.25rem; font-weight: 600; line-height: 1.4;">
+                      <a href="blogpage.html?id=${
+                        blog._id
+                      }" style="color: #000; text-decoration: none">${
+              blog.title
+            }</a>
+                    </h3>
+                    <p class="blog-one__text" style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                      ${blog.content.substring(0, 150)}${
+              blog.content.length > 150 ? "..." : ""
+            }
+                    </p>
+                    <div class="blog-one__read-more" style="margin-top: auto">
+                      <a href="blogpage.html?id=${
+                        blog._id
+                      }" style="color: #89868d; text-decoration: none; font-weight: 600;">Read more <span class="icon-right-arrow"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            blogContainer.innerHTML += blogHTML;
+          });
+        } catch (error) {
+          console.error("Error loading blogs:", error);
+          const blogContainer = document.querySelector(".blog-one .row");
+          if (blogContainer) {
+            blogContainer.innerHTML = `
+              <div class="col-xl-12 text-center">
+                <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
+                  <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ffc107; margin-bottom: 15px;"></i>
+                  <h3 style="color: #333; margin-bottom: 10px;">Unable to Load Blog Posts</h3>
+                  <p style="color: #666; font-size: 1.1rem; margin: 0;">We're experiencing some technical difficulties. Please try again later.</p>
+                </div>
+              </div>
+            `;
+          }
+        }
+      }
+
+      // Function to load and display products
+      async function loadProducts() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/products`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const products = await response.json();
+
+          const productContainer = document.querySelector(".products-one .row");
+          if (!productContainer) return;
+
+          // Clear existing static content
+          productContainer.innerHTML = "";
+
+          // Check if products array exists and has items
+          if (!products || products.length === 0) {
+            productContainer.innerHTML = `
+              <div class="col-xl-12 text-center">
+                <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
+                  <i class="fas fa-shopping-bag" style="font-size: 3rem; color: #89868d; margin-bottom: 15px;"></i>
+                  <h3 style="color: #333; margin-bottom: 10px;">No Products Available</h3>
+                  <p style="color: #666; font-size: 1.1rem; margin: 0;">We're currently updating our product catalog. Check back soon for amazing beauty products!</p>
+                </div>
+              </div>
+            `;
+            return;
+          }
+
+          // Display up to 4 products
+          const productsToShow = products.slice(0, 4);
+
+          productsToShow.forEach((product, index) => {
+            const productHTML = `
+              <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="${
+                (index + 1) * 100
+              }ms">
+                <div class="products-one__single">
+                  <div class="products-one__img-box">
+                    <div class="products-one__img">
+                      <img src="${
+                        product.images && product.images.length > 0
+                          ? `http://localhost:3000/uploads/products/${product.images[0]}`
+                          : "assets/images/shop/product1.webp"
+                      }" alt="${product.name}" />
+                    </div>
+                    <div class="products-one__btn-box">
+                      <a href="product-details.html?id=${
+                        product._id
+                      }" class="thm-btn products-one__btn">View Details</a>
+                    </div>
+                  </div>
+                  <div class="products-one__content">
+                    <h3 class="products-one__name">
+                      <a href="product-details.html?id=${product._id}">${
+              product.name
+            }</a>
+                    </h3>
+                    <p class="products-one__price">$${product.price}</p>
+                    <div class="products-one__rating">
+                      ${createStarRating(product.rating || 4.5)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            productContainer.innerHTML += productHTML;
+          });
+        } catch (error) {
+          console.error("Error loading products:", error);
+          const productContainer = document.querySelector(".products-one .row");
+          if (productContainer) {
+            productContainer.innerHTML = `
+              <div class="col-xl-12 text-center">
+                <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
+                  <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ffc107; margin-bottom: 15px;"></i>
+                  <h3 style="color: #333; margin-bottom: 10px;">Unable to Load Products</h3>
+                  <p style="color: #666; font-size: 1.1rem; margin: 0;">We're experiencing some technical difficulties. Please try again later.</p>
+                </div>
+              </div>
+            `;
+          }
+        }
+      }
+
+      // Load content when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        loadBlogs();
+        loadProducts();
+      });
+    </script>
   </body>
 </html>
