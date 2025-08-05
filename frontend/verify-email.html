@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Email | DermaVeritas</title>
+    <!-- favicons Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Email Verification - DermaVeritas" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+
+    <style>
+      .verification-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 20px;
+      }
+
+      .verification-card {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .verification-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ff6b6b, #e55a5a);
+      }
+
+      .verification-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff6b6b, #e55a5a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        color: white;
+        font-size: 2rem;
+      }
+
+      .verification-title {
+        font-family: "Libre Baskerville", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .verification-subtitle {
+        font-family: "Manrope", sans-serif;
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .verification-status {
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        font-family: "Manrope", sans-serif;
+      }
+
+      .status-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .status-error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .status-loading {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+      }
+
+      .btn-primary-custom {
+        background: linear-gradient(135deg, #ff6b6b, #e55a5a);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-family: "Manrope", sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        margin: 10px;
+      }
+
+      .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        color: white;
+        text-decoration: none;
+      }
+
+      .btn-secondary-custom {
+        background: transparent;
+        border: 2px solid #ff6b6b;
+        color: #ff6b6b;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-family: "Manrope", sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        margin: 10px;
+      }
+
+      .btn-secondary-custom:hover {
+        background: #ff6b6b;
+        color: white;
+        text-decoration: none;
+      }
+
+      .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #ff6b6b;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .resend-section {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .resend-text {
+        font-family: "Manrope", sans-serif;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .email-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        font-family: "Manrope", sans-serif;
+        margin-bottom: 15px;
+        transition: border-color 0.3s ease;
+      }
+
+      .email-input:focus {
+        outline: none;
+        border-color: #ff6b6b;
+      }
+
+      @media (max-width: 768px) {
+        .verification-card {
+          padding: 30px 20px;
+        }
+
+        .verification-title {
+          font-size: 1.5rem;
+        }
+
+        .verification-subtitle {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="verification-container">
+      <div class="verification-card">
+        <div class="verification-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+
+        <h1 class="verification-title">Email Verification</h1>
+        <p class="verification-subtitle">
+          We're verifying your email address to complete your registration.
+        </p>
+
+        <div
+          id="verification-status"
+          class="verification-status status-loading"
+        >
+          <div class="spinner"></div>
+          <p>Verifying your email address...</p>
+        </div>
+
+        <div id="verification-content" style="display: none">
+          <div id="success-content" style="display: none">
+            <div
+              class="verification-icon"
+              style="background: linear-gradient(135deg, #28a745, #20c997)"
+            >
+              <i class="fas fa-check"></i>
+            </div>
+            <h2 style="color: #28a745; margin-bottom: 15px">
+              Email Verified Successfully!
+            </h2>
+            <p style="color: #666; margin-bottom: 30px">
+              Your email has been verified successfully. You can now log in to
+              your account.
+            </p>
+            <a href="login.html" class="btn-primary-custom">
+              <i class="fas fa-sign-in-alt"></i> Go to Login
+            </a>
+          </div>
+
+          <div id="error-content" style="display: none">
+            <div
+              class="verification-icon"
+              style="background: linear-gradient(135deg, #dc3545, #c82333)"
+            >
+              <i class="fas fa-times"></i>
+            </div>
+            <h2 style="color: #dc3545; margin-bottom: 15px">
+              Verification Failed
+            </h2>
+            <p style="color: #666; margin-bottom: 30px">
+              The verification link is invalid or has expired. Please request a
+              new verification email.
+            </p>
+            <a href="login.html" class="btn-secondary-custom">
+              <i class="fas fa-arrow-left"></i> Back to Login
+            </a>
+          </div>
+        </div>
+
+        <div id="resend-section" class="resend-section" style="display: none">
+          <p class="resend-text">
+            Didn't receive the verification email? Enter your email address
+            below to resend it.
+          </p>
+          <input
+            type="email"
+            id="resend-email"
+            class="email-input"
+            placeholder="Enter your email address"
+          />
+          <button id="resend-btn" class="btn-primary-custom">
+            <i class="fas fa-paper-plane"></i> Resend Verification Email
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/toast.js"></script>
+
+    <script>
+      // Get token from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token");
+
+      // API Base URL
+      const API_BASE_URL = "https://dermaveritas.onrender.com/api";
+
+      // Function to verify email
+      async function verifyEmail(token) {
+        try {
+          const response = await fetch(
+            `${API_BASE_URL}/users/verify-email/${token}`,
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            // Success
+            document.getElementById("verification-status").style.display =
+              "none";
+            document.getElementById("verification-content").style.display =
+              "block";
+            document.getElementById("success-content").style.display = "block";
+          } else {
+            // Error
+            document.getElementById("verification-status").style.display =
+              "none";
+            document.getElementById("verification-content").style.display =
+              "block";
+            document.getElementById("error-content").style.display = "block";
+            document.getElementById("resend-section").style.display = "block";
+          }
+        } catch (error) {
+          console.error("Error verifying email:", error);
+          document.getElementById("verification-status").style.display = "none";
+          document.getElementById("verification-content").style.display =
+            "block";
+          document.getElementById("error-content").style.display = "block";
+          document.getElementById("resend-section").style.display = "block";
+        }
+      }
+
+      // Function to resend verification email
+      async function resendVerificationEmail(email) {
+        try {
+          const response = await fetch(
+            `${API_BASE_URL}/users/resend-verification`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              credentials: "include",
+              body: JSON.stringify({ email }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            toast.success(
+              "Verification email sent successfully! Please check your inbox."
+            );
+            document.getElementById("resend-section").style.display = "none";
+          } else {
+            toast.error(
+              data.message ||
+                "Failed to send verification email. Please try again."
+            );
+          }
+        } catch (error) {
+          console.error("Error resending verification email:", error);
+          toast.error("Failed to send verification email. Please try again.");
+        }
+      }
+
+      // Event listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        if (token) {
+          verifyEmail(token);
+        } else {
+          document.getElementById("verification-status").style.display = "none";
+          document.getElementById("verification-content").style.display =
+            "block";
+          document.getElementById("error-content").style.display = "block";
+          document.getElementById("resend-section").style.display = "block";
+        }
+
+        // Resend button click handler
+        document
+          .getElementById("resend-btn")
+          .addEventListener("click", function () {
+            const email = document.getElementById("resend-email").value.trim();
+            if (!email) {
+              toast.error("Please enter your email address.");
+              return;
+            }
+            resendVerificationEmail(email);
+          });
+
+        // Enter key handler for email input
+        document
+          .getElementById("resend-email")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              document.getElementById("resend-btn").click();
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

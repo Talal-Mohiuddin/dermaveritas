@@ -255,6 +255,7 @@
       </form>
       <!-- No register redirect for admin -->
     </div>
+    <script src="assets/js/toast.js"></script>
     <script>
       document
         .querySelector(".login-form")
@@ -264,7 +265,7 @@
           const password = document.getElementById("admin-password").value;
           try {
             const res = await fetch(
-              "https://dermaveritas.onrender.com/api/admin/login",
+              "https://dermaveritas.onrender.com/api/users/admin-login",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -274,13 +275,15 @@
             );
             const data = await res.json();
             if (res.ok) {
-              alert("Admin login successful!");
-              // Optionally redirect: window.location.href = '/admin-dashboard.html';
+              toast.success("Admin login successful!");
+              setTimeout(() => {
+                window.location.href = "admin.html";
+              }, 1000);
             } else {
-              alert(data.message || "Login failed");
+              toast.error(data.message || "Login failed");
             }
           } catch (err) {
-            alert("Network error");
+            toast.error("Network error");
           }
         });
     </script>

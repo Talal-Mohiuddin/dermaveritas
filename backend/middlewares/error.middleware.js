@@ -11,19 +11,19 @@ const errorMiddleware = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   if (err.code === 11000) {
     const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
-    err = new ErrorHandler(400, message);
+    err = new ErrorHandler(message, 400);
   }
   if (err.name === "JsonWebTokenError") {
     const message = "Invalid token. Please try again";
-    err = new ErrorHandler(400, message);
+    err = new ErrorHandler(message, 400);
   }
   if (err.name === "TokenExpiredError") {
     const message = "Token expired. Please try again";
-    err = new ErrorHandler(400, message);
+    err = new ErrorHandler(message, 400);
   }
   if (err.name === "CastError") {
     const message = `Resource not found. Invalid: ${err.path}`;
-    err = new ErrorHandler(404, message);
+    err = new ErrorHandler(message, 404);
   }
   const errorMessage = err.errors
     ? Object.values(err.errors)

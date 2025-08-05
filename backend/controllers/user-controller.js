@@ -6,6 +6,10 @@ import validator from "validator";
 import { BannedUsers } from "../models/bannedusers-model.js";
 import Stripe from "stripe";
 import dotenv from "dotenv";
+import {
+  generateVerificationToken,
+  sendVerificationEmail,
+} from "../utils/emailService.js";
 
 dotenv.config();
 
@@ -47,12 +51,40 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("You are banned from registering", 403));
   }
 
+  // Generate verification token
+  const verificationToken = generateVerificationToken();
+  const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+
   const user = await User.create({
     name,
     email,
     password,
+    emailVerificationToken: verificationToken,
+    emailVerificationExpires: verificationExpires,
   });
-  generateToken(user, "User registered successfully", 201, res);
+
+  try {
+    // Send verification email
+    await sendVerificationEmail(user, verificationToken);
+
+    res.status(201).json({
+      success: true,
+      message:
+        "Registration successful! Please check your email to verify your account.",
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isEmailVerified: user.isEmailVerified,
+      },
+    });
+  } catch (error) {
+    // If email sending fails, delete the user and return error
+    await User.findByIdAndDelete(user._id);
+    return next(
+      new ErrorHandler("Registration failed. Please try again.", 500)
+    );
+  }
 });
 
 const loginUser = catchAsyncErrors(async (req, res, next) => {
@@ -74,6 +106,16 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
   if (user.isBanned) {
     return next(
       new ErrorHandler("You are banned from accessing this service", 403)
+    );
+  }
+
+  // Check if email is verified (only for regular users, not admins)
+  if (!user.isEmailVerified) {
+    return next(
+      new ErrorHandler(
+        "Please verify your email address before logging in. Check your inbox for the verification link.",
+        401
+      )
     );
   }
 
@@ -524,6 +566,81 @@ const getBlogStats = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
+// Verify email endpoint
+const verifyEmail = catchAsyncErrors(async (req, res, next) => {
+  const { token } = req.params;
+
+  if (!token) {
+    return next(new ErrorHandler("Verification token is required", 400));
+  }
+
+  const user = await User.findOne({
+    emailVerificationToken: token,
+    emailVerificationExpires: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    console.log("No user found with this token or token expired");
+    return next(new ErrorHandler("Invalid or expired verification token", 400));
+  }
+
+  // Mark email as verified
+  user.isEmailVerified = true;
+  user.emailVerificationToken = undefined;
+  user.emailVerificationExpires = undefined;
+  await user.save();
+
+  console.log("Email verified successfully for user:", user.email);
+
+  res.status(200).json({
+    success: true,
+    message: "Email verified successfully! You can now log in to your account.",
+  });
+});
+
+// Resend verification email
+const resendVerificationEmail = catchAsyncErrors(async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return next(new ErrorHandler("Email is required", 400));
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  if (user.isEmailVerified) {
+    return next(new ErrorHandler("Email is already verified", 400));
+  }
+
+  // Generate new verification token
+  const verificationToken = generateVerificationToken();
+  const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+
+  user.emailVerificationToken = verificationToken;
+  user.emailVerificationExpires = verificationExpires;
+  await user.save();
+
+  try {
+    await sendVerificationEmail(user, verificationToken);
+
+    res.status(200).json({
+      success: true,
+      message: "Verification email sent successfully! Please check your inbox.",
+    });
+  } catch (error) {
+    return next(
+      new ErrorHandler(
+        "Failed to send verification email. Please try again.",
+        500
+      )
+    );
+  }
+});
+
 export {
   registerUser,
   loginUser,
@@ -542,4 +659,6 @@ export {
   getProductStats,
   getOrderStats,
   getBlogStats,
+  verifyEmail,
+  resendVerificationEmail,
 };

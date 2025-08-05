@@ -123,7 +123,7 @@
     </div>
     <!-- /.preloader -->
 
-        <div class="page-wrapper">
+    <div class="page-wrapper">
       <header class="main-header-two">
         <nav class="main-menu main-menu-two">
           <div class="main-menu-two__wrapper">
@@ -150,7 +150,7 @@
                     <a href="#">Pages </a>
                     <ul>
                       <li><a href="team.html">Team Members</a></li>
-              
+
                       <li><a href="membership.html">Membership</a></li>
                     </ul>
                   </li>
@@ -220,7 +220,7 @@
                       <a href="#">Pages </a>
                       <ul>
                         <li><a href="team.html">Team Members</a></li>
-                        
+
                         <li><a href="membership.html">Membership</a></li>
                       </ul>
                     </li>
@@ -615,7 +615,7 @@
                   </div>
                   <ul class="footer-widget__links-list list-unstyled">
                     <li><a href="about.html">About</a></li>
-                    
+
                     <li><a href="membership.html">Membership</a></li>
                     <li><a href="contact.html">Contact</a></li>
                   </ul>
@@ -730,6 +730,7 @@
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/js/toast.js"></script>
     <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
     <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
     <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
@@ -958,18 +959,18 @@
           const data = await response.json();
 
           if (response.ok && data.success) {
-            alert("Product added to cart successfully!");
+            toast.success("Product added to cart successfully!");
           } else if (
             data.message === "Please Login First" ||
             response.status === 401
           ) {
             window.location.href = "login.html";
           } else {
-            alert(data.message || "Failed to add product to cart.");
+            toast.error(data.message || "Failed to add product to cart.");
           }
         } catch (error) {
           console.error("Error adding to cart:", error);
-          alert("Error: Unable to add product to cart.");
+          toast.error("Error: Unable to add product to cart.");
         }
       }
 

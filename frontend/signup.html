@@ -278,6 +278,7 @@
         <a href="login.html">Login</a>
       </div>
     </div>
+    <script src="assets/js/toast.js"></script>
     <script>
       document
         .querySelector(".signup-form")
@@ -294,10 +295,16 @@
           errorDiv.textContent = "";
 
           if (password !== confirmPassword) {
-            errorDiv.textContent = "Passwords do not match.";
-            errorDiv.style.display = "block";
+            toast.error("Passwords do not match.");
             return;
           }
+
+          // Show loading state
+          const submitBtn = document.querySelector(".signup-btn");
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = "Registering...";
+          submitBtn.disabled = true;
+
           try {
             const res = await fetch(
               "https://dermaveritas.onrender.com/api/users/register",
@@ -310,15 +317,22 @@
             );
             const data = await res.json();
             if (res.ok) {
-              alert("Registration successful! Please login.");
-              window.location.href = "login.html";
+              // Show success message with email verification info
+              toast.success(
+                `Registration successful! We've sent a verification email to ${email}. Please check your inbox and click the verification link to activate your account.`
+              );
+              setTimeout(() => {
+                window.location.href = "login.html";
+              }, 2000);
             } else {
-              errorDiv.textContent = data.message || "Registration failed";
-              errorDiv.style.display = "block";
+              toast.error(data.message || "Registration failed");
             }
           } catch (err) {
-            errorDiv.textContent = "Network error";
-            errorDiv.style.display = "block";
+            toast.error("Network error. Please try again.");
+          } finally {
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
           }
         });
     </script>

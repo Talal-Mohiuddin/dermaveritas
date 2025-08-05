@@ -9,7 +9,6 @@ const userSchema = new Schema(
     name: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     email: {
@@ -27,6 +26,16 @@ const userSchema = new Schema(
       type: String,
       enum: ["user", "admin"],
       default: "user",
+    },
+    isEmailVerified: {
+      type: Boolean,
+      default: false,
+    },
+    emailVerificationToken: {
+      type: String,
+    },
+    emailVerificationExpires: {
+      type: Date,
     },
     Buyinghistory: [
       {
