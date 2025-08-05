@@ -61,6 +61,12 @@ body {
   font-weight: 500;
 }
 
+
+.stricky-header {
+  display: none;
+}
+
+
 body.locked {
   overflow: hidden;
 }

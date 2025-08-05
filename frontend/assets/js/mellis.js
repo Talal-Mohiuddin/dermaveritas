@@ -17,6 +17,7 @@
 
   }
 
+  window.addEventListener("scroll", function () { const stickyHeader = document.querySelector(".stricky-header"); const scrollTop = window.scrollY; if (scrollTop > 200) { stickyHeader.style.display = "block"; } else { stickyHeader.style.display = "none"; } });
 
 
   function thmOwlInit() {
