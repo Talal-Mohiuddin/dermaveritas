@@ -2291,6 +2291,13 @@
       // API Base URL
       const API_BASE_URL = "https://dermaveritas.onrender.com/api";
 
+      // Function to strip HTML tags and get plain text
+      function stripHTML(html) {
+        const div = document.createElement("div");
+        div.innerHTML = html;
+        return div.textContent || div.innerText || "";
+      }
+
       // Function to format date
       function formatDate(dateString) {
         const date = new Date(dateString);
@@ -2321,14 +2328,24 @@
         return starsHTML;
       }
 
-      // Function to load and display blogs
+      // Function to fetch and display blogs
       async function loadBlogs() {
         try {
-          const response = await fetch(`${API_BASE_URL}/blog/all`);
+          const response = await fetch(`${API_BASE_URL}/blog/all`, {
+            method: "GET",
+            credentials: "include",
+          });
+
           if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(
+              `Server returned ${response.status}: ${response.statusText}`
+            );
           }
-          const blogs = await response.json();
+
+          const data = await response.json();
+          if (!data || !data.blogs) {
+            throw new Error("Unexpected response format");
+          }
 
           const blogContainer = document.querySelector(".blog-one .row");
           if (!blogContainer) return;
@@ -2337,7 +2354,7 @@
           blogContainer.innerHTML = "";
 
           // Check if blogs array exists and has items
-          if (!blogs || blogs.length === 0) {
+          if (!data.blogs || data.blogs.length === 0) {
             blogContainer.innerHTML = `
               <div class="col-xl-12 text-center">
                 <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
@@ -2351,10 +2368,13 @@
           }
 
           // Display up to 3 blogs
-          const blogsToShow = blogs.slice(0, 3);
+          const blogsToShow = data.blogs.slice(0, 3);
 
           blogsToShow.forEach((blog) => {
             const date = formatDate(blog.createdAt);
+            const contentSnippet =
+              stripHTML(blog.content).substring(0, 150) + "...";
+
             const blogHTML = `
               <div class="col-xl-4 col-lg-4" style="margin-bottom: 30px">
                 <div class="blog-one__single" style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); height: 100%; display: flex; flex-direction: column;">
@@ -2388,9 +2408,7 @@
             }</a>
                     </h3>
                     <p class="blog-one__text" style="margin-top: 10px; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                      ${blog.content.substring(0, 150)}${
-              blog.content.length > 150 ? "..." : ""
-            }
+                      ${contentSnippet}
                     </p>
                     <div class="blog-one__read-more" style="margin-top: auto">
                       <a href="blogpage.html?id=${
@@ -2420,14 +2438,24 @@
         }
       }
 
-      // Function to load and display products
+      // Function to fetch and display products
       async function loadProducts() {
         try {
-          const response = await fetch(`${API_BASE_URL}/products`);
+          const response = await fetch(`${API_BASE_URL}/products/`, {
+            method: "GET",
+            credentials: "include",
+          });
+
           if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(
+              `Server returned ${response.status}: ${response.statusText}`
+            );
           }
-          const products = await response.json();
+
+          const data = await response.json();
+          if (!data || !data.success) {
+            throw new Error("Unexpected response format");
+          }
 
           const productContainer = document.querySelector(".products-one .row");
           if (!productContainer) return;
@@ -2436,7 +2464,7 @@
           productContainer.innerHTML = "";
 
           // Check if products array exists and has items
-          if (!products || products.length === 0) {
+          if (!data.products || data.products.length === 0) {
             productContainer.innerHTML = `
               <div class="col-xl-12 text-center">
                 <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; margin: 20px 0;">
@@ -2450,7 +2478,7 @@
           }
 
           // Display up to 4 products
-          const productsToShow = products.slice(0, 4);
+          const productsToShow = data.products.slice(0, 4);
 
           productsToShow.forEach((product, index) => {
             const productHTML = `
@@ -2478,7 +2506,9 @@
               product.name
             }</a>
                     </h3>
-                    <p class="products-one__price">$${product.price}</p>
+                    <p class="products-one__price">$${product.price.toFixed(
+                      2
+                    )}</p>
                     <div class="products-one__rating">
                       ${createStarRating(product.rating || 4.5)}
                     </div>
