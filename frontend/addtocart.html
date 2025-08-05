@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="assets/js/toast.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart | DermaVeritas</title>
@@ -1004,7 +1005,7 @@
           if (error.status === 401) {
             window.location.href = "login.html";
           } else {
-            alert("Failed to proceed to checkout. Please try again.");
+            toast.error("Failed to proceed to checkout. Please try again.");
           }
           document.getElementById("checkout-btn").disabled =
             cachedCart.length === 0;

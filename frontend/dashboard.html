@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="assets/js/auth.js"></script>
+    <script src="assets/js/toast.js"></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -919,15 +920,15 @@
                 );
 
                 if (response.ok) {
-                  alert("Logged out successfully!");
+                  toast.success("Logged out successfully!");
                   window.location.href = "index.html";
                 } else {
                   const data = await response.json();
-                  alert(data.message || "Failed to logout.");
+                  toast.error(data.message || "Failed to logout.");
                 }
               } catch (error) {
                 console.error("Logout error:", error);
-                alert("Error during logout. Please try again.");
+                toast.error("Error during logout. Please try again.");
               }
             });
           }

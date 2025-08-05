@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="assets/js/toast.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DermaVeritas Blog</title>
@@ -951,7 +952,7 @@
       async function fetchBlogData() {
         const blogId = getBlogId();
         if (!blogId) {
-          alert("No blog ID provided in the URL");
+          toast.error("No blog ID provided in the URL");
           return null;
         }
         try {
@@ -971,7 +972,7 @@
           return data.blog;
         } catch (err) {
           console.error("Error fetching blog:", err);
-          alert("Error loading blog: " + err.message);
+          toast.error("Error loading blog: " + err.message);
           return null;
         }
       }
@@ -1135,15 +1136,15 @@
                   `Server returned ${response.status}: ${response.statusText}`
                 );
               }
-              alert("Thank you for your comment");
+              toast.success("Thank you for your comment");
               this.reset();
               renderBlog(); // Refresh comments
             } catch (err) {
               console.error("Error posting comment:", err);
-              alert("Error posting comment: " + err.message);
+              toast.error("Error posting comment: " + err.message);
             }
           } else {
-            alert("Please fill in all required fields.");
+            toast.error("Please fill in all required fields.");
           }
         });
 

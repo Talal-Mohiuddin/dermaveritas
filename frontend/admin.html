@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="assets/js/toast.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Admin Login | Derma Veritas</title>
@@ -180,10 +181,10 @@
               // Redirect to dashboard on successful login
               window.location.href = "dashboard.html";
             } else {
-              alert(data.message || "Admin login failed");
+              toast.error(data.message || "Admin login failed");
             }
           } catch (err) {
-            alert("Network error");
+            toast.error("Network error");
           }
         });
     </script>

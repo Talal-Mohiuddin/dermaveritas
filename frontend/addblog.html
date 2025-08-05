@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="assets/js/auth.js"></script>
+    <script src="assets/js/toast.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Blog | TeamAlpha</title>
@@ -705,7 +706,7 @@
             );
             const data = await response.json();
             if (response.ok) {
-              alert("Blog published successfully!");
+              toast.success("Blog published successfully!");
               form.reset();
               quill.setContents([]);
               selectedImages.innerHTML = "";
@@ -713,10 +714,10 @@
               updateTagsList();
               updateTagsInput();
             } else {
-              alert(data.message || "Failed to publish blog.");
+              toast.error(data.message || "Failed to publish blog.");
             }
           } catch (err) {
-            alert("Error: " + err.message);
+            toast.error("Error: " + err.message);
           }
         });
     </script>

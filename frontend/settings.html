@@ -3,6 +3,7 @@
   <head>
     <script src="assets/js/auth.js"></script>
     <script src="assets/js/UserExsists.js"></script>
+    <script src="assets/js/toast.js"></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -814,12 +815,11 @@
         });
 
         function showAlert(type, message) {
-          alertMessage.className = `alert-message alert-${type}`;
-          alertMessage.textContent = message;
-          alertMessage.style.display = "block";
-          setTimeout(() => {
-            alertMessage.style.display = "none";
-          }, 3000);
+          if (type === "success") {
+            toast.success(message);
+          } else {
+            toast.error(message);
+          }
         }
 
         // Add smooth scrolling for anchor links

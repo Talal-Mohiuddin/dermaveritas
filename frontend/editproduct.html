@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="assets/js/auth.js"></script>
+    <script src="assets/js/toast.js"></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -535,7 +536,7 @@
       async function fetchAndFillProduct() {
         const id = getProductIdFromUrl();
         if (!id) {
-          alert("No product ID specified.");
+          toast.error("No product ID specified.");
           window.location.href = "manageproducts.html";
           return;
         }
@@ -599,7 +600,7 @@
             });
           }
         } catch (err) {
-          alert("Failed to load product.");
+          toast.error("Failed to load product.");
           window.location.href = "manageproducts.html";
         }
       }
@@ -677,7 +678,7 @@
           e.preventDefault();
           const id = getProductIdFromUrl();
           if (!id) {
-            alert("No product ID specified.");
+            toast.error("No product ID specified.");
             return;
           }
           const form = e.target;
@@ -728,13 +729,13 @@
             );
             const data = await response.json();
             if (response.ok) {
-              alert("Product updated successfully!");
+              toast.success("Product updated successfully!");
               window.location.href = "manageproducts.html";
             } else {
-              alert(data.message || "Failed to update product.");
+              toast.error(data.message || "Failed to update product.");
             }
           } catch (err) {
-            alert("Error: " + err.message);
+            toast.error("Error: " + err.message);
           }
         });
 
@@ -754,15 +755,15 @@
               );
 
               if (response.ok) {
-                alert("Logged out successfully!");
+                toast.success("Logged out successfully!");
                 window.location.href = "index.html";
               } else {
                 const data = await response.json();
-                alert(data.message || "Failed to logout.");
+                toast.error(data.message || "Failed to logout.");
               }
             } catch (error) {
               console.error("Logout error:", error);
-              alert("Error during logout. Please try again.");
+              toast.error("Error during logout. Please try again.");
             }
           });
         }
