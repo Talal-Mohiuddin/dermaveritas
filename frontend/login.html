@@ -78,6 +78,13 @@
         box-sizing: border-box;
         padding-left: 6px;
         padding-right: 6px;
+        align-items: center;
+      }
+      .login-form > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .login-form label {
         font-size: 1rem;
@@ -85,6 +92,7 @@
         font-weight: 500;
         margin-bottom: 6px;
         display: block;
+        align-self: flex-start;
       }
       .login-form input[type="email"],
       .login-form input[type="password"] {
@@ -98,6 +106,7 @@
         color: var(--mellis-black);
         transition: border 0.2s;
         margin-bottom: 2px;
+        box-sizing: border-box;
       }
       .login-form input:focus {
         border-color: var(--mellis-base);
@@ -108,6 +117,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 8px;
+        width: 100%;
       }
       .login-form .remember-me {
         display: flex;
@@ -283,7 +293,7 @@
         .addEventListener("submit", async function (e) {
           e.preventDefault();
           const email = document.getElementById("login-email").value;
-          const password = document.getElementById("login-password").value;
+          const password = document.getElementById("login-password").password;
           try {
             const res = await fetch("http://localhost:3000/api/users/login", {
               method: "POST",
@@ -296,7 +306,7 @@
               alert("Login successful!");
               window.location.href = "/index.html"; // Redirect to home page
             } else {
-              alert(data.message || "Login failed");
+              alert("Login failed");
             }
           } catch (err) {
             alert("Network error");

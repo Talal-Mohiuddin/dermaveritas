@@ -4,6 +4,15 @@ import { catchAsyncErrors } from "../middlewares/catchAysncErrors.js";
 import { ErrorHandler } from "../middlewares/error.middleware.js";
 import fs from "fs";
 import path from "path";
+import Stripe from "stripe";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: "2022-11-15",
+  typescript: true,
+});
 
 // Validation helper function
 const validateRequiredFields = (fields, isUpdate = false) => {

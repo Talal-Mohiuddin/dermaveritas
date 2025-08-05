@@ -29,19 +29,15 @@
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
       rel="stylesheet"
@@ -99,6 +95,207 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/mellis.css" />
     <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+
+    <!-- Custom styles for product cards -->
+    <style>
+      .products-section {
+        background: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #eee;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .product-card__image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .product-card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .product-card:hover .product-card__image img {
+        transform: scale(1.05);
+      }
+
+      .product-card__category {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: linear-gradient(135deg, #ff6b6b, #e55a5a);
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 15px;
+        font-family: "Manrope", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .product-card__content {
+        padding: 18px;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .product-card__title {
+        font-family: "Libre Baskerville", serif;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #222;
+        line-height: 1.3;
+      }
+
+      .product-card__price {
+        font-family: "Manrope", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #ff6b6b;
+        margin-bottom: 10px;
+      }
+
+      .product-card__description {
+        font-family: "Manrope", sans-serif;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+
+      .product-card__buttons {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .thm-btn {
+        background: #ff6b6b;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 20px;
+        font-family: "Manrope", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        min-width: 100px;
+        justify-content: center;
+      }
+
+      .thm-btn i {
+        font-size: 12px;
+      }
+
+      .thm-btn:hover {
+        background: #e55a5a;
+        transform: translateY(-2px);
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .thm-btn.view-details {
+        background: #333;
+        border: 2px solid #333;
+      }
+
+      .thm-btn.view-details:hover {
+        background: #fff;
+        color: #333;
+        border: 2px solid #333;
+      }
+
+      .thm-btn.add-to-cart-btn {
+        background: transparent;
+        color: #ff6b6b;
+        border: 2px solid #ff6b6b;
+      }
+
+      .thm-btn.add-to-cart-btn:hover {
+        background: #ff6b6b;
+        color: #fff;
+        border: 2px solid #ff6b6b;
+      }
+
+      .section-title h2 {
+        font-family: "Libre Baskerville", serif;
+        color: #222;
+        font-weight: 700;
+      }
+
+      .section-title p {
+        font-family: "Manrope", sans-serif;
+        color: #666;
+        font-size: 16px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .product-card__buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .thm-btn {
+          width: 100%;
+          max-width: 160px;
+        }
+
+        .product-card__content {
+          padding: 15px;
+        }
+
+        .product-card__image {
+          height: 180px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .product-card__image {
+          height: 160px;
+        }
+
+        .product-card__title {
+          font-size: 16px;
+        }
+
+        .product-card__price {
+          font-size: 18px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -106,8 +303,7 @@
       <div class="preloader__image"></div>
     </div>
     <!-- /.preloader -->
-
-    <div class="page-wrapper">
+<div class="page-wrapper">
       <header class="main-header-two">
         <nav class="main-menu main-menu-two">
           <div class="main-menu-two__wrapper">
@@ -172,7 +368,74 @@
       </header>
 
       <div class="stricky-header stricked-menu main-menu main-menu-two">
-        <div class="sticky-header__content"></div>
+        <header class="main-header-two">
+          <nav
+            class="main-menu main-menu-two"
+            style="background-color: #89868d"
+          >
+            <div class="main-menu-two__wrapper">
+              <div class="main-menu-two__wrapper-inner">
+                <div class="main-menu-two__left">
+                  <div class="main-menu-two__logo">
+                    <a href="index.html"
+                      ><img
+                        src="assets/images/resources/logo-3.svg"
+                        alt=""
+                        style="width: 80px; height: 80px"
+                    /></a>
+                  </div>
+                </div>
+                <div class="main-menu-two__main-menu-box">
+                  <a href="#" class="mobile-nav__toggler"
+                    ><i class="fa fa-bars"></i
+                  ></a>
+                  <ul class="main-menu__list">
+                    <li class="dropdown">
+                      <a href="index3.html">Home </a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="services.html">Our Services</a>
+                    </li>
+                    <li class="dropdown menu-item-has-children">
+                      <a href="#">Pages </a>
+                      <ul>
+                        <li><a href="team.html">Team Members</a></li>
+                        <li><a href="pricing-plans.html">Pricing Plans</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a href="products.html">Shop</a>
+                    </li>
+                    <li>
+                      <a href="contact.html">Contact</a>
+                    </li>
+                    <li>
+                      <a href="affiliate.html">Affiliate</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="main-menu-two__right">
+                  <div class="main-menu-two__search-cart-box">
+                    <div class="main-menu-two__search-box">
+                      <a
+                        href="#"
+                        class="main-menu-two__search search-toggler icon-magnifying-glass"
+                      ></a>
+                    </div>
+                    <div class="main-menu-two__cart-box">
+                      <a
+                        href="addtocart.html"
+                        class="main-menu-two__cart icon-shopping-cart"
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
         <!-- /.sticky-header__content -->
       </div>
       <!-- /.stricky-header -->
@@ -181,7 +444,7 @@
         <div
           class="page-header__bg"
           style="
-            background-image: url(assets/images/backgrounds/page-header-bg.jpg);
+            background-image: url(assets/images/backgrounds/page-header-bg.webp);
           "
           loading="lazy"
         ></div>
@@ -197,146 +460,44 @@
         </div>
       </section>
 
-      <section class="product-coming-soon pt-120 pb-120 mb-3">
-        <div class="decorative-elements"></div>
+      <section class="products-section pt-120 pb-120 mb-3">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-10">
-              <div class="coming-soon-content text-center">
-                <div
-                  class="coming-soon-subtitle wow fadeInUp"
-                  data-wow-delay="200ms"
-                >
-                  Something Beautiful is Coming
-                </div>
-
-                <p
-                  class="coming-soon-description wow fadeInUp"
-                  data-wow-delay="400ms"
-                >
-                  We're meticulously crafting an exclusive range of luxury
-                  skincare and beauty products that will transform your daily
-                  routine into a spa-like experience. Our team of experts is
-                  working tirelessly to bring you the finest ingredients and
-                  most innovative formulations.
-                </p>
-
-                <div class="progress-bar wow fadeInUp" data-wow-delay="500ms">
-                  <div class="progress-fill"></div>
-                </div>
-                <div class="progress-text wow fadeInUp" data-wow-delay="600ms">
-                  Development Progress: 75% Complete
-                </div>
-
-                <form
-                  class="notify-form wow fadeInUp"
-                  data-wow-delay="700ms"
-                  action="#"
-                  method="post"
-                >
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email address"
-                    required
-                  />
-                  <button type="submit">
-                    <i class="fas fa-bell"></i> Notify Me
-                  </button>
-                </form>
-
-                <p
-                  class="wow fadeInUp"
-                  data-wow-delay="800ms"
-                  style="color: #888; font-size: 14px"
-                >
-                  Join
-                  <span style="color: #ff6b6b; font-weight: 600">2,847</span>
-                  others waiting for the launch. No spam, just updates.
+            <div class="col-lg-12">
+              <div class="section-title text-center my-5">
+                <h2>Our Products</h2>
+                <p>
+                  Discover our exclusive range of luxury skincare and beauty
+                  products.
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div class="features-grid wow fadeInUp" data-wow-delay="900ms">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-leaf"></i>
+              <div id="products-container" class="row g-4">
+                <!-- Products will be dynamically inserted here -->
               </div>
-              <h3 class="feature-title">Natural Ingredients</h3>
-              <p class="feature-description">
-                Sourced from the finest organic farms worldwide, our products
-                contain only the purest natural ingredients.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-microscope"></i>
+              <div
+                id="no-products-message"
+                class="text-center mt-5"
+                style="display: none"
+              >
+                <p class="coming-soon-description">
+                  No products available at the moment. Check back soon!
+                </p>
               </div>
-              <h3 class="feature-title">Science-Backed</h3>
-              <p class="feature-description">
-                Every formula is developed with cutting-edge research and
-                clinically tested for maximum effectiveness.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-award"></i>
+              <div id="loading-message" class="text-center mt-5">
+                <p>Loading products...</p>
               </div>
-              <h3 class="feature-title">Premium Quality</h3>
-              <p class="feature-description">
-                Luxury formulations that deliver professional results in the
-                comfort of your own home.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-heart"></i>
+              <div
+                id="error-message"
+                class="text-center mt-5 text-danger"
+                style="display: none"
+              >
+                <p>Failed to load products. Please try again later.</p>
               </div>
-              <h3 class="feature-title">Cruelty-Free</h3>
-              <p class="feature-description">
-                Ethically made with love and respect for all living beings.
-                Never tested on animals.
-              </p>
-            </div>
-          </div>
-
-          <div class="social-proof wow fadeInUp" data-wow-delay="1000ms">
-            <div class="social-proof-item">
-              <i class="fas fa-users" style="color: #ff6b6b"></i>
-              <span
-                ><span class="social-proof-number">2,847</span> People
-                Waiting</span
-              >
-            </div>
-            <div class="social-proof-item">
-              <i class="fas fa-star" style="color: #ffd700"></i>
-              <span
-                ><span class="social-proof-number">4.9</span> Expected
-                Rating</span
-              >
-            </div>
-            <div class="social-proof-item">
-              <i class="fas fa-globe" style="color: #4ecdc4"></i>
-              <span
-                ><span class="social-proof-number">25+</span> Countries</span
-              >
-            </div>
-            <div class="social-proof-item">
-              <i class="fas fa-clock" style="color: #ff6b6b"></i>
-              <span
-                >Launching <span class="social-proof-number">Soon</span></span
-              >
             </div>
           </div>
         </div>
       </section>
-      <!-- Product Coming Soon End -->
-      <!-- Include Coming Soon Section HTML here -->
-      <!-- This includes .product-coming-soon, .coming-soon-title, form, features grid, and social proof as previously written -->
+
       <!--Site Footer Start-->
       <footer class="site-footer">
         <div class="site-footer__shape-1 float-bob-x">
@@ -550,6 +711,215 @@
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
 
     <!-- template js -->
-    <script src="assets/js//mellis.js"></script>
+    <script src="assets/js/mellis.js"></script>
+
+    <!-- Dynamic products script -->
+    <script>
+      // Function to fetch and display products
+      // Cache for products and cart data
+      let cachedProducts = [];
+      let cachedCart = [];
+
+      async function fetchProducts() {
+        const productsContainer = document.getElementById("products-container");
+        const loadingMessage = document.getElementById("loading-message");
+        const noProductsMessage = document.getElementById(
+          "no-products-message"
+        );
+        const errorMessage = document.getElementById("error-message");
+
+        try {
+          // Fetch cart and products concurrently
+          const [cartResponse, productsResponse] = await Promise.all([
+            fetch("http://localhost:3000/api/cart/getcart", {
+              credentials: "include",
+            }),
+            fetch("http://localhost:3000/api/products/", {
+              method: "GET",
+              credentials: "include",
+            }),
+          ]);
+
+          const cartData = await cartResponse.json();
+          const productsData = await productsResponse.json();
+
+          loadingMessage.style.display = "none";
+
+          if (productsData.success && productsData.products.length > 0) {
+            // Cache the data
+            cachedProducts = productsData.products;
+            cachedCart = cartData.success ? cartData.cart.Products : [];
+
+            productsContainer.innerHTML = "";
+
+            cachedProducts.forEach((product, index) => {
+              const cartItem = cachedCart.find(
+                (item) => item.productId._id === product._id
+              );
+              const quantity = cartItem ? cartItem.quantity : 0;
+
+              const productCard = document.createElement("div");
+              productCard.className = "col-xl-3 col-lg-4 col-md-6 col-sm-6";
+              productCard.innerHTML = `
+          <div class="product-card wow fadeInUp" data-wow-delay="${
+            100 + index * 100
+          }ms">
+            <div class="product-card__image">
+              <img src="${
+                product.images[0]?.url ||
+                "assets/images/resources/placeholder.png"
+              }" alt="${
+                product.images[0]?.altText || product.name
+              }" loading="lazy">
+              <span class="product-card__category">${product.category}</span>
+            </div>
+            <div class="product-card__content">
+              <div>
+                <h3 class="product-card__title">${product.name}</h3>
+                <p class="product-card__price">$${product.price.toFixed(2)}</p>
+                <p class="product-card__description">${product.description.substring(
+                  0,
+                  80
+                )}${product.description.length > 80 ? "..." : ""}</p>
+              </div>
+              <div class="product-card__buttons" id="buttons-${product._id}">
+                <a href="product-details.html?id=${
+                  product._id
+                }" class="thm-btn view-details">
+                  <i class="fas fa-eye"></i> Details
+                </a>
+                ${
+                  quantity > 0
+                    ? `
+                  <div class="quantity-control">
+                    <button class="thm-btn" onclick="updateCart('${
+                      product._id
+                    }', ${quantity - 1})">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="quantity-display">${quantity}</span>
+                    <button class="thm-btn" onclick="updateCart('${
+                      product._id
+                    }', ${quantity + 1})">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                `
+                    : `
+                  <button class="thm-btn add-to-cart-btn" onclick="updateCart('${product._id}', 1)">
+                    <i class="fas fa-cart-plus"></i> Add Cart
+                  </button>
+                `
+                }
+              </div>
+            </div>
+          </div>
+        `;
+              productsContainer.appendChild(productCard);
+            });
+          } else {
+            noProductsMessage.style.display = "block";
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          loadingMessage.style.display = "none";
+          errorMessage.style.display = "block";
+        }
+      }
+
+      async function updateCart(productId, newQuantity) {
+        try {
+          // Update cart on the server
+          const endpoint =
+            newQuantity === 0
+              ? "removefromcart"
+              : newQuantity >
+                (cachedCart.find((item) => item.productId._id === productId)
+                  ?.quantity || 0)
+              ? "addtocart"
+              : "removefromcart";
+          const response = await fetch(
+            `http://localhost:3000/api/cart/${endpoint}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              credentials: "include",
+              body: JSON.stringify({
+                productId,
+                quantity: 1, // Add or remove 1 item
+              }),
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          // Update cached cart
+          const cartItemIndex = cachedCart.findIndex(
+            (item) => item.productId._id === productId
+          );
+          if (newQuantity === 0) {
+            if (cartItemIndex !== -1) {
+              cachedCart.splice(cartItemIndex, 1);
+            }
+          } else {
+            if (cartItemIndex !== -1) {
+              cachedCart[cartItemIndex].quantity = newQuantity;
+            } else {
+              cachedCart.push({
+                productId: { _id: productId },
+                quantity: newQuantity,
+              });
+            }
+          }
+
+          // Update only the affected product's buttons
+          const buttonsContainer = document.getElementById(
+            `buttons-${productId}`
+          );
+          if (buttonsContainer) {
+            buttonsContainer.innerHTML =
+              newQuantity > 0
+                ? `
+        <a href="product-details.html?id=${productId}" class="thm-btn view-details">
+          <i class="fas fa-eye"></i> Details
+        </a>
+        <div class="quantity-control">
+          <button class="thm-btn" onclick="updateCart('${productId}', ${
+                    newQuantity - 1
+                  })">
+            <i class="fas fa-minus"></i>
+          </button>
+          <span class="quantity-display">${newQuantity}</span>
+          <button class="thm-btn" onclick="updateCart('${productId}', ${
+                    newQuantity + 1
+                  })">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      `
+                : `
+        <a href="product-details.html?id=${productId}" class="thm-btn view-details">
+          <i class="fas fa-eye"></i> Details
+        </a>
+        <button class="thm-btn add-to-cart-btn" onclick="updateCart('${productId}', 1)">
+          <i class="fas fa-cart-plus"></i> Add Cart
+        </button>
+      `;
+          }
+        } catch (error) {
+          console.error("Error updating cart:", error);
+          if (error.status === 401) {
+            window.location.href = "login.html";
+          }
+        }
+      }
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", fetchProducts);
+    </script>
   </body>
 </html>

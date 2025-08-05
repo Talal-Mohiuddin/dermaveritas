@@ -95,7 +95,6 @@ const updateBlog = catchAsyncErrors(async (req, res, next) => {
       new ErrorHandler("You are not authorized to update this blog", 403)
     );
   }
-  console.log("tags:", tags);
 
   // Parse tags if it's a string (from multipart/form-data)
   if (typeof tags === "string") {

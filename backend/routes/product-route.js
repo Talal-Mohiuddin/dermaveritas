@@ -27,7 +27,7 @@ router.post(
   createProduct
 );
 router.put(
-  "/:id",
+  "/:id", 
   isadminAuthenticated,
   upload.array("images", 5),
   updateProduct
