@@ -272,8 +272,8 @@ const upgradePlan = catchAsyncErrors(async (req, res, next) => {
       mode: "payment",
       success_url: `${
         process.env.FRONTEND_URL
-      }/success?plan=${encodeURIComponent(plan.name)}`,
-      cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+      }/success.html?plan=${encodeURIComponent(plan.name)}`,
+      cancel_url: `${process.env.FRONTEND_URL}/cancel.html`,
       metadata: {
         userId: user._id.toString(),
         planName: plan.name,
@@ -289,6 +289,68 @@ const upgradePlan = catchAsyncErrors(async (req, res, next) => {
     });
   } catch (error) {
     return next(new ErrorHandler("Failed to create checkout session", 500));
+  }
+});
+
+const getCurrentPlan = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id).select("-password");
+    if (!user) {
+      return next(new ErrorHandler("User not found", 404));
+    }
+
+    if (!user.plan) {
+      return res.status(200).json({
+        success: true,
+        hasPlan: false,
+        message: "No active plan found",
+      });
+    }
+
+    // Define plan benefits based on the plan name
+    const planBenefits = {
+      "Veritas Glow": [
+        "Monthly choice of HydraFacial, RF Microneedling (small area), or PRP Hair/Face treatment",
+        "10% discount on all injectables and skincare products",
+        "Complimentary birthday facial treatment",
+        "Priority booking for all appointments",
+        "Exclusive access to member-only flash offers",
+      ],
+      "Veritas Sculpt": [
+        "Monthly Profhilo treatment (every 2 months)",
+        "Botox treatment (3 areas every 3 months)",
+        "Laser hair removal session (any area)",
+        "RF Microneedling or PRP facial monthly",
+        "15% discount on injectables, fillers, and exosomes",
+        "Complimentary face scan every 3 months",
+        "VIP event invitations and early access to product launches",
+      ],
+      "Veritas Prestige": [
+        "Custom facial treatment plan every 6 weeks (CO2 + PRP + Polynucleotide combo)",
+        "Discounted Endolift treatment once per year",
+        "Exosome therapy included every 3 months",
+        "20% discount on all fillers and Botox treatments",
+        "Complimentary curated product of the month",
+        "Exclusive 'members only' transformation days",
+        "Annual comprehensive skin health report with future planning",
+      ],
+    };
+
+    const planPrice = {
+      "Veritas Glow": "£89",
+      "Veritas Sculpt": "£169",
+      "Veritas Prestige": "£299",
+    };
+
+    res.status(200).json({
+      success: true,
+      hasPlan: true,
+      planName: user.plan,
+      price: planPrice[user.plan],
+      benefits: planBenefits[user.plan] || [],
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Error fetching current plan", 500));
   }
 });
 
@@ -475,6 +537,7 @@ export {
   banUser,
   unbanUser,
   upgradePlan,
+  getCurrentPlan,
   getDashboardStats,
   getProductStats,
   getOrderStats,

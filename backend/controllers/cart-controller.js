@@ -142,8 +142,8 @@ const buyCart = catchAsyncErrors(async (req, res, next) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: `${process.env.FRONTEND_URL}/success`,
-    cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+    success_url: `${process.env.FRONTEND_URL}/success.html`,
+    cancel_url: `${process.env.FRONTEND_URL}/cancel.html`,
     metadata: {
       userId: userId.toString(),
       cartId: cart._id.toString(),

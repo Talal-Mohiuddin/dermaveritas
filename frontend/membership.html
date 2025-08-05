@@ -112,6 +112,193 @@
           transform: rotate(360deg);
         }
       }
+
+      /* Active Plan Styles */
+      .active-plan-container {
+        margin-bottom: 60px;
+      }
+
+      .active-plan-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        padding: 40px;
+        color: white;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .active-plan-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .active-plan-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .active-plan-header h3 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+        color: white;
+      }
+
+      .plan-status-badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        backdrop-filter: blur(10px);
+      }
+
+      .plan-status-badge i {
+        color: #ffd700;
+      }
+
+      .active-plan-details {
+        position: relative;
+        z-index: 2;
+      }
+
+      .plan-name {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #ffd700;
+      }
+
+      .plan-price {
+        font-size: 18px;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+
+      .plan-benefits {
+        margin-bottom: 30px;
+      }
+
+      .plan-benefits ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .plan-benefits li {
+        padding: 8px 0;
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .plan-benefits li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4caf50;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .active-plan-actions {
+        position: relative;
+        z-index: 2;
+      }
+
+      .manage-plan-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .manage-plan-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* No Plan Message Styles */
+      .no-plan-message {
+        margin-bottom: 40px;
+      }
+
+      .no-plan-card {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ffd700;
+      }
+
+      .no-plan-card i {
+        font-size: 48px;
+        color: #ffd700;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .no-plan-card h4 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .no-plan-card p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .active-plan-card {
+          padding: 30px 20px;
+        }
+
+        .active-plan-header {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        .active-plan-header h3 {
+          font-size: 24px;
+        }
+
+        .no-plan-card {
+          padding: 20px;
+        }
+
+        .no-plan-card h4 {
+          font-size: 20px;
+        }
+      }
     </style>
   </head>
 
@@ -222,6 +409,34 @@
 
       <section class="membership-section" style="margin-top: -70px">
         <div class="container">
+          <!-- Active Plan Display Section -->
+          <div
+            id="active-plan-section"
+            class="active-plan-container"
+            style="display: none"
+          >
+            <div class="active-plan-card wow fadeInUp" data-wow-delay="100ms">
+              <div class="active-plan-header">
+                <h3>Your Active Membership</h3>
+                <div class="plan-status-badge">
+                  <i class="fas fa-crown"></i>
+                  <span>Active</span>
+                </div>
+              </div>
+              <div class="active-plan-details">
+                <div class="plan-name" id="current-plan-name"></div>
+                <div class="plan-price" id="current-plan-price"></div>
+                <div class="plan-benefits" id="current-plan-benefits"></div>
+              </div>
+              <div class="active-plan-actions">
+                <button class="manage-plan-btn" onclick="manageMembership()">
+                  <i class="fas fa-cog"></i>
+                  Manage Membership
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div class="membership-header">
             <div
               class="membership-description wow fadeInUp"
@@ -235,6 +450,21 @@
                 consistent, professional treatments that deliver lasting
                 results.
               </p>
+            </div>
+            <div
+              id="no-plan-message"
+              class="no-plan-message wow fadeInUp"
+              data-wow-delay="400ms"
+              style="display: none"
+            >
+              <div class="no-plan-card">
+                <i class="fas fa-star"></i>
+                <h4>Ready to Transform Your Skin?</h4>
+                <p>
+                  Choose a membership plan below to start your skincare journey
+                  with exclusive benefits and treatments.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -611,6 +841,14 @@
             setTimeout(() => {
               window.location.href = "login.html";
             }, 2000);
+          } else if (
+            response.status === 400 &&
+            data.message &&
+            data.message.includes("already have a plan")
+          ) {
+            showErrorMessage(
+              "You already have an active membership plan. Please contact support to modify your plan."
+            );
           } else {
             showErrorMessage(
               data.message || "Failed to process membership selection."
@@ -859,6 +1097,9 @@
 
         // Add particle animation effect
         createParticles();
+
+        // Fetch and display active plan
+        fetchActivePlan();
       });
 
       // Create floating particles for visual appeal
@@ -926,6 +1167,69 @@
           }
         });
       });
+
+      async function fetchActivePlan() {
+        try {
+          const response = await fetch(
+            "https://dermaveritas.onrender.com/api/users/current-plan",
+            {
+              credentials: "include",
+            }
+          );
+          const data = await response.json();
+
+          if (response.ok && data.success && data.hasPlan) {
+            const activePlanSection = document.getElementById(
+              "active-plan-section"
+            );
+            activePlanSection.style.display = "block";
+
+            const currentPlanName =
+              document.getElementById("current-plan-name");
+            const currentPlanPrice =
+              document.getElementById("current-plan-price");
+            const currentPlanBenefits = document.getElementById(
+              "current-plan-benefits"
+            );
+
+            currentPlanName.textContent = data.planName;
+            currentPlanPrice.textContent = data.price + " per month";
+
+            if (data.benefits && data.benefits.length > 0) {
+              currentPlanBenefits.innerHTML = `<ul>${data.benefits
+                .map((benefit) => `<li>${benefit}</li>`)
+                .join("")}</ul>`;
+            } else {
+              currentPlanBenefits.innerHTML = "<p>No benefits listed.</p>";
+            }
+          } else {
+            // User doesn't have an active plan, hide the section and show no-plan message
+            const activePlanSection = document.getElementById(
+              "active-plan-section"
+            );
+            const noPlanMessage = document.getElementById("no-plan-message");
+            activePlanSection.style.display = "none";
+            if (noPlanMessage) {
+              noPlanMessage.style.display = "block";
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching active plan:", error);
+          const activePlanSection = document.getElementById(
+            "active-plan-section"
+          );
+          const noPlanMessage = document.getElementById("no-plan-message");
+          activePlanSection.style.display = "none";
+          if (noPlanMessage) {
+            noPlanMessage.style.display = "block";
+          }
+        }
+      }
+
+      function manageMembership() {
+        // For now, redirect to contact page with membership management context
+        window.location.href = "contact.html?context=membership";
+      }
     </script>
   </body>
 </html>

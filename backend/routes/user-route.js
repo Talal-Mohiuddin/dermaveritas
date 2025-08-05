@@ -12,6 +12,7 @@ import {
   banUser,
   unbanUser,
   upgradePlan,
+  getCurrentPlan,
   getDashboardStats,
   getProductStats,
   getOrderStats,
@@ -30,6 +31,7 @@ router.route("/logout").get(isUserAuthenticated, logoutUser);
 router.route("/change-name").put(isUserAuthenticated, changeUserName);
 router.route("/change-password").put(isUserAuthenticated, changeUserPassword);
 router.route("/getuser").get(isUserAuthenticated, getUser);
+router.route("/current-plan").get(isUserAuthenticated, getCurrentPlan);
 router.route("/upgrade-plan").put(isUserAuthenticated, upgradePlan);
 router.route("/admin-login").post(loginAdmin);
 router.route("/admin-logout").get(isadminAuthenticated, logoutAdmin);
