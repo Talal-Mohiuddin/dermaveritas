@@ -10,6 +10,7 @@ import {
   generateVerificationToken,
   sendVerificationEmail,
   sendPasswordResetEmail,
+  sendContactFormEmail,
 } from "../utils/emailService.js";
 
 dotenv.config();
@@ -712,6 +713,50 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// Contact form submission endpoint
+const submitContactForm = catchAsyncErrors(async (req, res, next) => {
+  const { name, email, phone, service, message } = req.body;
+
+  // Validate required fields
+  if (!name || !email) {
+    return next(new ErrorHandler("Name and email are required", 400));
+  }
+
+  // Validate email format
+  if (!validator.isEmail(email)) {
+    return next(new ErrorHandler("Please enter a valid email", 400));
+  }
+
+  // Prepare contact data
+  const contactData = {
+    name: name.trim(),
+    email: email.trim(),
+    phone: phone ? phone.trim() : null,
+    service: service ? service.trim() : null,
+    message: message ? message.trim() : null,
+    ip: req.ip || req.connection.remoteAddress,
+  };
+  console.log("Contact Data:", contactData);
+
+  try {
+    // Send contact form email
+    await sendContactFormEmail(contactData);
+
+    res.status(200).json({
+      success: true,
+      message: "Thank you for your message! We'll get back to you soon.",
+    });
+  } catch (error) {
+    console.error("Contact form submission error:", error);
+    return next(
+      new ErrorHandler(
+        "Failed to send your message. Please try again later.",
+        500
+      )
+    );
+  }
+});
+
 export {
   registerUser,
   loginUser,
@@ -734,4 +779,5 @@ export {
   resendVerificationEmail,
   forgotPassword,
   resetPassword,
+  submitContactForm,
 };

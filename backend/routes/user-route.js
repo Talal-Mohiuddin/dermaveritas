@@ -21,6 +21,7 @@ import {
   resendVerificationEmail,
   forgotPassword,
   resetPassword,
+  submitContactForm,
 } from "../controllers/user-controller.js";
 import {
   isUserAuthenticated,
@@ -56,5 +57,8 @@ router.route("/dashboard-stats").get(isadminAuthenticated, getDashboardStats);
 router.route("/product-stats").get(isadminAuthenticated, getProductStats);
 router.route("/order-stats").get(isadminAuthenticated, getOrderStats);
 router.route("/blog-stats").get(isadminAuthenticated, getBlogStats);
+
+// Contact form route
+router.route("/contact").post(submitContactForm);
 
 export default router;

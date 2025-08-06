@@ -128,25 +128,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       return div;
     }
 
-    // Function to create search icon element
-    function createSearchIcon() {
-      const div = document.createElement("div");
-      div.className = "main-menu-two__search-box";
-      div.innerHTML = `
-        <a href="#" class="main-menu-two__search search-toggler" aria-label="Search">
-          <i class="fas fa-search"></i>
-        </a>
-      `;
-      return div;
-    }
-
     // Function to update desktop navigation
     function updateDesktopNav(isAuthenticated, role) {
       // Clear all existing icons in search-cart-box to prevent duplicates
       searchCartBox.innerHTML = "";
-
-      // Add search icon
-      searchCartBox.appendChild(createSearchIcon());
 
       if (isAuthenticated) {
         // Add cart icon
