@@ -886,7 +886,7 @@
           showLoadingMessage("Processing your membership selection...");
 
           const response = await fetch(
-            "https://dermaveritas.onrender.com/api/users/upgrade-plan",
+            "https://dermaveritas.com/api/users/upgrade-plan",
             {
               method: "PUT",
               headers: {
@@ -1237,7 +1237,7 @@
       async function fetchActivePlan() {
         try {
           const response = await fetch(
-            "https://dermaveritas.onrender.com/api/users/current-plan",
+            "https://dermaveritas.com/api/users/current-plan",
             {
               credentials: "include",
             }

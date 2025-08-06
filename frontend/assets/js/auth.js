@@ -2,16 +2,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Function to get cookie by name
   async function getTokenFromServer() {
     try {
-      const response = await fetch(
-        "https://dermaveritas.onrender.com/api/get-session",
-        {
-          method: "GET",
-          credentials: "include", // Send cookies with the request
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("https://dermaveritas.com/api/get-session", {
+        method: "GET",
+        credentials: "include", // Send cookies with the request
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (response.ok) {
         const data = await response.json();
         return data.token || null;
@@ -27,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function verifyToken(token) {
     try {
       const response = await fetch(
-        "https://dermaveritas.onrender.com/api/verify-token",
+        "https://dermaveritas.com/api/verify-token",
         {
           method: "POST",
           headers: {

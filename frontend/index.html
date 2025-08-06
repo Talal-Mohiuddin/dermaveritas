@@ -2341,7 +2341,7 @@
     <!-- Dynamic Content Script -->
     <script>
       // API Base URL
-      const API_BASE_URL = "https://dermaveritas.onrender.com/api";
+      const API_BASE_URL = "https://dermaveritas.com/api";
 
       // Function to strip HTML tags and get plain text
       function stripHTML(html) {
@@ -2433,7 +2433,7 @@
                   <div class="blog-one__img">
                     <img src="${
                       blog.coverImage
-                        ? `https://dermaveritas.onrender.com/uploads/blogs/${blog.coverImage}`
+                        ? `https://dermaveritas.com/uploads/blogs/${blog.coverImage}`
                         : "assets/images/blog/blog-1-1.jpg"
                     }" alt="${
               blog.title
@@ -2542,7 +2542,7 @@
                     <div class="products-one__img">
                       <img src="${
                         product.images && product.images.length > 0
-                          ? `https://dermaveritas.onrender.com/uploads/products/${product.images[0]}`
+                          ? `https://dermaveritas.com/uploads/products/${product.images[0]}`
                           : "assets/images/shop/product1.webp"
                       }" alt="${product.name}" />
                     </div>
@@ -2643,7 +2643,7 @@
 
             try {
               const response = await fetch(
-                "https://dermaveritas.onrender.com/api/users/contact",
+                "https://dermaveritas.com/api/users/contact",
                 {
                   method: "POST",
                   headers: {

@@ -730,10 +730,10 @@
         try {
           // Fetch cart and products concurrently
           const [cartResponse, productsResponse] = await Promise.all([
-            fetch("https://dermaveritas.onrender.com/api/cart/getcart", {
+            fetch("https://dermaveritas.com/api/cart/getcart", {
               credentials: "include",
             }),
-            fetch("https://dermaveritas.onrender.com/api/products/", {
+            fetch("https://dermaveritas.com/api/products/", {
               method: "GET",
               credentials: "include",
             }),
@@ -838,7 +838,7 @@
               ? "addtocart"
               : "removefromcart";
           const response = await fetch(
-            `https://dermaveritas.onrender.com/api/cart/${endpoint}`,
+            `https://dermaveritas.com/api/cart/${endpoint}`,
             {
               method: "POST",
               headers: {
