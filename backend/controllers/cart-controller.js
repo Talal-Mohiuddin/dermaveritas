@@ -7,10 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2022-11-15",
-  typescript: true,
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Helper function to calculate total price
 const calculateTotalPrice = async (cart) => {

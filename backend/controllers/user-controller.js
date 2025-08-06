@@ -5,20 +5,17 @@ import { User } from "../models/user-model.js";
 import validator from "validator";
 import { BannedUsers } from "../models/bannedusers-model.js";
 import Stripe from "stripe";
-import dotenv from "dotenv";
 import {
   generateVerificationToken,
   sendVerificationEmail,
   sendPasswordResetEmail,
   sendContactFormEmail,
 } from "../utils/emailService.js";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2022-11-15",
-  typescript: true,
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const plans = [
   {
