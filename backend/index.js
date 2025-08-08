@@ -31,6 +31,7 @@ app.use(
       "http://localhost:3000",
       "http://139.59.27.175:3000",
       "http://139.59.27.175",
+      "https://dermaveritas.com",
     ],
     credentials: true,
   })
