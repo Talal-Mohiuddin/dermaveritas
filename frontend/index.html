@@ -1003,8 +1003,8 @@
                   "
                 ></div>
                 <h3 class="promotions-one__title">
-                  Spa & <br />
-                  Massage
+                  Skin <br />
+                  Treatments
                 </h3>
                 <a href="contact.html" class="promotions-one__btn thm-btn"
                   >Book now</a
@@ -2616,10 +2616,10 @@
         // Test toast functionality
         setTimeout(() => {
           if (typeof toast !== "undefined") {
-            toast.info("Contact form loaded successfully");
+            console.log("Contact form loaded successfully");
           } else if (typeof Toast !== "undefined") {
             window.toast = new Toast();
-            window.toast.info("Contact form loaded successfully");
+            console.log("Contact form loaded successfully");
           }
         }, 1000);
 
