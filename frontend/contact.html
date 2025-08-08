@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <script src="assets/js/UserExsists.js"></script>
-    <script src="assets/js/toast.js"></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -696,6 +695,7 @@
     <script src="assets/vendors/sidebar-content/jquery-sidebar-content.js"></script>
     <script src="assets/vendors/twenty-twenty/twentytwenty.js"></script>
     <script src="assets/vendors/twenty-twenty/jquery.event.move.js"></script>
+    <script src="assets/js/toast.js"></script>
 
     <!-- template js -->
     <script src="assets/js//mellis.js"></script>
@@ -703,16 +703,6 @@
     <!-- Service Auto-population Script -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Test toast functionality
-        setTimeout(() => {
-          if (typeof toast !== "undefined") {
-            toast.info("Contact form loaded successfully");
-          } else if (typeof Toast !== "undefined") {
-            window.toast = new Toast();
-            window.toast.info("Contact form loaded successfully");
-          }
-        }, 1000);
-
         // Handle contact form submission
         const contactForm = document.getElementById("contactForm");
         if (contactForm) {

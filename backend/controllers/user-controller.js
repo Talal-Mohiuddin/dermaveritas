@@ -236,13 +236,13 @@ const banUser = catchAsyncErrors(async (req, res, next) => {
   }
   user.isBanned = true;
 
-  const bannedUser = new BannedUsers({
+  const bannedUser = {
     userId: user._id,
     userEmail: user.email,
     banDate: new Date(),
-  });
+  };
 
-  await bannedUser.save();
+  await BannedUsers.create(bannedUser);
 
   await user.save();
   res.status(200).json({

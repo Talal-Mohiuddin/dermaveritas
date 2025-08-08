@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <script src="assets/js/auth.js"></script>
-    <script src="assets/js/toast.js"></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -439,6 +438,7 @@
     <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/fontawesome/js/all.min.js"></script>
     <script src="assets/js/mellis.js"></script>
+    <script src="assets/js/toast.js"></script>
 
     <script>
       // Users Management functionality
@@ -566,23 +566,30 @@
               credentials: "include",
             });
 
-            if (!response.ok) throw new Error("Failed to ban user");
+            if (!response.ok) {
+              const errorData = await response.json(); // Get error details from backend
+              console.error("Ban user error response:", errorData);
+              throw new Error(errorData.message || "Failed to ban user");
+            }
 
             const data = await response.json();
             toast.success(data.message);
             await this.loadUsers();
           } catch (error) {
-            console.error("Error banning user:", error);
-            this.showError("Failed to ban user");
+            console.error("Error banning user:", error.message);
+            this.showError(error.message || "Failed to ban user");
           }
         }
 
         async unbanUser(userId) {
           try {
-            const response = await fetch(`${this.baseUrl}/unban-user/${userId}`, {
-              method: "PUT",
-              credentials: "include",
-            });
+            const response = await fetch(
+              `${this.baseUrl}/unban-user/${userId}`,
+              {
+                method: "PUT",
+                credentials: "include",
+              }
+            );
 
             if (!response.ok) throw new Error("Failed to unban user");
 
