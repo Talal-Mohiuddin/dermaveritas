@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/toast.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Users | TeamAlpha</title>
+
+    <!-- favicons Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Manage Users - TeamAlpha" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/nouislider/nouislider.pips.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mellis-icons/style.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/tiny-slider/tiny-slider.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/owl-carousel/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/twenty-twenty/twentytwenty.css"
+    />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/mellis.css" />
+    <link rel="stylesheet" href="assets/css/mellis-responsive.css" />
+
+    <style>
+      /* Header/navbar styles (reused from dashboard.html) */
+      .main-menu__logo img {
+        max-height: 48px;
+        width: auto;
+        display: block;
+      }
+      .main-menu__list > li > a,
+      .main-menu__list > li > a:visited,
+      .main-menu__list > li > a:active,
+      .main-menu__list > li > a:focus {
+        color: #fff !important;
+      }
+      .main-menu__list > li > a:hover {
+        color: #ffb347 !important;
+      }
+      .main-menu__list .dropdown > a:after,
+      .main-menu__list .dropdown > a:before {
+        color: #fff !important;
+      }
+      .main-menu-two__search,
+      .main-menu-two__cart,
+      .main-menu-two__search-box a,
+      .main-menu-two__cart-box a,
+      .main-menu-two__search-box .icon-magnifying-glass,
+      .main-menu-two__cart-box .icon-shopping-cart,
+      .main-menu-two__search-box i,
+      .main-menu-two__cart-box i {
+        color: #fff !important;
+      }
+      .main-menu__list ul li a {
+        color: #fff !important;
+      }
+      .main-menu__list ul li a:hover {
+        color: #ffb347 !important;
+      }
+      .mobile-nav__toggler i {
+        color: #fff !important;
+      }
+      .main-header-two,
+      .main-menu.main-menu-two,
+      .main-menu-two__wrapper,
+      .stricky-header.stricked-menu.main-menu.main-menu-two,
+      .sticky-header__content {
+        background: #23232a !important;
+      }
+      .main-header-two,
+      .stricky-header.stricked-menu.main-menu.main-menu-two {
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 32px;
+      }
+      .main-menu-two__logout-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      .main-menu-two__logout {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(90deg, #89868d, #0f0f10);
+        color: #fff !important;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 28px 10px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+      .main-menu-two__logout i {
+        font-size: 1.2em;
+        margin-right: 6px;
+        transition: color 0.2s;
+      }
+      .main-menu-two__logout:hover,
+      .main-menu-two__logout:focus {
+        background: #0f0f10;
+        color: #ffb347 !important;
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+        text-decoration: none;
+      }
+      .main-menu-two__logout:hover i,
+      .main-menu-two__logout:focus i {
+        color: #ffb347;
+      }
+      .main-menu__list > li.dropdown ul {
+        background-color: #23232a !important;
+      }
+      .main-menu__list > li.dropdown ul li a {
+        color: #fff !important;
+        text-align: left;
+      }
+      .main-menu__list > li.dropdown ul li a:hover {
+        color: #ffb347 !important;
+      }
+
+      /* Users Management Styles */
+      .users-section {
+        padding: 200px 0 40px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: calc(100vh - 100px);
+      }
+
+      .users-container {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+      }
+
+      .search-bar {
+        margin-bottom: 20px;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+
+      .search-bar input:focus {
+        border-color: #ffb347;
+      }
+
+      .users-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      .users-table th,
+      .users-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .users-table th {
+        background: #f8f9fa;
+        font-weight: 600;
+        color: #0f0f10;
+      }
+
+      .users-table td {
+        color: #6c757d;
+      }
+
+      .users-table tr:hover {
+        background: #f1f3f5;
+      }
+
+      .action-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+      }
+
+      .action-btn.ban {
+        background: #dc3545;
+        color: #fff;
+      }
+
+      .action-btn.unban {
+        background: #28a745;
+        color: #fff;
+      }
+
+      .action-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
+
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #f5c6cb;
+        display: none;
+      }
+
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #ffb347;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .users-section {
+          padding: 60px 0 20px;
+        }
+
+        .users-container {
+          padding: 20px;
+        }
+
+        .users-table th,
+        .users-table td {
+          padding: 10px;
+          font-size: 0.875rem;
+        }
+
+        .action-btn {
+          padding: 6px 12px;
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======= Site Header/Navbar Start ======= -->
+    <header class="main-header-two">
+      <nav class="main-menu main-menu-two">
+        <div class="main-menu-two__wrapper">
+          <div class="main-menu-two__wrapper-inner">
+            <div class="main-menu-two__left">
+              <div class="main-menu-two__logo">
+                <a href="index.html"
+                  ><img src="assets/images/resources/logo-3.svg" alt=""
+                /></a>
+              </div>
+            </div>
+            <div class="main-menu-two__main-menu-box">
+              <a href="#" class="mobile-nav__toggler"
+                ><i class="fa fa-bars"></i
+              ></a>
+              <ul class="main-menu__list">
+                <li>
+                  <a href="dashboard.html">Dashboard</a>
+                </li>
+                <li>
+                  <a href="orders.html">Orders</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Products</a>
+                  <ul>
+                    <li><a href="addproduct.html">Add Product</a></li>
+                    <li><a href="manageproducts.html">Manage Products</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Blogs</a>
+                  <ul>
+                    <li><a href="addblog.html">Add Blog</a></li>
+                    <li><a href="manageblogs.html">Manage Blogs</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="users.html">Users</a>
+                </li>
+              </ul>
+            </div>
+            <div class="main-menu-two__right">
+              <div class="main-menu-two__logout-box">
+                <a
+                  href="logout.html"
+                  class="main-menu-two__logout"
+                  title="Logout"
+                >
+                  <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="stricky-header stricked-menu main-menu main-menu-two">
+      <div class="sticky-header__content"></div>
+    </div>
+    <!-- ======= Site Header/Navbar End ======= -->
+
+    <!-- Users Management Section -->
+    <div class="users-section">
+      <div class="container">
+        <!-- Error Message Container -->
+        <div id="errorContainer" class="error-message"></div>
+
+        <!-- Users Container -->
+        <div class="users-container">
+          <h2 class="chart-title">Manage Users</h2>
+          <div class="search-bar">
+            <input
+              type="text"
+              id="userSearch"
+              placeholder="Search users by name or email..."
+            />
+          </div>
+          <div id="usersTableContainer">
+            <div class="loading">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/fontawesome/js/all.min.js"></script>
+    <script src="assets/js/mellis.js"></script>
+
+    <script>
+      // Users Management functionality
+      class UsersManager {
+        constructor() {
+          this.baseUrl = "https://dermaveritas.com/api/users";
+          this.users = [];
+          this.init();
+        }
+
+        async init() {
+          try {
+            await this.loadUsers();
+            this.setupSearch();
+            this.setupLogout();
+          } catch (error) {
+            this.showError("Failed to load users data");
+            console.error("Users init error:", error);
+          }
+        }
+
+        async loadUsers() {
+          try {
+            const response = await fetch(`${this.baseUrl}/getalluser`, {
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch users");
+
+            const data = await response.json();
+            this.users = data.users;
+            this.renderUsersTable(this.users);
+          } catch (error) {
+            console.error("Error loading users:", error);
+            this.showError("Failed to load users");
+          }
+        }
+
+        renderUsersTable(users) {
+          const container = document.getElementById("usersTableContainer");
+          if (!users || users.length === 0) {
+            container.innerHTML = '<p class="text-muted">No users found</p>';
+            return;
+          }
+
+          container.innerHTML = `
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Plan</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${users
+                  .map(
+                    (user) => `
+                  <tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.plan || "No Plan"}</td>
+                    <td>${
+                      user.isBanned
+                        ? '<span style="color: #dc3545;">Banned</span>'
+                        : "Active"
+                    }</td>
+                    <td>
+                      ${
+                        user.isBanned
+                          ? `<button class="action-btn unban" data-id="${user._id}">Unban</button>`
+                          : `<button class="action-btn ban" data-id="${user._id}">Ban</button>`
+                      }
+                    </td>
+                  </tr>
+                `
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          `;
+
+          // Attach event listeners to action buttons
+          this.setupActionButtons();
+        }
+
+        setupSearch() {
+          const searchInput = document.getElementById("userSearch");
+          searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+            const filteredUsers = this.users.filter(
+              (user) =>
+                user.name.toLowerCase().includes(query) ||
+                user.email.toLowerCase().includes(query)
+            );
+            this.renderUsersTable(filteredUsers);
+          });
+        }
+
+        setupActionButtons() {
+          const banButtons = document.querySelectorAll(".action-btn.ban");
+          const unbanButtons = document.querySelectorAll(".action-btn.unban");
+
+          banButtons.forEach((button) => {
+            button.addEventListener("click", async () => {
+              const userId = button.getAttribute("data-id");
+              await this.banUser(userId);
+            });
+          });
+
+          unbanButtons.forEach((button) => {
+            button.addEventListener("click", async () => {
+              const userId = button.getAttribute("data-id");
+              await this.unbanUser(userId);
+            });
+          });
+        }
+
+        async banUser(userId) {
+          try {
+            const response = await fetch(`${this.baseUrl}/ban-user/${userId}`, {
+              method: "PUT",
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to ban user");
+
+            const data = await response.json();
+            toast.success(data.message);
+            await this.loadUsers();
+          } catch (error) {
+            console.error("Error banning user:", error);
+            this.showError("Failed to ban user");
+          }
+        }
+
+        async unbanUser(userId) {
+          try {
+            const response = await fetch(`${this.baseUrl}/unban-user/${userId}`, {
+              method: "PUT",
+              credentials: "include",
+            });
+
+            if (!response.ok) throw new Error("Failed to unban user");
+
+            const data = await response.json();
+            toast.success(data.message);
+            await this.loadUsers();
+          } catch (error) {
+            console.error("Error unbanning user:", error);
+            this.showError("Failed to unban user");
+          }
+        }
+
+        showError(message) {
+          const errorContainer = document.getElementById("errorContainer");
+          errorContainer.textContent = message;
+          errorContainer.style.display = "block";
+
+          setTimeout(() => {
+            errorContainer.style.display = "none";
+          }, 5000);
+        }
+
+        setupLogout() {
+          const logoutBtn = document.querySelector(".main-menu-two__logout");
+          if (logoutBtn) {
+            logoutBtn.addEventListener("click", async function (e) {
+              e.preventDefault();
+
+              try {
+                const response = await fetch(
+                  "https://dermaveritas.com/api/users/admin-logout",
+                  {
+                    method: "GET",
+                    credentials: "include",
+                  }
+                );
+
+                if (response.ok) {
+                  toast.success("Logged out successfully!");
+                  window.location.href = "index.html";
+                } else {
+                  const data = await response.json();
+                  toast.error(data.message || "Failed to logout.");
+                }
+              } catch (error) {
+                console.error("Logout error:", error);
+                toast.error("Error during logout. Please try again.");
+              }
+            });
+          }
+        }
+      }
+
+      // Initialize users manager when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        new UsersManager();
+      });
+    </script>
+  </body>
+</html>

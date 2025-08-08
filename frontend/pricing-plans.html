@@ -110,6 +110,19 @@
       #status-message.loading {
         color: #89868d;
       }
+
+      /* Add custom styles for preloader */
+      .preloader {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.85
+        ) !important; /* Darker background */
+      }
+      .preloader__logo {
+        max-width: 180px; /* Ensure logo has good size */
+      }
     </style>
 
     <!-- UserExsists.js (assumed to check authentication) -->
@@ -118,7 +131,11 @@
 
   <body>
     <div class="preloader">
-      <div class="preloader__image"></div>
+      <img
+        class="preloader__logo"
+        src="assets/images/resources/logo-3.svg"
+        alt="Derma Veritas Logo"
+      />
     </div>
 
     <div class="page-wrapper">
